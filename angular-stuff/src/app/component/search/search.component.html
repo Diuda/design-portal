@@ -1,0 +1,114 @@
+<form (submit)="searchUPS()">
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+
+      <label for="inputPower">Power</label>
+      <input type="text" class="form-control" id="inputP" name="inputPower" [(ngModel)]="inputPower" placeholder="Power(kVA)">
+
+    </div>
+
+    <div class="form-group col-md-6">
+
+        <label for="inputRuntime">Runtime</label>
+        <input type="number" class="form-control" id="inputRunT" name="inputRunTime" [(ngModel)]="inputRunTime" placeholder="Runtime(In Minutes)">
+  
+      </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="inputUPS">UPS Type</label>
+        <select id="inputUPS" name="inputUPSType" [(ngModel)]="inputUPSType" class="form-control">
+          <option selected>VX</option>
+          <option>VM</option>
+          <option>AC</option>
+          <option>DC</option>
+          <option>LC</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+
+          <label for="inputRegion">Region</label>
+          <select id="inputReg" name="inputRegion" [(ngModel)]="inputRegion" class="form-control">
+            <option selected>APJ</option>
+            <option>NAM</option>
+            <option>EMEA</option>
+            <option>LAM</option>
+            <option>GC</option>
+          </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="inputCountry">Country</label>
+            <select id="inputCoun" name="inputCountry" [(ngModel)]="inputCountry" class="form-control">
+              <option selected>India</option>
+              <option>Australia</option>
+              <option>USA</option>
+              <option>UK</option>
+              <option>Japan</option>
+            </select>
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+                <legend >Bypass</legend>
+
+                <div class="form-check">
+
+                  <input type="radio" name="externalB" [(ngModel)]="externalB" id="externalBypass" value="External" checked>
+                  <label class="form-check-label" for="externalBypass">
+                      External    
+                    </label>
+                    
+                </div>
+                <div class="form-check">
+
+                    <input type="radio" name="internalB" [(ngModel)]="internalB" id="internalBypass" value="Internal" >
+                    <label class="form-check-label" for="externalBypass">
+                        Internal    
+                      </label>
+                      
+                  </div>
+
+
+            </div>
+
+          </div>
+          <div class="form-group">
+
+              <label for="inputRedundnacyUnit">RUnit</label>
+              <select id="inputRU" name="inputRedundancyUnit" [(ngModel)]="inputRedundancyUnit" class="form-control">
+                <option selected>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="inputPf">Power Factor</label>
+            <input type="number" class="form-control" id="inputPf" name="inputPowerFactor" [(ngModel)]="inputPowerFactor" placeholder="Power Factor">
+
+          </div>
+
+          <button type="submit" class="btn btn-primary">Search</button>
+
+
+
+
+</form>
+
+<router-outlet></router-outlet>
+ 
