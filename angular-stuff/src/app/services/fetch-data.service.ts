@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 
@@ -10,15 +10,16 @@ export class FetchDataService {
 
   UPSparams: any;
 
-  constructor(private https: Http) { }
+  constructor(private http: HttpClient) { }
 
   getUPS(UPSparams) {
 
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json')
+    const headers = new HttpHeaders()
+    .set("Content-Type", "application/json");
     console.log(UPSparams);
 
-    return this.https.post('http://localhost:3000/search', UPSparams, { headers: headers }).pipe(map(res=>res.json()));
+
+    return this.http.post("http://localhost:3000/api/search", UPSparams );
 
   }
 
