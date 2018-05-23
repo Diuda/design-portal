@@ -39,3 +39,7 @@ exports.addUPS = async (req, res) => {
 
 
 }
+
+exports.searchUPS = async (req, res) => {
+    console.log(typeof(req.body));
+}
