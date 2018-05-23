@@ -9,7 +9,9 @@ var UPS = require('../controller/ups.controller.js');
 // router.get('/search', UPS);
 
 
-router.post('/search', UPS.addUPS)
+router.post('/add', UPS.addUPS)
+
+router.post('/search', UPS.searchUPS)
 
 
 
