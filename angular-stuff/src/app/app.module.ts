@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from './component/search/search.component';
 
+import { FetchDataService } from './services/fetch-data.service';
+
 
 
 const appRoutes: Routes = [
@@ -29,7 +31,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [],
+  providers: [ FetchDataService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
