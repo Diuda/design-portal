@@ -8,13 +8,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SearchComponent } from './search/search/search.component';
+import { SearchComponent } from './component/search/search.component';
 
 
 
-// const appRoutes: Routes = [
-//   {path: '', component: AppComponent}
-// ]
+const appRoutes: Routes = [
+  { path: 'search', component: SearchComponent }
+]
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { SearchComponent } from './search/search/search.component';
     FormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    // RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes)
 
   ],
   providers: [],
