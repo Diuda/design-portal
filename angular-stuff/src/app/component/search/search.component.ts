@@ -49,8 +49,13 @@ export class SearchComponent implements OnInit {
     console.log(UPSparams);
 
 
-    this.fetchDataService.getUPS(UPSparams).subscribe(data=>{
-      console.log("data send to service")
+    this.fetchDataService.getUPS(UPSparams).subscribe((data)=>{
+
+      //TODO
+      console.log("data send to service: "+data[0].output.nameUPS)
+    },
+    (error)=>{
+      console.log("Error: "+error);
     })
   }
 }
