@@ -41,5 +41,11 @@ exports.addUPS = async (req, res) => {
 }
 
 exports.searchUPS = async (req, res) => {
-    console.log(typeof(req.body));
+    console.log(typeof(parseInt(req.body.power)));
+
+
+    // var UPSName = await UPS.find({"input":{"power": parseInt(req.body.power)}});
+    var UPSName = await UPS.find({"input.power": parseInt(req.body.power)});
+    console.log(UPSName); 
+    res.send(UPSName);
 }
