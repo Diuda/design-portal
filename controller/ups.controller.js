@@ -6,13 +6,16 @@ var UPS = require('../models/ups.js');
 
 
 exports.addUPS = async (req, res) => {
-    console.log(req.body.country);
+    console.log( typeof req.body.partC);
 
 
     try {
         var newUPS = new UPS({
+
+            solutionID: req.body.solution,
             input: {
                 power: req.body.power,
+                voltage: req.body.voltage,
                 batteryRuntime: req.body.batteryruntime,
                 upsType: req.body.upsT,
                 region: req.body.region,
@@ -23,9 +26,8 @@ exports.addUPS = async (req, res) => {
             },
 
             output: {
-                nameUPS: req.body.UPSname,
-                voltage: req.body.voltage,
-                upsCount: req.body.upsC
+                partName: req.body.partName,
+                partCount: req.body.partC
             }
         })
 
