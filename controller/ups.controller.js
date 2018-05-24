@@ -41,7 +41,7 @@ exports.addUPS = async (req, res) => {
 }
 
 exports.searchUPS = async (req, res) => {
-    console.log(req.body.power);
+    console.log(req.body.Bypass);
 
     const params = getSearchParameter(req.body);
 
@@ -69,8 +69,8 @@ function getSearchParameter(obj){
             params["input.country"] = obj[key]
         //TODO
         // need to handle this
-        // if(key == "externalBypass")
-        //     params["input.bypass"] = obj[key]
+        if(key == "Bypass")
+            params["input.bypass"] = obj[key]
         if(key == "Runit")
             params["input.redundancyUnit"] = obj[key]
         if(key == "PowerFactor")
