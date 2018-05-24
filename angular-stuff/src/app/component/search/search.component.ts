@@ -16,8 +16,7 @@ export class SearchComponent implements OnInit {
   inputUPSType: String;
   inputRegion: String;
   inputCountry: String;
-  externalB: Boolean;
-  internalB: Boolean;
+  bypass: Boolean;
   inputRedundancyUnit: Number;
   inputPowerFactor: Number;
 
@@ -38,9 +37,23 @@ export class SearchComponent implements OnInit {
 
     //TODO 
     //check if these params are searched for
-    const power = parseInt(this.inputPower.toString());
-    const externalBypass = parseInt(this.externalB.toString());
-    const RUnit = parseInt(this.inputRedundancyUnit.toString());
+
+    var power;
+    var RUnit;
+
+    if(this.inputPower == undefined) {
+      power = undefined;
+    }else {
+      power = parseInt(this.inputPower.toString())
+    }
+
+    if(this.inputRedundancyUnit == undefined) {
+      RUnit = undefined;
+    }else {
+      RUnit = parseInt(this.inputRedundancyUnit.toString());
+    }
+    // const externalBypass = parseInt(this.externalB.toString());
+    // const RUnit = parseInt(this.inputRedundancyUnit.toString());
     
 
     //TODO
@@ -51,8 +64,7 @@ export class SearchComponent implements OnInit {
       UPSType: this.inputUPSType,
       Region: this.inputRegion,
       Country: this.inputCountry,
-      externalBypass: externalBypass,
-      internalB: this.internalB,
+      Bypass: this.bypass,
       RUnit: RUnit,
       PowerFactor: this.inputPowerFactor
     }
