@@ -41,11 +41,41 @@ exports.addUPS = async (req, res) => {
 }
 
 exports.searchUPS = async (req, res) => {
-    console.log(typeof(parseInt(req.body.power)));
+    console.log(req.body.power);
 
+    const params = getSearchParameter(req.body);
 
-    // var UPSName = await UPS.find({"input":{"power": parseInt(req.body.power)}});
-    var UPSName = await UPS.find({"input.power": parseInt(req.body.power)});
+    console.log(params);
+    var UPSName = await UPS.find(params);
     console.log(UPSName); 
     res.send(UPSName);
+}
+
+
+function getSearchParameter(obj){
+
+    const params = {};
+
+    Object.keys(obj).forEach((key)=>{
+        if(key == "power")
+            params["input.power"] = obj[key]
+        if(key == "runtime")
+            params["input.batteryRuntime"] = obj[key]
+        if(key == "UPSType")
+            params["input.upsType"] = obj[key]
+        if(key == "Region")
+            params["input.region"] = obj[key]
+        if(key == "Country")
+            params["input.country"] = obj[key]
+        //TODO
+        // need to handle this
+        // if(key == "externalBypass")
+        //     params["input.bypass"] = obj[key]
+        if(key == "Runit")
+            params["input.redundancyUnit"] = obj[key]
+        if(key == "PowerFactor")
+            params["input.pf"] = obj[key]
+    })
+
+    return params;
 }
