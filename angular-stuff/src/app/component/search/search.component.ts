@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit {
 
 
-  inputPower: Number;
+  inputPower: String;
   inputRunTime: Number;
   inputUPSType: String;
   inputRegion: String;
@@ -32,16 +32,28 @@ export class SearchComponent implements OnInit {
 
 
   searchUPS() {
+
+    console.log(typeof(parseInt(this.inputPower.toString())))
+
+
+    //TODO 
+    //check if these params are searched for
+    const power = parseInt(this.inputPower.toString());
+    const externalBypass = parseInt(this.externalB.toString());
+    const RUnit = parseInt(this.inputRedundancyUnit.toString());
     
+
+    //TODO
+    //need to fix bypass
     const UPSparams = {
-      power: this.inputPower,
+      power: power,
       runtime: this.inputRunTime,
       UPSType: this.inputUPSType,
       Region: this.inputRegion,
       Country: this.inputCountry,
-      externalBypass: this.externalB,
+      externalBypass: externalBypass,
       internalB: this.internalB,
-      RUnit: this.inputRedundancyUnit,
+      RUnit: RUnit,
       PowerFactor: this.inputPowerFactor
     }
 
