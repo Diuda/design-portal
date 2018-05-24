@@ -62,7 +62,7 @@
 
                 <div class="form-check">
 
-                  <input type="radio" name="externalB" [(ngModel)]="externalB" id="externalBypass" value=0 checked>
+                  <input #by type="radio" name="bypass" [(ngModel)]="bypass" id="externalBypass" [value]="false" [checked]="true">
                   <label class="form-check-label" for="externalBypass">
                       External    
                     </label>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="form-check">
 
-                    <input type="radio" name="internalB" [(ngModel)]="internalB" id="internalBypass" value=1 >
+                    <input type="radio" name="bypass" [(ngModel)]="bypass" id="internalBypass" [value]="true" >
                     <label class="form-check-label" for="externalBypass">
                         Internal    
                       </label>
