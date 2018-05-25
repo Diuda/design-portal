@@ -8,13 +8,11 @@ var Schema = mongoose.Schema;
 var upsSchema = new Schema({
 
 
-    solutionID:{ type: String, required: true, unique: true},
 
     input: {    
 
         power: { type: Number, required: true },
         batteryRuntime: { type: Number, required: true },
-        voltage: { type: Number, required: true },
         upsType: { type: String, required: true }, 
         region: { type: String, required: true },
         country: { type: String, required: true },

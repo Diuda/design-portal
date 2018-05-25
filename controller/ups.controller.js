@@ -12,10 +12,8 @@ exports.addUPS = async (req, res) => {
     try {
         var newUPS = new UPS({
 
-            solutionID: req.body.solution,
             input: {
                 power: req.body.power,
-                voltage: req.body.voltage,
                 batteryRuntime: req.body.batteryruntime,
                 upsType: req.body.upsT,
                 region: req.body.region,
