@@ -24,8 +24,7 @@ exports.addUPS = async (req, res) => {
             },
 
             output: {
-                partName: req.body.partName,
-                partCount: req.body.partC
+                part: req.body.part
             }
         })
 

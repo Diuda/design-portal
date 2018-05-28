@@ -22,8 +22,10 @@ var upsSchema = new Schema({
         
     },
     output: {
-        partName: [{ type: String, required: true }],
-        partCount: [{ type: Number, required: true }]
+        part: [{
+            name: { type: String, required: true},
+            count: { type: Number, required: true}
+        }]
 
     }
 
