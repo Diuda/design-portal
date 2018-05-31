@@ -7,18 +7,19 @@ var Schema = mongoose.Schema;
 
 var upsSchema = new Schema({
 
-
+    roomZoneId: { type: String },
 
     input: {    
 
-        power: { type: Number, required: true },
-        batteryRuntime: { type: Number, required: true },
-        upsType: { type: String, required: true }, 
-        region: { type: String, required: true },
-        country: { type: String, required: true },
-        bypass: { type: Boolean, required: true },
-        redundancyUnit: { type: Number, required: true, min:0, max:10 },
-        pf: { type: Number, required: true, min:0, max:1 }
+        power: { type: String },
+        volatge: { type: String },
+        batteryRuntime: { type: String },
+        upsType: { type: String }, 
+        region: { type: String},
+        country: { type: String },
+        bypass: { type: Boolean},
+        redundancyUnit: { type: String },
+        pf: { type: String }
         
     },
     output: {
