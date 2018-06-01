@@ -11,9 +11,9 @@ var upsSchema = new Schema({
 
     input: {    
 
-        power: { type: String },
-        volatge: { type: String },
-        batteryRuntime: { type: String },
+        poweKVA: { type: Number },
+        volatgeV: { type: Number },
+        batteryRuntimeMin: { type: Number },
         upsType: { type: String }, 
         region: { type: String},
         country: { type: String },
