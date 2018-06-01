@@ -88,3 +88,21 @@ exports.addDataToMongo = async () => {
     })
 
 }
+
+
+exports.addComponent = () => {
+
+    csv()
+    .fromFile('compFinal.csv')
+    .then((jsonObj) => {
+        jsonObj.forEach((e) => {
+            var part = {"name": e.CmpPartNum, "count": e.RcQuantity}
+            UPS.findOneAndUpdate( {rooZoneId: e.RzId}, { $push: { output: {part: part } } }, (err, data) {
+                if (err) throw err;
+                console.log(data)
+            })
+        })
+        
+    })
+
+}
