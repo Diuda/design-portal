@@ -26,11 +26,11 @@ exports.addDataToMongo = async () => {
                 if(jsonObj[i].EvId == 22){
                     upsType = jsonObj[i].RzevValue.split(" ", 2).join(" ")
                     var t = jsonObj[i].RzevValue.split(" ", 3)
-                    p = t[2]
+                    p = Integer.parse(t[2].slice(0, -3))
                     continue
                 }
                 else if(jsonObj[i].EvId == 33){
-                    v = jsonObj[i].RzevValue
+                    v = Integer.parse(jsonObj[i].RzevValue.slice(0, -1))
                     continue
                 }
                 else if(jsonObj[i].EvId == 100){
@@ -38,11 +38,16 @@ exports.addDataToMongo = async () => {
                     continue
                 }
                 else if(jsonObj[i].EvId == 101){
-                    btR = jsonObj[i].RzevValue
+                    btR = Integer.parse(jsonObj[i].RzevValue.slice(0, -3))
                     continue
                 }
                 else if(jsonObj[i].EvId == 102){
-                    b = jsonObj[i].RzevValue
+                    if(jsonObj[i].RzevValue == 'External'){
+                        b = true;
+                    }
+                    else{
+                        b = false;
+                    }
                     continue
                 }
                 else if(jsonObj[i].EvId == 103){
@@ -68,7 +73,7 @@ exports.addDataToMongo = async () => {
                         upsType: upsType,
                         region: region,
                         country: c,
-                        bypass: b,
+                        externalBypass: b,
                         redundancyUnit: rU,
                         pf: pwf
                     }
