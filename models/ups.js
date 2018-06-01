@@ -12,7 +12,7 @@ var upsSchema = new Schema({
     input: {    
 
         powerKVA: { type: Number },
-        volatgeV: { type: Number },
+        voltageV: { type: Number },
         batteryRuntimeMin: { type: Number },
         upsType: { type: String }, 
         region: { type: String},
