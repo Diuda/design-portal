@@ -9,7 +9,7 @@ var UPS = require('./models/ups.js');
 
 
 var p, btR, upsType, region, c, b, rU, pwf, v, rz;
-exports.addDataToMongo = () => {
+exports.addDataToMongo = async () => {
 
     console.log("hello")
     csv()
@@ -73,6 +73,8 @@ exports.addDataToMongo = () => {
                         pf: pwf
                     }
                 })
+                await addUPS.save();
+
 
                 if(jsonObj[i].EvId == 22){
                     upsType = jsonObj[i].RzevValue.split(" ", 2).join(" ")
