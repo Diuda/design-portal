@@ -11,13 +11,13 @@ var upsSchema = new Schema({
 
     input: {    
 
-        poweKVA: { type: Number },
+        powerKVA: { type: Number },
         volatgeV: { type: Number },
         batteryRuntimeMin: { type: Number },
         upsType: { type: String }, 
         region: { type: String},
         country: { type: String },
-        bypass: { type: Boolean},
+        externalBypass: { type: Boolean},
         redundancyUnit: { type: String },
         pf: { type: String }
         
