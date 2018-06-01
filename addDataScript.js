@@ -13,24 +13,27 @@ exports.addDataToMongo = async () => {
 
     console.log("hello")
     csv()
-    .fromFile("allComponents.csv")
-    .then((jsonObj)=>{
+    .fromFile("test3.csv")
+    .then(async (jsonObj)=>{
         console.log(jsonObj.length)
-        res.send("done")
         var temp1 = jsonObj[0].RzId
         var tCountry = jsonObj[0].CtryId
         var tRegion = jsonObj[0].RgDesc
         for(i in jsonObj){
-            // console.log(data[0])
+            // console.log(jsonObj[i]);
+
             if(temp1 == jsonObj[i].RzId){
                 if(jsonObj[i].EvId == 22){
                     upsType = jsonObj[i].RzevValue.split(" ", 2).join(" ")
-                    var t = jsonObj[i].RzevValue.split(" ", 3)
-                    p = Integer.parse(t[2].slice(0, -3))
+                    var t = jsonObj[i].RzevValue.split(" ")
+                    p = parseInt(t[t.length-1].slice(0, -3))
+                    console.log(t)
+                    console.log(p)
+                    // console.log(typeof p)
                     continue
                 }
                 else if(jsonObj[i].EvId == 33){
-                    v = Integer.parse(jsonObj[i].RzevValue.slice(0, -1))
+                    v = parseInt(jsonObj[i].RzevValue.slice(0, -1))
                     continue
                 }
                 else if(jsonObj[i].EvId == 100){
@@ -38,7 +41,7 @@ exports.addDataToMongo = async () => {
                     continue
                 }
                 else if(jsonObj[i].EvId == 101){
-                    btR = Integer.parse(jsonObj[i].RzevValue.slice(0, -3))
+                    btR = parseInt(jsonObj[i].RzevValue.slice(0, -3))
                     continue
                 }
                 else if(jsonObj[i].EvId == 102){
@@ -57,6 +60,7 @@ exports.addDataToMongo = async () => {
 
             }
             else {
+                console.log('Else Working')
                 rz = temp1;
                 temp1 = jsonObj[i].RzId;
                 c = tCountry;
@@ -64,12 +68,15 @@ exports.addDataToMongo = async () => {
                 region = tRegion;
                 tRegion = jsonObj[i].RgDesc
 
+
+                console.log("power: "+p+" voltage: "+v+" btr: "+btR+" upsType: "+upsType+" region: "+region+" country: "+c+" externalBypass: "+b+" redundancy: "+rU+ "pf: "+pwf)
+                // console.log("powertype: "+(typeof p)+ "volatge type: "+(typeof v))
                 var addUPS = new UPS({
                     roomZoneId: rz,
                     input: {
-                        power: p,
-                        voltage: v,
-                        batteryRuntime: btR,
+                        powerKVA: p,
+                        voltageV: v,
+                        batteryRuntimeMin: btR,
                         upsType: upsType,
                         region: region,
                         country: c,
@@ -78,13 +85,13 @@ exports.addDataToMongo = async () => {
                         pf: pwf
                     }
                 })
-                await addUPS.save();
-
+                 var UPSadd = await addUPS.save();
+                console.log(UPSadd)
 
                 if(jsonObj[i].EvId == 22){
                     upsType = jsonObj[i].RzevValue.split(" ", 2).join(" ")
                     var t = jsonObj[i].RzevValue.split(" ", 3)
-                    p = t[2]
+                    p = parseInt(t[2].slice(0, -3))
                     continue
                 }
 
@@ -102,7 +109,7 @@ exports.addComponent = () => {
     .then((jsonObj) => {
         jsonObj.forEach((e) => {
             var part = {"name": e.CmpPartNum, "count": e.RcQuantity}
-            UPS.findOneAndUpdate( {rooZoneId: e.RzId}, { $push: { output: {part: part } } }, (err, data) {
+            UPS.findOneAndUpdate( {rooZoneId: e.RzId}, { $push: { output: { part: part } } }, (err, data) => {
                 if (err) throw err;
                 console.log(data)
             })
