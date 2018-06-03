@@ -20,16 +20,12 @@ exports.addDataToMongo = async () => {
         var tCountry = jsonObj[0].CtryId
         var tRegion = jsonObj[0].RgDesc
         for(i in jsonObj){
-            // console.log(jsonObj[i]);
 
             if(temp1 == jsonObj[i].RzId){
                 if(jsonObj[i].EvId == 22){
                     upsType = jsonObj[i].RzevValue.split(" ", 2).join(" ")
                     var t = jsonObj[i].RzevValue.split(" ")
                     p = parseInt(t[t.length-1].slice(0, -3))
-                    console.log(t)
-                    console.log(p)
-                    // console.log(typeof p)
                     continue
                 }
                 else if(jsonObj[i].EvId == 33){
@@ -71,6 +67,7 @@ exports.addDataToMongo = async () => {
 
                 console.log("power: "+p+" voltage: "+v+" btr: "+btR+" upsType: "+upsType+" region: "+region+" country: "+c+" externalBypass: "+b+" redundancy: "+rU+ "pf: "+pwf)
                 // console.log("powertype: "+(typeof p)+ "volatge type: "+(typeof v))
+                console.log("Voltage: "+v)
                 var addUPS = new UPS({
                     roomZoneId: rz,
                     input: {
@@ -90,29 +87,40 @@ exports.addDataToMongo = async () => {
 
                 if(jsonObj[i].EvId == 22){
                     upsType = jsonObj[i].RzevValue.split(" ", 2).join(" ")
-                    var t = jsonObj[i].RzevValue.split(" ", 3)
-                    p = parseInt(t[2].slice(0, -3))
+                    var t = jsonObj[i].RzevValue.split(" ")
+                    p = parseInt(t[t.length-1].slice(0, -3))
+                    // console.log(t)
+                    // console.log(p)
+                    // console.log(typeof p)
                     continue
                 }
 
             }
+        // }
         }
     })
 
 }
 
 
-exports.addComponent = () => {
+exports.addComponent = async () => {
 
     csv()
-    .fromFile('compFinal.csv')
+    .fromFile('test4.csv')
     .then((jsonObj) => {
-        jsonObj.forEach((e) => {
-            var part = {"name": e.CmpPartNum, "count": e.RcQuantity}
-            UPS.findOneAndUpdate( {rooZoneId: e.RzId}, { $push: { output: { part: part } } }, (err, data) => {
-                if (err) throw err;
+        console.log("File read")
+        jsonObj.forEach(async (e) => {
+            // console.log("hello")
+            // if(e.RzId == '307629'){
+            var parts = {"name": e.CmpPartNum, "count": parseInt(e.RcQuantity)}
+            // console.log(parts)
+            UPS.findOneAndUpdate( {roomZoneId: e.RzId}, { $push: { 'output.part' : parts } }     , (err, data) => {
+                console.log("working")
+                console.log(parts)
+                if (err) console.log(err);
                 console.log(data)
             })
+            // }
         })
         
     })
