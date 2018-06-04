@@ -1,2 +1,107 @@
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
-@import 'node_modules/font-awesome/css/font-awesome.css';
+//@import 'node_modules/bootstrap/scss/bootstrap.scss';
+//@import 'node_modules/font-awesome/css/font-awesome.css';
+body, html {
+    height: 100%;
+    font-family: "OpenSans";
+    font-size: 18px;
+}
+.bg { 
+    /* The image used */
+    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+
+    /* Half height */
+    height:325px; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     z-index: -1;
+}
+.card
+{
+    max-width: 65%;
+    margin-left: 18%;
+    
+}
+#searchbox
+{
+    box-shadow:8px 10px 8px rgba(0, 0, 0, .5);
+}
+.buttonclass
+{
+    margin-left: 29%;
+}
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 75%;
+    height: 25px;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+.anav
+{
+    color:white;
+}
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+@media (max-width: 600px) {
+    .ab{
+        height:192px;
+        width:46%;
+        margin-top: 55%;
+    }
+}
+@media(max-width:1500px)
+{
+    .ab{
+         height:180px;
+         width:45%;
+         margin-top:10%;
+    }
+}
+.navclass
+{
+    background-color: #3dcd58;
+    border-color: #e7e7e7;
+    box-shadow: 0 0 7px rgba(0,0,0,0.1);
+    color:white;
+}
+.footer
+{
+    bottom: 0;
+   height: 15px;
+   background-color: #3dcd58;
+}
+
+.lb{
+    background-color: #3dcd58;
+    width:100%;
+}
+.footcl
+{
+    margin-left: 30%;
+}

@@ -13,7 +13,6 @@ import { SearchComponent } from './component/search/search.component';
 import { FetchDataService } from './services/fetch-data.service';
 
 
-
 const appRoutes: Routes = [
   { path: 'search', component: SearchComponent }
 ]
