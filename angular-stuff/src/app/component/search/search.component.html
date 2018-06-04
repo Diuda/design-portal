@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+</head>
+<body>
+  <!--<app-root></app-root>-->
+      
+  <div class="bg">
+    
+    <div class="h-30"><br></div>
+        <div class="card bg-light mt-5" id="searchbox">
+          <div class="card-header">Search Configured UPS</div>
+          <div class="card-body">
+           <form (submit)="searchUPS()">
+              <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="inputPower">Power</label>
+                    <input type="text" class="form-control" id="inputP" name="inputPower" [(ngModel)]="inputPower" placeholder="Power(kVA)">
+                  </div>
+                  <div class="form-group col-md-3">
+                      <label for="inputRuntime">Runtime</label>
+                      <input type="number" class="form-control" id="inputRunT" name="inputRunTime" [(ngModel)]="inputRunTime" placeholder="Runtime(In Minutes)">
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputUPS">UPS Type</label>
+                      <select id="inputUPS" name="inputUPSType" [(ngModel)]="inputUPSType" class="form-control">
+                        <option selected>Galaxy VX</option>
+                        <option>Galaxy 7000</option>
+                        <option>Galaxy 5000</option>
+                        <option>Galaxy 2500</option>
+                      </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                      <label for="externalBypass">External Bypass</label>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ExtBypass" value="option1">
+                          <label class="form-check-label" for="ExtBypass">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="IntBypass" value="option2">
+                          <label class="form-check-label" for="IntBypass">No</label>
+                        </div> 
+                </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-1"></div>
+                  <div class="form-group col-md-4">
+                      <label for="inputRegion">Region</label>
+                      <select id="inputReg" name="inputRegion" [(ngModel)]="inputRegion" class="form-control">
+                        <option selected>APJ</option>
+                        <option>NAM</option>
+                        <option>EMEA</option>
+                        <option>LAM</option>
+                        <option>GC</option>
+                      </select>
+                  </div> 
+                  <div class="form-group col-md-2"></div>   
+                  <div class="form-group col-md-4">
+                      <label for="inputCountry">Country</label>
+                        <select id="inputCoun" name="inputCountry" [(ngModel)]="inputCountry" class="form-control">
+                          <option selected>India</option>
+                          <option>Australia</option>
+                          <option>USA</option>
+                          <option>UK</option>
+                          <option>Japan</option>
+                        </select>
+                  </div>
+                  <div class="form-group col-md-1"></div>
+                  
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-1"></div>
+                  <div class="form-group col-md-4">
+                      <label for="inputRedundnacyUnit">Redundancy Unit</label>
+                      <!--Value:
+                      <input type="number" ng-model="inputRedundancyUnit" name="inputRedundancyUnit" />
+                      <br/>
+                      <rzslider rz-slider-model="minSlider.value"></rzslider>-->
+                      <input type="range" min="0" max="10" value="5" class="slider" id="myRange" name="inputRedundancyUnit" [(ngModel)]="inputRedundancyUnit">
+                       
+                      
+                  </div> 
+                  <div class="form-group col-md-2"></div>
+                  <div class="form-group col-md-4">
+                      <label for="inputPf">Power Factor</label>
+                      <input type="number" class="form-control" id="inputPf" name="inputPowerFactor" [(ngModel)]="inputPowerFactor" placeholder="Power Factor">
+                  </div>
+                  <div class="form-group col-md-1"></div>
+              </div>
+             <div class="form-row">
+                  <div class="form-group col-md-4"></div>
+                  <div class="form-group col-md-4">  
+                      <button type="submit" class="btn btn-success buttonclass">Search</button>
+                  </div>
+                  <div class="form-group col-md-4"></div>
+             </div>
+
+
+           </form>
+          </div>
+      <!-- </div>-->
+   </div>
+  <br>
+  
+   <div class="card mt-15 bg-light" *ngIf="temp" >
+        <div class="container">
+         <div class="row pt-3"  >
+           <div class="col-md-6" *ngFor="let res of result">
+            <div class="media border p-3">
+                <img src="assets/images/img2.jpg" alt="John Doe" class="ab">
+                <div class="media-body">
+                  <h3>{{res.input.upsType}}</h3>
+                  <br>
+                  <p>
+                    Power:{{res.input.power}}<br>
+                    Redundancy Unit:{{res.input.redundancyUnit}}<br>
+                    Power Factor:{{res.input.pf}}<br>
+                    Battery Runtime:{{res.input.batteryRuntime}}<br>
+                    Bypass type:{{res.input.bypass}}<br><br>
+                          <button type="button" class="btn btn-default">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                          </button>
+                          
+                  </p>    
+                </div>
+            </div>
+           </div>
+        </div>
+     </div>
+</div>
+   
+   <div class="footer container-fluid pb-0 mb-0 px-0 mx-0 py-0 ">
+    <div class="container-fluid lb px-0 mx-0 my-0 py-0 pr-0 mr-0">
+           
+            <p class="footcl">Copyright © SE IT Corporation. All right reserved.</p>
+            
+    </div>
+</div>
+
+</div>
+
+
+<router-outlet></router-outlet>
+
+   
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+    
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+ /*var app = angular.module('rzSliderDemo', ['rzModule', 'ui.bootstrap']);
+
+app.controller('MainCtrl', function ($scope, $rootScope, $timeout, $modal) {
+    //Minimal slider config
+    $scope.minSlider = {
+        value: 5
+    };
+
+    //Slider with selection bar
+    $scope.slider_visible_bar = {
+        value: 10,
+        options: {
+            showSelectionBar: true
+        }
+    };
+
+});*/
+    </script>
+</body>
+</html>

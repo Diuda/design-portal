@@ -1,0 +1,37 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+
+
+import { AppComponent } from './app.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchComponent } from './component/search/search.component';
+
+import { FetchDataService } from './services/fetch-data.service';
+
+
+const appRoutes: Routes = [
+  { path: 'search', component: SearchComponent }
+]
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    SearchComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    NgbModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
+    
+
+  ],
+  providers: [ FetchDataService ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
