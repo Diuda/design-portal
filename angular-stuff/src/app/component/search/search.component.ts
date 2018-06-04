@@ -19,6 +19,8 @@ export class SearchComponent implements OnInit {
   bypass: Boolean;
   inputRedundancyUnit: Number;
   inputPowerFactor: Number;
+  temp: boolean;
+  result:Object;
 
 
   constructor(
@@ -27,17 +29,19 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.temp = false;
+    this.result=null;
   }
 
 
   searchUPS() {
 
-    console.log(typeof(parseInt(this.inputPower.toString())))
+    //console.log(this.inputPower);
 
 
     //TODO 
     //check if these params are searched for
-
+   var result;
     var power;
     var RUnit;
 
@@ -70,16 +74,21 @@ export class SearchComponent implements OnInit {
     }
 
 
-    console.log(UPSparams);
+    //console.log(UPSparams);
 
 
     this.fetchDataService.getUPS(UPSparams).subscribe((data)=>{
 
       //TODO
-      console.log("data send to service: "+data[0].output.nameUPS)
-    },
+      this.temp=true;
+     this.result=data;
+      //window.alert(JSON.stringify(data))
+     
+    },   
     (error)=>{
       console.log("Error: "+error);
     })
+   
+   
   }
 }

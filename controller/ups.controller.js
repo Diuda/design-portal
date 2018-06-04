@@ -6,7 +6,7 @@ var UPS = require('../models/ups.js');
 
 
 exports.addUPS = async (req, res) => {
-    console.log( typeof req.body.partC);
+
 
 
     try {
@@ -40,9 +40,11 @@ exports.addUPS = async (req, res) => {
 }
 
 exports.searchUPS = async (req, res) => {
+    console.log(req.body.Bypass);
+
     const params = getSearchParameter(req.body);
 
-    console.log(params);
+    //console.log(params);
     var UPSName = await UPS.find(params);
     console.log(UPSName); 
     res.send(UPSName);
