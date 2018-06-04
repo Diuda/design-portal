@@ -6,15 +6,15 @@ var UPS = require('../models/ups.js');
 
 
 exports.addUPS = async (req, res) => {
-    console.log(req.body);
+
 
 
     try {
         var newUPS = new UPS({
-            
+
             input: {
                 power: req.body.power,
-                batteryRuntime: req.body.batteryRuntime,
+                batteryRuntime: req.body.batteryruntime,
                 upsType: req.body.upsT,
                 region: req.body.region,
                 country: req.body.country,
@@ -57,9 +57,9 @@ function getSearchParameter(obj){
 
     Object.keys(obj).forEach((key)=>{
         if(key == "power")
-            params["input.power"] = obj[key]
+            params["input.powerKVA"] = obj[key]
         if(key == "runtime")
-            params["input.batteryRuntime"] = obj[key]
+            params["input.batteryRuntimeMin"] = obj[key]
         if(key == "UPSType")
             params["input.upsType"] = obj[key]
         if(key == "Region")
@@ -69,14 +69,15 @@ function getSearchParameter(obj){
         //TODO
         // need to handle this
         if(key == "Bypass")
-            params["input.bypass"] = obj[key]
+            params["input.externalBypass"] = obj[key]
         if(key == "Runit")
             params["input.redundancyUnit"] = obj[key]
         if(key == "PowerFactor")
             params["input.pf"] = obj[key]
+        if(key == "voltage")
+            params["input.voltageV"] = obj[key]
+
     })
 
     return params;
-
 }
-

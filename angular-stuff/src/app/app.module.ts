@@ -27,8 +27,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
-    
+    RouterModule.forRoot(appRoutes)
 
   ],
   providers: [ FetchDataService ],
