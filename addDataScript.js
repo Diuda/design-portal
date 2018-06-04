@@ -107,21 +107,23 @@ exports.addComponent = async () => {
 
     csv()
     .fromFile('test4.csv')
-    .then((jsonObj) => {
+    .then(async (jsonObj) => {
         console.log("File read")
-        jsonObj.forEach(async (e) => {
-            // console.log("hello")
-            // if(e.RzId == '307629'){
-            var parts = {"name": e.CmpPartNum, "count": parseInt(e.RcQuantity)}
+        for(i=100000;i<jsonObj.length;i++){
+        // jsonObj.forEach(async (e) => {
+            // console.log(e.RzId)
+            // if(e.RzId == '307647'){
+            var parts = {"name": jsonObj[i].CmpPartNum, "count": parseInt(jsonObj[i].RcQuantity)}
             // console.log(parts)
-            UPS.findOneAndUpdate( {roomZoneId: e.RzId}, { $push: { 'output.part' : parts } }     , (err, data) => {
+           await UPS.findOneAndUpdate( {roomZoneId: jsonObj[i].RzId}, { $push: { 'output.part' : parts } }  , (err, data) => {
                 console.log("working")
                 console.log(parts)
                 if (err) console.log(err);
                 console.log(data)
             })
+        }
             // }
-        })
+        // })
         
     })
 
