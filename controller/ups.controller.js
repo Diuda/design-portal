@@ -40,8 +40,6 @@ exports.addUPS = async (req, res) => {
 }
 
 exports.searchUPS = async (req, res) => {
-    console.log(req.body.Bypass);
-
     const params = getSearchParameter(req.body);
 
     console.log(params);
@@ -74,6 +72,9 @@ function getSearchParameter(obj){
             params["input.redundancyUnit"] = obj[key]
         if(key == "PowerFactor")
             params["input.pf"] = obj[key]
+        if(key == "voltage")
+            params["input.voltageV"] = obj[key]
+
     })
 
     return params;
