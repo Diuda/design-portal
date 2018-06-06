@@ -1,10 +1,14 @@
 //@import 'node_modules/bootstrap/scss/bootstrap.scss';
 //@import 'node_modules/font-awesome/css/font-awesome.css';
+
+@import "~nouislider/distribute/nouislider.min.css";
+
 body, html {
     height: 100%;
-    font-family: "OpenSans";
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
 }
+
 .bg { 
     /* The image used */
     background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
@@ -24,6 +28,10 @@ body, html {
     margin-left: 18%;
     
 }
+.title
+{
+    text-align: center;
+}
 #searchbox
 {
     box-shadow:8px 10px 8px rgba(0, 0, 0, .5);
@@ -37,7 +45,7 @@ body, html {
 }
 
 .slider {
-    -webkit-appearance: none;
+    // -webkit-appearance: none;
     width: 75%;
     height: 25px;
     outline: none;
@@ -103,5 +111,6 @@ body, html {
 }
 .footcl
 {
-    margin-left: 30%;
+    //margin-left: 30%;
+    text-align: center;
 }

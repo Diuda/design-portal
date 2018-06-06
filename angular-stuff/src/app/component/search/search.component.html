@@ -5,6 +5,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,23 +14,23 @@
 <body>
   <!--<app-root></app-root>-->
       
-  <div class="bg">
+  <div class="container-fluid bg">
     
     <div class="h-30"><br></div>
         <div class="card bg-light mt-5" id="searchbox">
-          <div class="card-header">Search Configured UPS</div>
+          <div class="card-header title">Search Configured UPS</div>
           <div class="card-body">
            <form (submit)="searchUPS()">
               <div class="form-row">
                   <div class="form-group col-md-3">
-                    <label for="inputPower">Power</label>
-                    <input type="text" class="form-control" id="inputP" name="inputPower" [(ngModel)]="inputPower" placeholder="Power(kVA)">
+                    <label for="inputPower">Power(in kVA)</label>
+                    <input type="text" class="form-control" id="inputP" name="inputPower" [(ngModel)]="inputPower" >
                   </div>
                   <div class="form-group col-md-3">
-                      <label for="inputRuntime">Runtime</label>
-                      <input type="number" class="form-control" id="inputRunT" name="inputRunTime" [(ngModel)]="inputRunTime" placeholder="Runtime(In Minutes)">
+                      <label for="inputRuntime">Runtime(in Minutes)</label>
+                      <input type="number" class="form-control" id="inputRunT" name="inputRunTime" [(ngModel)]="inputRunTime">
                   </div>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-3">
                       <label for="inputUPS">UPS Type</label>
                       <select id="inputUPS" name="inputUPSType" [(ngModel)]="inputUPSType" class="form-control">
                         <option selected>Galaxy VX</option>
@@ -38,14 +39,14 @@
                         <option>Galaxy 2500</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-2">
-                      <label for="externalBypass">External Bypass</label>
+                  <div class="form-group col-md-3">
+                      <label for="externalBypass">External Bypass</label><br>
                       <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ExtBypass" value="option1">
-                          <label class="form-check-label" for="ExtBypass">Yes</label>
+                          <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="externalBypass" [value]="true" [checked]=true>
+                          <label class="form-check-label" for="externalBypass">Yes</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="IntBypass" value="option2">
+                          <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="IntBypass" [value]="false">
                           <label class="form-check-label" for="IntBypass">No</label>
                         </div> 
                 </div>
@@ -80,14 +81,10 @@
                   <div class="form-group col-md-1"></div>
                   <div class="form-group col-md-4">
                       <label for="inputRedundnacyUnit">Redundancy Unit</label>
-                      <!--Value:
-                      <input type="number" ng-model="inputRedundancyUnit" name="inputRedundancyUnit" />
-                      <br/>
-                      <rzslider rz-slider-model="minSlider.value"></rzslider>-->
-                      <input type="range" min="0" max="10" value="5" class="slider" id="myRange" name="inputRedundancyUnit" [(ngModel)]="inputRedundancyUnit">
-                       
-                      
-                  </div> 
+                      <nouislider [min]="0" [max]="10" [step]="1" [(ngModel)]="someRange" name="someRange"></nouislider>
+                    
+                </div>
+                        
                   <div class="form-group col-md-2"></div>
                   <div class="form-group col-md-4">
                       <label for="inputPf">Power Factor</label>
@@ -109,7 +106,7 @@
       <!-- </div>-->
    </div>
   <br>
-  
+  <!--<p>hello{{temp}}</p>-->
    <div class="card mt-15 bg-light" *ngIf="temp" >
         <div class="container">
          <div class="row pt-3"  >
@@ -120,11 +117,14 @@
                   <h3>{{res.input.upsType}}</h3>
                   <br>
                   <p>
-                    Power:{{res.input.power}}<br>
+                    Power:{{res.input.powerKVA}}<br>
+                    Voltage:{{res.input.voltageV}}<br>
                     Redundancy Unit:{{res.input.redundancyUnit}}<br>
                     Power Factor:{{res.input.pf}}<br>
-                    Battery Runtime:{{res.input.batteryRuntime}}<br>
-                    Bypass type:{{res.input.bypass}}<br><br>
+                    Battery Runtime:{{res.input.batteryRuntimeMin}}<br>
+                    Country:{{res.input.country}}<br>
+                    Region:{{res.input.region}}<br>
+                    External Bypass:{{res.input.externalBypass}}<br><br>
                           <button type="button" class="btn btn-default">
                                 <i class="fa fa-file" aria-hidden="true"></i>
                           </button>
@@ -150,36 +150,6 @@
 
 <router-outlet></router-outlet>
 
-   
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-<script>
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
     
-    slider.oninput = function() {
-      output.innerHTML = this.value;
-    }
- /*var app = angular.module('rzSliderDemo', ['rzModule', 'ui.bootstrap']);
-
-app.controller('MainCtrl', function ($scope, $rootScope, $timeout, $modal) {
-    //Minimal slider config
-    $scope.minSlider = {
-        value: 5
-    };
-
-    //Slider with selection bar
-    $scope.slider_visible_bar = {
-        value: 10,
-        options: {
-            showSelectionBar: true
-        }
-    };
-
-});*/
-    </script>
 </body>
 </html>

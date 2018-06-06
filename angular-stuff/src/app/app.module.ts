@@ -12,23 +12,26 @@ import { SearchComponent } from './component/search/search.component';
 
 import { FetchDataService } from './services/fetch-data.service';
 
-
+import { NouisliderModule } from 'ng2-nouislider';
+import { SearchdisplayComponent } from './component/searchdisplay/searchdisplay.component';
 const appRoutes: Routes = [
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path:'searchdisplay',component:SearchdisplayComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
-  ],
+    SearchComponent,
+    SearchdisplayComponent
+   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
-
+    RouterModule.forRoot(appRoutes),
+    NouisliderModule
   ],
   providers: [ FetchDataService ],
   bootstrap: [AppComponent]
