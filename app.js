@@ -17,12 +17,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/dp')
 })
 
 var ups = require('./models/ups.js');
-var csvdata = require('./addDataScript.js')
 
 
 var api = require('./routes/api.js');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -38,8 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 app.use('/api', api);
 app.use('/addData', csvdata.addDataToMongo);
 app.use('/addComponentData', csvdata.addComponent)
