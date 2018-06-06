@@ -79,14 +79,19 @@
               <div class="form-row">
                     <div class="form-group col-md-4">
                             <label for="powerfactor">Power Factor Sign</label><br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lead" [value]="true" [checked]=true>
-                                <label class="form-check-label" for="lead">Lead</label>
+
+
+                            <div *ngFor = "let powerFactorProp of powerFactorProperty" class="form-check form-check-inline">
+
+
+                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lead" [value]="powerFactorProp.value" [checked]=true>
+                                
+                                <label class="form-check-label" >{{powerFactorProp.value}}</label>
                               </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lag" [value]="false">
+                              <!-- <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lag" [value]="Lag">
                                 <label class="form-check-label" for="lag">Lag</label>
-                              </div> 
+                              </div>  -->
                     </div>
                     <div class="form-group col-md-4">
                             <label for="inputPf">Power Factor</label>
