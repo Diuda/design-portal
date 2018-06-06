@@ -21,9 +21,13 @@ export class SearchComponent implements OnInit {
   bypass: Boolean;
   inputRedundancyUnit: Number;
   inputPowerFactor: Number;
-  inputPowerFactorSign:Boolean;
+  inputPowerFactorSign: String;
   temp: boolean;
-  result:Object;
+  result: Object;
+  powerFactorProperty = [
+    { value: 'Lag' },
+    { value: 'Lead' }
+  ];
 
 
   constructor(
@@ -33,25 +37,22 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.temp = false;
-    this.result=null;
-    this.bypass=true;
-    this.inputRegion="NAM";
-    this.inputPower="500";
-    this.inputRunTime=30;
-    this.inputCountry="US";
-    this.inputPowerFactorSign=true;
+    this.result = null;
+    this.bypass = true;
+    this.inputRegion = "NAM";
+    this.inputPower = "500";
+    this.inputRunTime = 30;
+    this.inputCountry = "US";
+    this.inputPowerFactorSign = this.powerFactorProperty[0].value;
     
   }
 
 
   searchUPS() {
 
-    //console.log(this.inputPower);
+    console.log(this.inputPowerFactorSign)
 
-
-    //TODO 
-    //check if these params are searched for
-   var result;
+    var result;
     var power;
     var RUnit;
 
@@ -66,8 +67,6 @@ export class SearchComponent implements OnInit {
     }else {
       RUnit = parseInt(this.inputRedundancyUnit.toString());
     }
-    // const externalBypass = parseInt(this.externalB.toString());
-    // const RUnit = parseInt(this.inputRedundancyUnit.toString());
     
 
     //TODO
@@ -81,7 +80,7 @@ export class SearchComponent implements OnInit {
       Bypass: this.bypass,
       RUnit: RUnit,
       PowerFactor: this.inputPowerFactor,
-      inputPowerFactorSign: this.inputPowerFactorSign,
+      PowerFactorSign: this.inputPowerFactorSign,
       someRange: this.someRange
     }
 
