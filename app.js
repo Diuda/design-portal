@@ -8,7 +8,15 @@ var cors = require('cors')
 
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/dp')
+const mongoOptions = {
+  useMongoClient: true,
+  autoReconnect: true,
+  reconnecTries: Number.MAX_VALUE,
+  poolSize: 7
+
+}
+
+mongoose.connect('mongodb://127.0.0.1:27017/dp', mongoOptions)
 .then(()=>{
   console.log("Connected to db")
 })
