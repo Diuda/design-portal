@@ -13,7 +13,7 @@ const mongoOptions = {
   reconnectTries: Number.MAX_VALUE,
   poolSize: 7,
   keepAlive: true,
-  connectTimeoutMS: 30000,
+  connectTimeoutMS: 360000,
   socketTimeoutMS: 360000
 
 }
@@ -22,8 +22,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/dp', mongoOptions)
 .then(()=>{
   console.log("Connected to db")
 })
-.catch(()=>{
-  console.log("error connecting to db")
+.catch((err)=>{
+  console.log("error connecting to db: "+err)
 })
 
 var ups = require('./models/ups.js');
