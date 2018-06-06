@@ -40,13 +40,9 @@ exports.addUPS = async (req, res) => {
 }
 
 exports.searchUPS = async (req, res) => {
-    console.log(req.body.Bypass);
-
     const params = getSearchParameter(req.body);
 
-    //console.log(params);
     var UPSName = await UPS.find(params);
-    console.log(UPSName); 
     res.send(UPSName);
 }
 
@@ -66,8 +62,6 @@ function getSearchParameter(obj){
             params["input.region"] = obj[key]
         if(key == "Country")
             params["input.country"] = obj[key]
-        //TODO
-        // need to handle this
         if(key == "Bypass")
             params["input.externalBypass"] = obj[key]
         if(key == "Runit")
