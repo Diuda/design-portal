@@ -1,9 +1,8 @@
 var fs = require('fs');
-// var csv = require('fast-csv'); 
 
 var csv = require('csvtojson')
 
-var mongoogse = require('mongoose');
+var mongoose = require('mongoose');
 
 var UPS = require('./models/ups.js');
 
@@ -19,7 +18,7 @@ exports.addDataToMongo = async () => {
         var temp1 = jsonObj[0].RzId
         var tCountry = jsonObj[0].CtryId
         var tRegion = jsonObj[0].RgDesc
-        for(i in jsonObj){
+        for(i=0; i<6000;i++){
 
             if(temp1 == jsonObj[i].RzId){
                 if(jsonObj[i].EvId == 22){
@@ -65,9 +64,6 @@ exports.addDataToMongo = async () => {
                 tRegion = jsonObj[i].RgDesc
 
 
-                console.log("power: "+p+" voltage: "+v+" btr: "+btR+" upsType: "+upsType+" region: "+region+" country: "+c+" externalBypass: "+b+" redundancy: "+rU+ "pf: "+pwf)
-                // console.log("powertype: "+(typeof p)+ "volatge type: "+(typeof v))
-                console.log("Voltage: "+v)
                 var addUPS = new UPS({
                     roomZoneId: rz,
                     input: {
@@ -89,9 +85,6 @@ exports.addDataToMongo = async () => {
                     upsType = jsonObj[i].RzevValue.split(" ", 2).join(" ")
                     var t = jsonObj[i].RzevValue.split(" ")
                     p = parseInt(t[t.length-1].slice(0, -3))
-                    // console.log(t)
-                    // console.log(p)
-                    // console.log(typeof p)
                     continue
                 }
 
@@ -109,20 +102,22 @@ exports.addComponent = async () => {
     .fromFile('test4.csv')
     .then((jsonObj) => {
         console.log("File read")
-        jsonObj.forEach(async (e) => {
-            // console.log("hello")
-            // if(e.RzId == '307629'){
-            var parts = {"name": e.CmpPartNum, "count": parseInt(e.RcQuantity)}
-            // console.log(parts)
-            UPS.findOneAndUpdate( {roomZoneId: e.RzId}, { $push: { 'output.part' : parts } }     , (err, data) => {
-                console.log("working")
-                console.log(parts)
+        for(i=0; i<72608; i++){
+
+            var parts = {"name": jsonObj[i].CmpPartNum, "count": parseInt(jsonObj[i].RcQuantity)}
+            
+            UPS.findOneAndUpdate( {roomZoneId: jsonObj[i].RzId}, { $push: { 'output.parts' : parts } }  , (err, data) => {
                 if (err) console.log(err);
                 console.log(data)
             })
-            // }
-        })
-        
+        }
+
+  
+
+   
     })
+
+
+
 
 }
