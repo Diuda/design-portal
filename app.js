@@ -21,6 +21,8 @@ var ups = require('./models/ups.js');
 
 var api = require('./routes/api.js');
 
+var csvdata = require('./addDataScript.js');
+
 var app = express();
 
 app.use(cors());
