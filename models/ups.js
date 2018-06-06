@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 
-var mongoosePaginate = require('mongoose-paginate');
-
 var Schema = mongoose.Schema;
 
 
@@ -23,7 +21,7 @@ var upsSchema = new Schema({
         
     },
     output: {
-        part: [{
+        parts: [{
             name: { type: String },
             count: { type: Number }
         }]
@@ -31,10 +29,6 @@ var upsSchema = new Schema({
     }
 
 })
-
-
-
-// upsSchema.plugin(mongoosePaginate);
 
 const ups = mongoose.model('ups', upsSchema)
 
