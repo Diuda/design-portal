@@ -22,15 +22,15 @@
           <div class="card-body">
            <form (submit)="searchUPS()">
               <div class="form-row">
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                     <label for="inputPower">Power(in kVA)</label>
                     <input type="text" class="form-control" id="inputP" name="inputPower" [(ngModel)]="inputPower" >
                   </div>
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                       <label for="inputRuntime">Runtime(in Minutes)</label>
                       <input type="number" class="form-control" id="inputRunT" name="inputRunTime" [(ngModel)]="inputRunTime">
                   </div>
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                       <label for="inputUPS">UPS Type</label>
                       <select id="inputUPS" name="inputUPSType" [(ngModel)]="inputUPSType" class="form-control">
                         <option selected>Galaxy VX</option>
@@ -39,20 +39,21 @@
                         <option>Galaxy 2500</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">
-                      <label for="externalBypass">External Bypass</label><br>
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="externalBypass" [value]="true" [checked]=true>
-                          <label class="form-check-label" for="externalBypass">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="IntBypass" [value]="false">
-                          <label class="form-check-label" for="IntBypass">No</label>
-                        </div> 
-                </div>
+                  
               </div>
               <div class="form-row">
-                  <div class="form-group col-md-1"></div>
+                  <!--<div class="form-group col-md-1"></div>-->
+                  <div class="form-group col-md-4">
+                        <label for="externalBypass">External Bypass</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="externalBypass" [value]="true" [checked]=true>
+                            <label class="form-check-label" for="externalBypass">Yes</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="IntBypass" [value]="false">
+                            <label class="form-check-label" for="IntBypass">No</label>
+                          </div> 
+                  </div>
                   <div class="form-group col-md-4">
                       <label for="inputRegion">Region</label>
                       <select id="inputReg" name="inputRegion" [(ngModel)]="inputRegion" class="form-control">
@@ -63,7 +64,7 @@
                         <option>GC</option>
                       </select>
                   </div> 
-                  <div class="form-group col-md-2"></div>   
+                  
                   <div class="form-group col-md-4">
                       <label for="inputCountry">Country</label>
                         <select id="inputCoun" name="inputCountry" [(ngModel)]="inputCountry" class="form-control">
@@ -73,24 +74,30 @@
                           <option>UK</option>
                           <option>Japan</option>
                         </select>
-                  </div>
-                  <div class="form-group col-md-1"></div>
-                  
+                  </div>                  
               </div>
               <div class="form-row">
-                  <div class="form-group col-md-1"></div>
+                    <div class="form-group col-md-4">
+                            <label for="powerfactor">Power Factor Sign</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lead" [value]="true" [checked]=true>
+                                <label class="form-check-label" for="lead">Lead</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lag" [value]="false">
+                                <label class="form-check-label" for="lag">Lag</label>
+                              </div> 
+                    </div>
+                    <div class="form-group col-md-4">
+                            <label for="inputPf">Power Factor</label>
+                            <input type="number" class="form-control" id="inputPf" name="inputPowerFactor" [(ngModel)]="inputPowerFactor" placeholder="Power Factor">
+                    </div>
                   <div class="form-group col-md-4">
                       <label for="inputRedundnacyUnit">Redundancy Unit</label>
                       <nouislider [min]="0" [max]="10" [step]="1" [(ngModel)]="someRange" name="someRange"></nouislider>
                     
                 </div>
                         
-                  <div class="form-group col-md-2"></div>
-                  <div class="form-group col-md-4">
-                      <label for="inputPf">Power Factor</label>
-                      <input type="number" class="form-control" id="inputPf" name="inputPowerFactor" [(ngModel)]="inputPowerFactor" placeholder="Power Factor">
-                  </div>
-                  <div class="form-group col-md-1"></div>
               </div>
              <div class="form-row">
                   <div class="form-group col-md-4"></div>
@@ -120,12 +127,12 @@
                     Power:{{res.input.powerKVA}}<br>
                     Voltage:{{res.input.voltageV}}<br>
                     Redundancy Unit:{{res.input.redundancyUnit}}<br>
-                    Power Factor:{{res.input.pf}}<br>
+                    Power Factor: {{res.input.pf}}<br>
                     Battery Runtime:{{res.input.batteryRuntimeMin}}<br>
                     Country:{{res.input.country}}<br>
                     Region:{{res.input.region}}<br>
                     External Bypass:{{res.input.externalBypass}}<br><br>
-                        <button type="button" class="btn btn-default">
+                         <button type="button" class="btn btn-default">
                                 <i class="fa fa-file" aria-hidden="true"></i>
                           </button>
                           
