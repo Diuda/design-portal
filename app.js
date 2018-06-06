@@ -9,10 +9,12 @@ var cors = require('cors')
 var mongoose = require('mongoose')
 
 const mongoOptions = {
-  useMongoClient: true,
   autoReconnect: true,
-  reconnecTries: Number.MAX_VALUE,
-  poolSize: 7
+  reconnectTries: Number.MAX_VALUE,
+  poolSize: 7,
+  keepAlive: true,
+  connectTimeoutMS: 30000,
+  socketTimeoutMS: 360000
 
 }
 
