@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 
 import { FetchDataService } from '../../services/fetch-data.service';
 import { Router } from '@angular/router';
+import { getHostElement } from '@angular/core/src/render3';
  
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
+
 export class SearchComponent implements OnInit {
 
-
+  someRange= [0,10];
   inputPower: String;
   inputRunTime: Number;
   inputUPSType: String;
@@ -31,6 +33,11 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.temp = false;
     this.result=null;
+    this.bypass=true;
+    this.inputRegion="NAM";
+    this.inputPower="500";
+    this.inputRunTime=30;
+     
   }
 
 
@@ -70,11 +77,13 @@ export class SearchComponent implements OnInit {
       Country: this.inputCountry,
       Bypass: this.bypass,
       RUnit: RUnit,
-      PowerFactor: this.inputPowerFactor
+      PowerFactor: this.inputPowerFactor,
+      someRange:this.someRange
     }
 
+    console.log(this.someRange)
 
-    //console.log(UPSparams);
+  
 
 
     this.fetchDataService.getUPS(UPSparams).subscribe((data)=>{
@@ -92,3 +101,7 @@ export class SearchComponent implements OnInit {
    
   }
 }
+
+
+  
+

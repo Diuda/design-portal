@@ -13,12 +13,13 @@ exports.addUPS = async (req, res) => {
         var newUPS = new UPS({
 
             input: {
-                power: req.body.power,
-                batteryRuntime: req.body.batteryruntime,
+                powerKVA: req.body.power,
+                voltageV:req.body.voltage,
+                batteryRuntimeMin: req.body.batteryruntime,
                 upsType: req.body.upsT,
                 region: req.body.region,
                 country: req.body.country,
-                bypass: req.body.bypass,
+                externalBypass: req.body.bypass,
                 redundancyUnit: req.body.redUnit,
                 pf: req.body.pf
             },
@@ -40,8 +41,8 @@ exports.addUPS = async (req, res) => {
 }
 
 exports.searchUPS = async (req, res) => {
-    const params = getSearchParameter(req.body);
 
+    const params = getSearchParameter(req.body);
     var UPSName = await UPS.find(params);
     res.send(UPSName);
 }
@@ -64,7 +65,7 @@ function getSearchParameter(obj){
             params["input.country"] = obj[key]
         if(key == "Bypass")
             params["input.externalBypass"] = obj[key]
-        if(key == "Runit")
+        if(key == "RUnit")
             params["input.redundancyUnit"] = obj[key]
         if(key == "PowerFactor")
             params["input.pf"] = obj[key]
