@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
   bypass: Boolean;
   inputRedundancyUnit: Number;
   inputPowerFactor: Number;
+  inputPowerFactorSign:Boolean;
   temp: boolean;
   result:Object;
 
@@ -38,6 +39,7 @@ export class SearchComponent implements OnInit {
     this.inputPower="500";
     this.inputRunTime=30;
     this.inputCountry="US";
+    this.inputPowerFactorSign=true;
     
   }
 
@@ -79,7 +81,8 @@ export class SearchComponent implements OnInit {
       Bypass: this.bypass,
       RUnit: RUnit,
       PowerFactor: this.inputPowerFactor,
-      someRange:this.someRange
+      inputPowerFactorSign: this.inputPowerFactorSign,
+      someRange: this.someRange
     }
 
     console.log(this.someRange)

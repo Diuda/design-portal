@@ -72,7 +72,8 @@ function getSearchParameter(obj){
         if(key == "voltage")
             params["input.voltageV"] = obj[key]
         if(key == "roomZone")
-            params["roomZoneId"] = obj[key]        
+            params["roomZoneId"] = obj[key] 
+               
 
     })
 
