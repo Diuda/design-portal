@@ -37,7 +37,8 @@ export class SearchComponent implements OnInit {
     this.inputRegion="NAM";
     this.inputPower="500";
     this.inputRunTime=30;
-     
+    this.inputCountry="US";
+    
   }
 
 
