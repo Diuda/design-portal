@@ -42,10 +42,7 @@ exports.addUPS = async (req, res) => {
 
 exports.searchUPS = async (req, res) => {
 
-
-
     const params = getSearchParameter(req.body);
-    console.log(params)
     var UPSName = await UPS.find(params);
     res.send(UPSName);
 }
