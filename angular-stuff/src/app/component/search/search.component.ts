@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { FetchDataService } from '../../services/fetch-data.service';
 import { Router } from '@angular/router';
-import { getHostElement } from '@angular/core/src/render3';
  
 @Component({
   selector: 'app-search',
