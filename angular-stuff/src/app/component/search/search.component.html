@@ -1,164 +1,173 @@
+<div class="container-fluid bg">
 
-  <!--<app-root></app-root>-->
-      
-  <div class="container-fluid bg">
-    
-    <div class="h-30"><br></div>
-        <div class="card bg-light mt-5" id="searchbox">
-          <div class="card-header title">Search Configured UPS</div>
-          <div class="card-body">
-           <form (submit)="searchUPS()">
-              <div class="form-row">
-                  <div class="form-group col-md-4">
-                        
-                                <mat-form-field appearance="outline">
-                                  <mat-label>Power</mat-label>
-                                  <input matInput placeholder="">
-                                  <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                                  <mat-hint>Enter in kVA</mat-hint>
-                                </mat-form-field>
-                              
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputRuntime">Runtime(in Minutes)</label>
-                      <input type="number" class="form-control" id="inputRunT" name="inputRunTime" [(ngModel)]="inputRunTime">
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputUPS">UPS Type</label>
-                      <select id="inputUPS" name="inputUPSType" [(ngModel)]="inputUPSType" class="form-control">
-                        <option selected>Galaxy VX</option>
-                        <option>Galaxy 7000</option>
-                        <option>Galaxy 5000</option>
-                        <option>Galaxy 2500</option>
-                      </select>
-                  </div>
-                  
-              </div>
-              <div class="form-row">
-                  <!--<div class="form-group col-md-1"></div>-->
-                  <div class="form-group col-md-4">
-                        <label for="externalBypass">External Bypass</label><br>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="externalBypass" [value]="true" [checked]=true>
-                            <label class="form-check-label" for="externalBypass">Yes</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="IntBypass" [value]="false">
-                            <label class="form-check-label" for="IntBypass">No</label>
-                          </div> 
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputRegion">Region</label>
-                      <select id="inputReg" name="inputRegion" [(ngModel)]="inputRegion" class="form-control">
-                        <option selected>APJ</option>
-                        <option>NAM</option>
-                        <option>EMEA</option>
-                        <option>LAM</option>
-                        <option>GC</option>
-                      </select>
-                  </div> 
-                  
-                  <div class="form-group col-md-4">
-                      <label for="inputCountry">Country</label>
-                        <select id="inputCoun" name="inputCountry" [(ngModel)]="inputCountry" class="form-control">
-                          <option selected>India</option>
-                          <option>Australia</option>
-                          <option>US</option>
-                          <option>UK</option>
-                          <option>Japan</option>
-                        </select>
-                  </div>                  
-              </div>
-              <div class="form-row">
-                    <div class="form-group col-md-4">
-                            <label for="powerfactor">Power Factor Sign</label><br>
+  <div class="h-30">
+    <br>
+  </div>
+  <div class="card bg-light mt-5" id="searchbox">
+    <div class="card-header title">Search Configured UPS</div>
+    <div class="card-body">
+      <form (submit)="searchUPS()">
+        <div class="form-row">
+          <div class="form-group col-md-2">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Power</mat-label>
+              <input matInput placeholder="100">
+              <mat-icon matSuffix>offline_bolt</mat-icon>
+              <mat-hint>Enter in kVA</mat-hint>
+            </mat-form-field>
+
+          </div>
+          <div class="form-group col-md-2">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Battery Runtime</mat-label>
+              <input matInput placeholder="10">
+              <mat-icon matSuffix>access_time</mat-icon>
+              <mat-hint>Enter in Minutes</mat-hint>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="form-row">
+
+          <div class="form-group col-md-6">
+            <fieldset class="form-group">
+              <legend>UPS Type</legend>
+
+              <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle value="Galaxy 7000"><strong>Galaxy 7000</strong></mat-button-toggle>
+                <mat-button-toggle value="Galaxy 5000"><strong>Galaxy 5000</strong></mat-button-toggle>
+                <mat-button-toggle value="Galaxy VX"><strong>Galaxy VX</strong></mat-button-toggle>
+                <mat-button-toggle value="Galaxy VM"><strong>Galaxy VM</strong></mat-button-toggle>
+              </mat-button-toggle-group>
+
+            </fieldset>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="externalBypass">External Bypass</label>
+            <mat-slide-toggle></mat-slide-toggle>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputRegion">Region</label>
+            <select id="inputReg" name="inputRegion" [(ngModel)]="inputRegion" class="form-control">
+              <option selected>APJ</option>
+              <option>NAM</option>
+              <option>EMEA</option>
+              <option>LAM</option>
+              <option>GC</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="inputCountry">Country</label>
+            <select id="inputCoun" name="inputCountry" [(ngModel)]="inputCountry" class="form-control">
+              <option selected>India</option>
+              <option>Australia</option>
+              <option>US</option>
+              <option>UK</option>
+              <option>Japan</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="powerfactor">Power Factor Sign</label>
+            <br>
 
 
-                            <div *ngFor = "let powerFactorProp of powerFactorProperty" class="form-check form-check-inline">
+            <div *ngFor="let powerFactorProp of powerFactorProperty" class="form-check form-check-inline">
 
 
-                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lead" [value]="powerFactorProp.value" [checked]=true>
-                                
-                                <label class="form-check-label" >{{powerFactorProp.value}}</label>
-                              </div>
-                              <!-- <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lead" [value]="powerFactorProp.value"
+                [checked]=true>
+
+              <label class="form-check-label">{{powerFactorProp.value}}</label>
+            </div>
+            <!-- <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lag" [value]="Lag">
                                 <label class="form-check-label" for="lag">Lag</label>
                               </div>  -->
-                    </div>
-                    <div class="form-group col-md-4">
-                            <label for="inputPf">Power Factor</label>
-                            <input type="number" class="form-control" id="inputPf" name="inputPowerFactor" [(ngModel)]="inputPowerFactor" placeholder="Power Factor">
-                    </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputRedundnacyUnit">Redundancy Unit</label>
-                    
-                    
-                </div>
-                        
-              </div>
-             <div class="form-row">
-                  <div class="form-group col-md-4"></div>
-                  <div class="form-group col-md-4">  
-                      <button type="submit" class="btn btn-success buttonclass">Search</button>
-                  </div>
-                  <div class="form-group col-md-4"></div>
-             </div>
-
-
-           </form>
           </div>
-      <!-- </div>-->
-   </div>
+          <div class="form-group col-md-4">
+            <label for="inputPf">Power Factor</label>
+            <input type="number" class="form-control" id="inputPf" name="inputPowerFactor" [(ngModel)]="inputPowerFactor" placeholder="Power Factor">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputRedundnacyUnit">Redundancy Unit</label>
+
+
+          </div>
+
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4"></div>
+          <div class="form-group col-md-4">
+            <button type="submit" class="btn btn-success buttonclass">Search</button>
+          </div>
+          <div class="form-group col-md-4"></div>
+        </div>
+
+
+      </form>
+    </div>
+    <!-- </div>-->
+  </div>
   <br>
   <!--<p>hello{{temp}}</p>-->
-  
-  
-   <div class="card mt-15 bg-light" *ngIf="temp" >
-        <div class="container">
-         <div class="row pt-3"  >
-           <div class="col-md-6" *ngFor="let res of result">
-            <div class="media border p-3">
-                <img src="assets/images/img2.jpg" alt="John Doe" class="ab">
-                <div class="media-body">
-                  <h3>{{res.input.upsType}}</h3>
+
+
+  <div class="card mt-15 bg-light" *ngIf="temp">
+    <div class="container">
+      <div class="row pt-3">
+        <div class="col-md-6" *ngFor="let res of result">
+          <div class="media border p-3">
+            <img src="assets/images/img2.jpg" alt="John Doe" class="ab">
+            <div class="media-body">
+              <h3>{{res.input.upsType}}</h3>
+              <br>
+              <p>
+                Power: {{res.input.powerKVA}}
+                <br> Voltage: {{res.input.voltageV}}
+                <br> Redundancy Unit: {{res.input.redundancyUnit}}
+                <br> Power Factor: {{res.input.pf}}
+                <br> Battery Runtime: {{res.input.batteryRuntimeMin}}
+                <br> Country: {{res.input.country}}
+                <br> Region: {{res.input.region}}
+                <br>
+                <span *ngIf="res.input.externalBypass">
+                  Bypass: External
                   <br>
-                  <p>
-                    Power: {{res.input.powerKVA}}<br>
-                    Voltage: {{res.input.voltageV}}<br>
-                    Redundancy Unit: {{res.input.redundancyUnit}}<br>
-                    Power Factor: {{res.input.pf}}<br>
-                    Battery Runtime: {{res.input.batteryRuntimeMin}}<br>
-                    Country: {{res.input.country}}<br>
-                    Region: {{res.input.region}}<br>
-                    <span *ngIf="res.input.externalBypass">
-                      Bypass: External<br>
-                    </span>
-                    <span *ngIf="!res.input.externalBypass">
-                        Bypass: Internal<br>
-                    </span>
-                    
-                    
-                    </p>
-                    <a [routerLink]="['/searchdisplay']"><button type="button" class="btn btn-default">
-                                <i class="fa fa-file" aria-hidden="true"></i>
-                          </button></a>
-                          
-                    
-                </div>
+                </span>
+                <span *ngIf="!res.input.externalBypass">
+                  Bypass: Internal
+                  <br>
+                </span>
+
+
+              </p>
+              <a [routerLink]="['/searchdisplay']">
+                <button type="button" class="btn btn-default">
+                  <i class="fa fa-file" aria-hidden="true"></i>
+                </button>
+              </a>
+
+
             </div>
-           </div>
+          </div>
         </div>
-     </div>
-</div>
-   
-   <div class="footer container-fluid pb-0 mb-0 px-0 mx-0 py-0 ">
-    <div class="container-fluid lb px-0 mx-0 my-0 py-0 pr-0 mr-0">
-           
-            <p class="footcl">Copyright © SE IT Corporation. All right reserved.</p>
-            
+      </div>
     </div>
-   </div>
+  </div>
+
+  <div class="footer container-fluid pb-0 mb-0 px-0 mx-0 py-0 ">
+    <div class="container-fluid lb px-0 mx-0 my-0 py-0 pr-0 mr-0">
+
+      <p class="footcl">Copyright © SE IT Corporation. All right reserved.</p>
+
+    </div>
+  </div>
 
 </div>
 
