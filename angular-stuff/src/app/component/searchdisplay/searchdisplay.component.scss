@@ -1,3 +1,9 @@
+body, html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
 .card
 {
     max-width: 55%;
@@ -5,7 +11,23 @@
     text-align: center;
     
 }
-.tab
+.table
 {
+    text-align: center;
+}
+.footer
+{
+    bottom: 0;
+   height: 15px;
+   background-color: #3dcd58;
+}
+
+.lb{
+    background-color: #3dcd58;
+    width:100%;
+}
+.footcl
+{
+    //margin-left: 30%;
     text-align: center;
 }
