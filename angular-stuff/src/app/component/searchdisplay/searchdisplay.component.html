@@ -1,35 +1,66 @@
-<div class="container">
-    <div class="card mt-15 bg-light">
-      <div class="card-body">
-        <h4 class="card-title">Output</h4>
-        <p class="card-text">.
-                   Power:{{res.input.powerKVA}}<br>
-                    Voltage:{{res.input.voltageV}}<br>
-                    Redundancy Unit:{{res.input.redundancyUnit}}<br>
-                    Power Factor:{{res.input.pf}}<br>
-                    Battery Runtime:{{res.input.batteryRuntimeMin}}<br>
-                    Country:{{res.input.country}}<br>
-                    Region:{{res.input.region}}<br>
-                    External Bypass:{{res.input.externalBypass}}<br><br></p>
-                    <hr>
-                    <table class="table ">
-                        <thead>
-                          <tr>
-                            <th>Part Name</th>
-                            <th>Count</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">XYZ djj</th>
-                            <td>2</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">dfkkf</th>
-                              <td>2</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+</head>
+<body>
+  <div class="container fluid">
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          <div class="card mt-15 bg-light">
+            <div class="card-body">
+              <h4 class="card-title">Output</h4>
+              <p class="card-text">.
+                        Power:{{res.input.powerKVA}}<br>
+                          Voltage:{{res.input.voltageV}}<br>
+                          Redundancy Unit:{{res.input.redundancyUnit}}<br>
+                          Power Factor:{{res.input.pf}}<br>
+                          Battery Runtime:{{res.input.batteryRuntimeMin}}<br>
+                          Country:{{res.input.country}}<br>
+                          Region:{{res.input.region}}<br>
+                          External Bypass:{{res.input.externalBypass}}<br><br>
+              </p>
+              <hr>
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Part Name</th>
+                      <th>Count</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">XYZ djj</th>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">dfkkf</th>
+                        <td>2</td>
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
       </div>
-    </div>
+  <div class="footer container-fluid pb-0 mb-0 px-0 mx-0 py-0 ">
+      <div class="container-fluid lb px-0 mx-0 my-0 py-0 pr-0 mr-0">
+              
+              <p class="footcl">Copyright © SE IT Corporation. All right reserved.</p>
+              
+     </div>
   </div>
+</body>
+</html>
