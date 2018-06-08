@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from '../../services/fetch-data.service';
 import { Router } from '@angular/router';
 import { getHostElement } from '@angular/core/src/render3';
- 
+ import { DisplayDataService } from '../../services/display-data.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -24,12 +24,16 @@ export class SearchComponent implements OnInit {
   inputPowerFactorSign:Boolean;
   temp: boolean;
   result:Object;
-
+  message:string;
+ 
 
   constructor(
     private fetchDataService: FetchDataService,
+    private displayDataService:DisplayDataService,
     private router: Router
   ) { }
+  
+ 
 
   ngOnInit() {
     this.temp = false;
@@ -40,10 +44,12 @@ export class SearchComponent implements OnInit {
     this.inputRunTime=30;
     this.inputCountry="US";
     this.inputPowerFactorSign=true;
+    //this.displayDataService.currentMessage.subscribe(message=>this.message=message)
     
   }
+  
 
-
+ 
   searchUPS() {
 
     //console.log(this.inputPower);
@@ -102,8 +108,13 @@ export class SearchComponent implements OnInit {
       console.log("Error: "+error);
     })
    
-   
+    
   }
+  newMessage() {
+    //window.alert(JSON.stringify(this.result))
+    this.displayDataService.changeMessage(this.result)
+  }
+ 
 }
 
 

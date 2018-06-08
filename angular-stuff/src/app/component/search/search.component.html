@@ -114,6 +114,7 @@
    </div>
   <br>
   <!--<p>hello{{temp}}</p>-->
+  {{result}}
    <div class="card mt-15 bg-light" *ngIf="temp" >
         <div class="container">
          <div class="row pt-3"  >
@@ -131,10 +132,17 @@
                     Battery Runtime:{{res.input.batteryRuntimeMin}}<br>
                     Country:{{res.input.country}}<br>
                     Region:{{res.input.region}}<br>
-                    External Bypass:{{res.input.externalBypass}}<br><br>
-                         <button type="button" class="btn btn-default">
-                                <i class="fa fa-file" aria-hidden="true"></i>
-                          </button>
+                    <span *ngIf="res.input.externalBypass">
+                        Bypass: External<br>
+                      </span>
+                      <span *ngIf="!res.input.externalBypass">
+                          Bypass: Internal<br>
+                      </span>
+                      <br>
+                  
+                    <button (click)="newMessage()" type="button" class="btn btn-default"  [routerLink]="['/searchdisplay']">
+                           <i class="fa fa-file" aria-hidden="true"></i>
+                      </button>
                           
                   </p>    
                 </div>
