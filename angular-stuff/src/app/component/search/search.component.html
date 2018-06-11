@@ -114,17 +114,18 @@
    </div>
   <br>
   <!--<p>hello{{temp}}</p>-->
-  {{result}}
+  
    <div class="card mt-15 bg-light" *ngIf="temp" >
         <div class="container">
          <div class="row pt-3"  >
-           <div class="col-md-6" *ngFor="let res of result">
+           <div class="col-md-6" *ngFor="let res of result;let i=index" [attr.data-index]="i">
             <div class="media border p-3">
                 <img src="assets/images/img2.jpg" alt="John Doe" class="ab">
                 <div class="media-body">
                   <h3>{{res.input.upsType}}</h3>
                   <br>
                   <p>
+                    
                     Power:{{res.input.powerKVA}}<br>
                     Voltage:{{res.input.voltageV}}<br>
                     Redundancy Unit:{{res.input.redundancyUnit}}<br>
@@ -139,8 +140,8 @@
                           Bypass: Internal<br>
                       </span>
                       <br>
-                  
-                    <button (click)="newMessage()" type="button" class="btn btn-default"  [routerLink]="['/searchdisplay']">
+                      {{i}}
+                    <button (click)="newMessage(i)" type="button" class="btn btn-default"  [routerLink]="['/searchdisplay']">
                            <i class="fa fa-file" aria-hidden="true"></i>
                       </button>
                           

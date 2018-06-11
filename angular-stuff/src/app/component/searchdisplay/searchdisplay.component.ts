@@ -4,6 +4,7 @@ import { FetchDataService } from '../../services/fetch-data.service';
 import { DisplayDataService } from '../../services/display-data.service';
 import { Router } from '@angular/router';
 import { getHostElement } from '@angular/core/src/render3';
+import {MatCardModule} from '@angular/material/card';
 //import { SearchComponent } from '../search/search.component';
 @Component({
   selector: 'app-searchdisplay',
@@ -19,7 +20,10 @@ export class SearchdisplayComponent implements OnInit {
   ngOnInit() {
     
     this.displayDataService.currentMessage.subscribe(message => this.message = message)
+    //window.alert(this.message)
+    //console.log("result is "+this.message)
     this.result=JSON.stringify(this.message)
+    console.log("result is "+this.result)
   }
   
 

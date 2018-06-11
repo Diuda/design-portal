@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
   temp: boolean;
   result:Object;
   message:string;
- 
+ i:number;
 
   constructor(
     private fetchDataService: FetchDataService,
@@ -101,7 +101,7 @@ export class SearchComponent implements OnInit {
       //TODO
       this.temp=true;
      this.result=data;
-      //window.alert(JSON.stringify(data))
+      console.log(data)
      
     },   
     (error)=>{
@@ -110,9 +110,11 @@ export class SearchComponent implements OnInit {
    
     
   }
-  newMessage() {
+  newMessage( i) {
     //window.alert(JSON.stringify(this.result))
-    this.displayDataService.changeMessage(this.result)
+    
+     
+    this.displayDataService.changeMessage(this.result[i])
   }
  
 }
