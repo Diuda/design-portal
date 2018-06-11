@@ -1,0 +1,41 @@
+mat-button-toggle{
+    padding: 1em;
+    text-align: center;
+
+}
+
+
+input, matInput{
+    width: 4em;
+}
+
+.mat-slide-toggle-thumb{
+    background-color: #1cc348;
+}
+
+mat-slider{
+    width: 20em;
+}
+
+
+mat-form-field{
+    width: 45em;
+}
+
+
+
+
+// .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+//     background-color: #1cc348;
+// }
+.mat-slider-track-fill {
+    background-color: #30cc52;
+}
+
+
+.button-icons{
+    font-size: 4em;
+    color:#313338;
+    text-align: center;
+
+}

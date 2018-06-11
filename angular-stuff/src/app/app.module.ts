@@ -54,6 +54,8 @@ import {
 } from '@angular/material';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { TabSearchComponent } from './component/tab-search/tab-search.component';
+import { SearchTabSingleComponent } from './component/search-tab-single/search-tab-single.component';
 
  
 
@@ -62,7 +64,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'search', component: SearchComponent },
-  { path:'searchdisplay',component:SearchdisplayComponent}
+  { path:'searchdisplay',component:SearchdisplayComponent },
+  { path: 'searchTab', component:TabSearchComponent },
+  { path: 'searchTabSingle', component:SearchTabSingleComponent}
 ]
 
 
@@ -103,7 +107,8 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-  ]
+  ],
+  declarations: [SearchTabSingleComponent]
 })
 export class MaterialModule {}
 
@@ -112,7 +117,8 @@ export class MaterialModule {}
   declarations: [
     AppComponent,
     SearchComponent,
-    SearchdisplayComponent
+    SearchdisplayComponent,
+    TabSearchComponent
    ],
   imports: [
     BrowserModule,
