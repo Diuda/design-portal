@@ -11,22 +11,19 @@ import { Router } from '@angular/router';
 
 export class SearchComponent implements OnInit {
 
-  someRange= [0,10];
-  inputPower: String;
+  inputPower: Number;
   inputRunTime: Number;
   inputUPSType: String;
   inputRegion: String;
   inputCountry: String;
-  bypass: Boolean;
-  inputRedundancyUnit: Number;
-  inputPowerFactor: Number;
-  inputPowerFactorSign: String;
-  temp: boolean;
   result: Object;
   powerFactorProperty = [
     { value: 'Lag' },
     { value: 'Lead' }
   ];
+  bypassSlider: Boolean
+  powerFactorSlider: String;
+  powerFactorToggle: Boolean;
 
 
   constructor(
@@ -35,55 +32,50 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.temp = false;
     this.result = null;
-    this.bypass = true;
-    this.inputRegion = "NAM";
-    this.inputPower = "500";
-    this.inputRunTime = 30;
-    this.inputCountry = "US";
-    this.inputPowerFactorSign = this.powerFactorProperty[0].value;
-    
+    this.bypassSlider = true;
+    this.powerFactorSlider = "0.9"
+    this.powerFactorToggle = false;
+
   }
 
 
   searchUPS() {
 
-    console.log(this.inputPowerFactorSign)
-
+    console.log(this.inputRunTime)
+    console.log(this.inputPower)
     var result;
-    var power;
+    var powerFactor;
     var RUnit;
 
-    if(this.inputPower == undefined) {
-      power = undefined;
-    }else {
-      power = parseInt(this.inputPower.toString())
+
+    if(this.powerFactorToggle == false){
+      powerFactor = "Lag "+this.powerFactorSlider;
     }
 
-    if(this.inputRedundancyUnit == undefined) {
-      RUnit = undefined;
-    }else {
-      RUnit = parseInt(this.inputRedundancyUnit.toString());
+    else{
+      powerFactor = "Lead "+this.powerFactorSlider;
     }
-    
+
+
 
     //TODO
     //need to fix bypass
     const UPSparams = {
-      power: power,
+      power: this.inputPower,
       runtime: this.inputRunTime,
       UPSType: this.inputUPSType,
       Region: this.inputRegion,
       Country: this.inputCountry,
-      Bypass: this.bypass,
+      Bypass: this.bypassSlider,
       RUnit: RUnit,
-      PowerFactor: this.inputPowerFactor,
-      PowerFactorSign: this.inputPowerFactorSign,
-      someRange: this.someRange
+      PowerFactor: powerFactor,
+      // PowerFactorSign: this.inputPowerFactorSign,
     }
 
-    console.log(this.someRange)
+
+
+    console.log(UPSparams)
 
   
 
@@ -91,9 +83,8 @@ export class SearchComponent implements OnInit {
     this.fetchDataService.getUPS(UPSparams).subscribe((data)=>{
 
       //TODO
-      this.temp=true;
      this.result=data;
-      //window.alert(JSON.stringify(data))
+     console.log(data)
      
     },   
     (error)=>{
