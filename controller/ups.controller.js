@@ -72,6 +72,8 @@ function getSearchParameter(obj){
             params["input.pf"] = obj[key]
         if(key == "voltage")
             params["input.voltageV"] = obj[key]
+        if(key == "PowerFactorSign")
+            params["input.pf"] = obj[key] +" "+ params["input.pf"]
         if(key == "roomZone")
             params["roomZoneId"] = obj[key] 
                

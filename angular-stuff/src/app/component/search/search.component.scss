@@ -1,110 +1,128 @@
-//@import 'node_modules/bootstrap/scss/bootstrap.scss';
-//@import 'node_modules/font-awesome/css/font-awesome.css';
+mat-button-toggle{
+    padding: 1em;
+    text-align: center;
 
-@import "~nouislider/distribute/nouislider.min.css";
+}
 
+
+<<<<<<< HEAD
 .bg { 
     /* The image used */
     background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
-
-    /* Half height */
-    height:325px; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-     z-index: -1;
+=======
+input, matInput{
+    width: 4em;
 }
-.card
-{
-    max-width: 65%;
-    margin-left: 18%;
+
+.mat-slide-toggle-thumb{
+    background-color: #1cc348;
+}
+
+mat-slider{
+    width: 20em;
+}
+>>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
+
+
+mat-form-field{
+    width: 45em;
+}
+
+
+
+.mat-slider-track-fill {
+    background-color: #30cc52;
+}
+
+
+.button-icons{
+    font-size: 4em;
+    color:#313338;
+    text-align: center;
+
+}
+
+
+.card{
+    padding: 2em;
+}
+
+.productCard{
     
-}
-.title
-{
-    text-align: center;
-}
-#searchbox
-{
-    box-shadow:8px 10px 8px rgba(0, 0, 0, .5);
-}
-.buttonclass
-{
-    margin-left: 29%;
-}
-.slidecontainer {
-    width: 100%;
+    border-radius: 3%;
+    width: 50%;
+    padding: 0em;
+    // height: auto;
 }
 
-.slider {
-    // -webkit-appearance: none;
-    width: 75%;
-    height: 25px;
-    outline: none;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-.anav
-{
-    color:white;
-}
-.slider:hover {
-    opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
+.productName{
+    text-align: right;
+    padding-right: 4em;
+    padding-top: 1em;
+    line-height: 2em;
+    font-size: 2.5em;
+    background-color: #00C853;
+    color: white;
 }
 
 
-.slider::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    background: #4CAF50;
-    cursor: pointer;
-}
-@media (max-width: 600px) {
-    .ab{
-        height:192px;
-        width:46%;
-        margin-top: 55%;
-    }
-}
-@media(max-width:1500px)
-{
-    .ab{
-         height:180px;
-         width:45%;
-         margin-top:10%;
-    }
-}
-.navclass
-{
-    background-color: #3dcd58;
-    border-color: #e7e7e7;
-    box-shadow: 0 0 7px rgba(0,0,0,0.1);
-    color:white;
-}
-.footer
-{
-    bottom: 0;
-   height: 15px;
-   background-color: #3dcd58;
+.productImage{
+    position: absolute;
+    height: 185px;
+    width: 138px;
+    background-color: black;
+    top: 5em;
+    left: 3em;
 }
 
-.lb{
-    background-color: #3dcd58;
-    width:100%;
+
+
+.detailContainer{
+    position: relative;
+    height: 85%;
+    width: 70%;
+    left: 11em;
+    line-height: 0.2em;
 }
-.footcl
-{
-    //margin-left: 30%;
-    text-align: center;
+
+.upsProp{
+    position: relative;
+    height: 100%;
+    width: 50%;
+    
+    float: left;
+}
+
+.upsPropValue{
+    position: relative;
+    height: 100%;
+    width: 50%;
+    
+    float: right;
+}
+
+
+.buttonContainer{
+    position: relative;
+    left: 1em;
+    top: -4em;
+
+}
+
+button:hover{
+    background-color: #00C853;
+}
+
+
+// .downloadBtn{
+//     padding-right: 1em;
+// }
+
+.viewBtn{
+    margin-top: 0.5em;
+}
+
+
+.mat-button{
+    background-color: #BDBDBD
 }

@@ -1,115 +1,96 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+<div class="container-fluid bg">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-</head>
-<body>
-  <!--<app-root></app-root>-->
-      
-  <div class="container-fluid bg">
-    
-    <div class="h-30"><br></div>
-        <div class="card bg-light mt-5" id="searchbox">
-          <div class="card-header title">Search Configured UPS</div>
-          <div class="card-body">
-           <form (submit)="searchUPS()">
-              <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="inputPower">Power(in kVA)</label>
-                    <input type="text" class="form-control" id="inputP" name="inputPower" [(ngModel)]="inputPower" >
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputRuntime">Runtime(in Minutes)</label>
-                      <input type="number" class="form-control" id="inputRunT" name="inputRunTime" [(ngModel)]="inputRunTime">
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputUPS">UPS Type</label>
-                      <select id="inputUPS" name="inputUPSType" [(ngModel)]="inputUPSType" class="form-control">
-                        <option selected>Galaxy VX</option>
-                        <option>Galaxy 7000</option>
-                        <option>Galaxy 5000</option>
-                        <option>Galaxy 2500</option>
-                      </select>
-                  </div>
-                  
-              </div>
-              <div class="form-row">
-                  <!--<div class="form-group col-md-1"></div>-->
-                  <div class="form-group col-md-4">
-                        <label for="externalBypass">External Bypass</label><br>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="externalBypass" [value]="true" [checked]=true>
-                            <label class="form-check-label" for="externalBypass">Yes</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="bypass" [(ngModel)]="bypass" id="IntBypass" [value]="false">
-                            <label class="form-check-label" for="IntBypass">No</label>
-                          </div> 
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputRegion">Region</label>
-                      <select id="inputReg" name="inputRegion" [(ngModel)]="inputRegion" class="form-control">
-                        <option selected>APJ</option>
-                        <option>NAM</option>
-                        <option>EMEA</option>
-                        <option>LAM</option>
-                        <option>GC</option>
-                      </select>
-                  </div> 
-                  
-                  <div class="form-group col-md-4">
-                      <label for="inputCountry">Country</label>
-                        <select id="inputCoun" name="inputCountry" [(ngModel)]="inputCountry" class="form-control">
-                          <option selected>India</option>
-                          <option>Australia</option>
-                          <option>US</option>
-                          <option>UK</option>
-                          <option>Japan</option>
-                        </select>
-                  </div>                  
-              </div>
-              <div class="form-row">
-                    <div class="form-group col-md-4">
-                            <label for="powerfactor">Power Factor Sign</label><br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lead" [value]="true" [checked]=true>
-                                <label class="form-check-label" for="lead">Lead</label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inputPowerFactorSign" [(ngModel)]="inputPowerFactorSign" id="lag" [value]="false">
-                                <label class="form-check-label" for="lag">Lag</label>
-                              </div> 
-                    </div>
-                    <div class="form-group col-md-4">
-                            <label for="inputPf">Power Factor</label>
-                            <input type="number" class="form-control" id="inputPf" name="inputPowerFactor" [(ngModel)]="inputPowerFactor" placeholder="Power Factor">
-                    </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputRedundnacyUnit">Redundancy Unit</label>
-                      <nouislider [min]="0" [max]="10" [step]="1" [(ngModel)]="someRange" name="someRange"></nouislider>
-                    
-                </div>
-                        
-              </div>
-             <div class="form-row">
-                  <div class="form-group col-md-4"></div>
-                  <div class="form-group col-md-4">  
-                      <button type="submit" class="btn btn-success buttonclass">Search</button>
-                  </div>
-                  <div class="form-group col-md-4"></div>
-             </div>
+  <div class="h-30">
+    <br>
+  </div>
+  <div class="card bg-light mt-5" id="searchbox">
+    <div class="card-header title">Search Configured UPS</div>
+    <div class="card-body">
+      <form (submit)="searchUPS()">
 
+          <!-- <mat-tab-group> -->
+              <!-- <mat-tab label="Basic"> -->
+        <div class="form-row">
+          <div class="form-group col-md-6">
 
-           </form>
+            <mat-form-field appearance="outline">
+              <mat-label>Power</mat-label>
+              <input matInput placeholder="100" [(ngModel)]="inputPower" name="power">
+              <mat-icon matSuffix>offline_bolt</mat-icon>
+              <mat-hint>Enter in kVA</mat-hint>
+            </mat-form-field>
+
           </div>
+          <div class="form-group col-md-6">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Battery Runtime</mat-label>
+              <input matInput placeholder="10" [(ngModel)]="inputRunTime" name="runtime">
+              <mat-icon matSuffix>access_time</mat-icon>
+              <mat-hint>Enter in Minutes</mat-hint>
+            </mat-form-field>
+
+          </div>
+        </div>
+        <div class="form-row">
+
+          <div class="form-group col-md-4">
+            <fieldset class="form-group">
+              <legend>UPS Type</legend>
+
+              <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputUPSType" name="inputUPSType">
+                <mat-button-toggle value="Galaxy 7000" ><i class="material-icons button-icons">
+                    flash_on
+                    </i><br><strong>Galaxy 7000</strong></mat-button-toggle>
+                <mat-button-toggle value="Galaxy 5000"><i class="material-icons button-icons">
+                    flash_on
+                    </i><br><strong>Galaxy 5000</strong></mat-button-toggle>
+                <mat-button-toggle value="Galaxy VX"><i class="material-icons button-icons">
+                    flash_on
+                    </i><br><strong>Galaxy VX</strong></mat-button-toggle>
+                <mat-button-toggle value="Galaxy VM"><i class="material-icons button-icons">
+                    flash_on
+                    </i><br><strong>Galaxy VM</strong></mat-button-toggle>
+              </mat-button-toggle-group>
+
+            </fieldset>
+          </div>
+
+          </div>
+
+
+        <!-- </mat-tab> -->
+        <!-- <mat-tab label="Advance"> -->
+
+
+
+          <div class="form-row">
+
+          <div class="form-group col-md-5">
+              <fieldset class="form-group">
+                  <legend>Region</legend>
+    
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion">
+                    <mat-button-toggle value="APJ"><i class="material-icons button-icons">
+                        location_on
+                        </i><br><strong>APJ</strong></mat-button-toggle>
+                    <mat-button-toggle value="NAM"><i class="material-icons button-icons">
+                        location_on
+                        </i><br><strong>NAM</strong></mat-button-toggle>
+                    <mat-button-toggle value="EMEA"><i class="material-icons button-icons">
+                        location_on
+                        </i><br><strong>EMEA</strong></mat-button-toggle>
+                    <mat-button-toggle value="LAM"><i class="material-icons button-icons">
+                        location_on
+                        </i><br><strong>LAM</strong></mat-button-toggle>
+                    <mat-button-toggle value="GC"><i class="material-icons button-icons">
+                        location_on
+                        </i><br><strong>GC</strong></mat-button-toggle>
+                  </mat-button-toggle-group>
+    
+                </fieldset>
+          </div>
+<<<<<<< HEAD
       <!-- </div>-->
    </div>
   <br>
@@ -147,25 +128,142 @@
                           
                   </p>    
                 </div>
-            </div>
-           </div>
+=======
+
+          <!-- <div class="form-group col-md-6">
+            <label for="inputCountry">Country</label>
+            <select id="inputCoun" name="inputCountry" [(ngModel)]="inputCountry" class="form-control">
+              <option selected>India</option>
+              <option>Australia</option>
+              <option>US</option>
+              <option>UK</option>
+              <option>Japan</option>
+            </select>
+          </div> -->
         </div>
-     </div>
-</div>
-   
-   <div class="footer container-fluid pb-0 mb-0 px-0 mx-0 py-0 ">
-    <div class="container-fluid lb px-0 mx-0 my-0 py-0 pr-0 mr-0">
-           
-            <p class="footcl">Copyright © SE IT Corporation. All right reserved.</p>
-            
+
+
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+              <mat-label for="externalBypass">External Bypass </mat-label>
+              <mat-slide-toggle [(ngModel)]="bypassSlider" name="bypassSlider"></mat-slide-toggle>
+            </div>
+  
+            <div class="form-group col-md-6">
+                <mat-label>Lag </mat-label>
+                <mat-slide-toggle [(ngModel)]="powerFactorToggle" name="powerFactorToggle"></mat-slide-toggle>
+                <mat-label>Lead</mat-label>  
+            </div>
+  
+  
+            </div>
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <mat-label><strong>Redundancy Unit</strong></mat-label>
+                <mat-slider thumbLabel tickInterval="1" min = "0" max = "10" step = "1" value="0"></mat-slider>
+>>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
+            </div>
+          
+          <div class="form-group col-md-4">
+            <mat-label><strong>Power Factor</strong></mat-label>
+            <mat-slider thumbLabel tickInterval="1" min = "0" max = "1" step = "0.1" value="0.9" name="powerFactorSlider" [(ngModel)]="powerFactorSlider"></mat-slider>
+          </div>
+          
+
+        </div>
+
+      <!-- </mat-tab> -->
+    <!-- </mat-tab-group> -->
+        <div class="form-row">
+          <div class="form-group col-md-4"></div>
+          <div class="form-group col-md-4">
+            <button type="submit" class="btn btn-success buttonclass">Search</button>
+          </div>
+          <div class="form-group col-md-4"></div>
+        </div>
+
+
+      </form>
     </div>
-</div>
-
-</div>
+  </div>
 
 
+
+
+  <div class="card">
+
+
+    <div class="card productCard" *ngFor="let ups of result">
+        
+
+      <div class="productImage">
+
+      </div>
+        <div class="card-header productName">
+          {{ups.input.upsType}}<br>
+          <h5 class="card-subtitle mb-2 text-muted">{{ups.input.powerKVA}} kVA</h5>
+        </div>
+      <div class="card-body productDetails">
+        <div class="detailContainer">
+          <div class="upsProp">
+
+              <mat-list>
+                  <mat-list-item> <strong>Voltage</strong></mat-list-item>
+                  <mat-list-item> <strong>Runtime</strong> </mat-list-item>
+                  <mat-list-item> <strong>Bypass Type</strong> </mat-list-item>
+                  <mat-list-item> <strong>Power Factor</strong> </mat-list-item>
+                 </mat-list>
+
+          </div>
+          <div class="upsPropValue">
+
+              <mat-list>
+                  <mat-list-item>{{ups.input.voltageV}}&nbsp;<i class="material-icons">
+                      offline_bolt
+                      </i></mat-list-item>
+                  <mat-list-item>{{ups.input.batteryRuntimeMin}} Mins &nbsp;<i class="material-icons">
+                      access_time
+                      </i></mat-list-item>
+                  <mat-list-item>{{ups.input.externalBypass}}</mat-list-item>
+                  <mat-list-item>{{ups.input.pf}}</mat-list-item>
+                  
+                 </mat-list>
+
+          </div>
+          <mat-progress-bar mode="determinate" value="90"></mat-progress-bar>
+        </div> 
+
+        
+
+        <div class="buttonContainer">
+            <button mat-button class="downloadBtn">Download <i class="material-icons">
+                cloud_download
+                </i></button><br>
+                <button mat-button class="viewBtn">View <i class="material-icons">
+                    view_module
+                    </i></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  
 <router-outlet></router-outlet>
-
-    
-</body>
-</html>

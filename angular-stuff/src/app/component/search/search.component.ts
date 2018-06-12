@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { FetchDataService } from '../../services/fetch-data.service';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import { getHostElement } from '@angular/core/src/render3';
  import { DisplayDataService } from '../../services/display-data.service';
+=======
+ 
+>>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -12,12 +16,12 @@ import { getHostElement } from '@angular/core/src/render3';
 
 export class SearchComponent implements OnInit {
 
-  someRange= [0,10];
-  inputPower: String;
+  inputPower: Number;
   inputRunTime: Number;
   inputUPSType: String;
   inputRegion: String;
   inputCountry: String;
+<<<<<<< HEAD
   bypass: Boolean;
   inputRedundancyUnit: Number;
   inputPowerFactor: Number;
@@ -26,6 +30,17 @@ export class SearchComponent implements OnInit {
   result:Object;
   message:string;
  i:number;
+=======
+  result: Object;
+  powerFactorProperty = [
+    { value: 'Lag' },
+    { value: 'Lead' }
+  ];
+  bypassSlider: Boolean
+  powerFactorSlider: String;
+  powerFactorToggle: Boolean;
+
+>>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
 
   constructor(
     private fetchDataService: FetchDataService,
@@ -36,6 +51,7 @@ export class SearchComponent implements OnInit {
  
 
   ngOnInit() {
+<<<<<<< HEAD
     this.temp = false;
     this.result=null;
     this.bypass=true;
@@ -46,52 +62,53 @@ export class SearchComponent implements OnInit {
     this.inputPowerFactorSign=true;
     //this.displayDataService.currentMessage.subscribe(message=>this.message=message)
     
+=======
+    this.result = null;
+    this.bypassSlider = true;
+    this.powerFactorSlider = "0.9"
+    this.powerFactorToggle = false;
+
+>>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
   }
   
 
  
   searchUPS() {
 
-    //console.log(this.inputPower);
-
-
-    //TODO 
-    //check if these params are searched for
-   var result;
-    var power;
+    console.log(this.inputRunTime)
+    console.log(this.inputPower)
+    var result;
+    var powerFactor;
     var RUnit;
 
-    if(this.inputPower == undefined) {
-      power = undefined;
-    }else {
-      power = parseInt(this.inputPower.toString())
+
+    if(this.powerFactorToggle == false){
+      powerFactor = "Lag "+this.powerFactorSlider;
     }
 
-    if(this.inputRedundancyUnit == undefined) {
-      RUnit = undefined;
-    }else {
-      RUnit = parseInt(this.inputRedundancyUnit.toString());
+    else{
+      powerFactor = "Lead "+this.powerFactorSlider;
     }
-    // const externalBypass = parseInt(this.externalB.toString());
-    // const RUnit = parseInt(this.inputRedundancyUnit.toString());
-    
+
+
 
     //TODO
     //need to fix bypass
     const UPSparams = {
-      power: power,
+      power: this.inputPower,
       runtime: this.inputRunTime,
       UPSType: this.inputUPSType,
       Region: this.inputRegion,
       Country: this.inputCountry,
-      Bypass: this.bypass,
+      Bypass: this.bypassSlider,
       RUnit: RUnit,
-      PowerFactor: this.inputPowerFactor,
-      inputPowerFactorSign: this.inputPowerFactorSign,
-      someRange: this.someRange
+      PowerFactor: powerFactor,
+      // PowerFactorSign: this.inputPowerFactorSign,
     }
 
-    console.log(this.someRange)
+
+
+    console.log(UPSparams)
 
   
 
@@ -99,9 +116,12 @@ export class SearchComponent implements OnInit {
     this.fetchDataService.getUPS(UPSparams).subscribe((data)=>{
 
       //TODO
-      this.temp=true;
      this.result=data;
+<<<<<<< HEAD
       console.log(data)
+=======
+     console.log(data)
+>>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
      
     },   
     (error)=>{
