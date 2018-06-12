@@ -12,8 +12,6 @@ import { SearchComponent } from './component/search/search.component';
 
 import { FetchDataService } from './services/fetch-data.service';
 import { DisplayDataService } from './services/display-data.service';
-
-import { NouisliderModule } from 'ng2-nouislider';
 import { SearchdisplayComponent } from './component/searchdisplay/searchdisplay.component';
 
 import {

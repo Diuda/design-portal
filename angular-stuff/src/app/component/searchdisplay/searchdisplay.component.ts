@@ -14,18 +14,27 @@ import {MatCardModule} from '@angular/material/card';
 export class SearchdisplayComponent implements OnInit {
   message:object;
   result:string;
+  displayedColumns = ['part', 'count'];
+  dataSource = [];
   constructor(private displayDataService:DisplayDataService) { }
   
 
   ngOnInit() {
     
     this.displayDataService.currentMessage.subscribe(message => this.message = message)
-    //window.alert(this.message)
     //console.log("result is "+this.message)
-    this.result=JSON.stringify(this.message)
-    console.log("result is "+this.result)
+    // this.result=JSON.stringify(this.message)
+    // var temp = JSON.parse(this.message);
+    // console.log(this.message['output'])
+    this.dataSource =this.message['output'].parts;
   }
   
 
 
+}
+
+export interface PeriodicElement {
+  part: string;
+  count: number;
+  
 }

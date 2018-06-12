@@ -6,13 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@angular/animations": "^6.0.4",
-    "@angular/cdk": "^6.2.1",
-    "@angular/material": "^6.2.1",
-=======
     "async": "^2.6.1",
->>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
     "bluebird": "^3.5.1",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",

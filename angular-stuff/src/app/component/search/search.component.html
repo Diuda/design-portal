@@ -1,3 +1,4 @@
+
 <div class="container-fluid bg">
 
   <div class="h-30">
@@ -90,45 +91,6 @@
     
                 </fieldset>
           </div>
-<<<<<<< HEAD
-      <!-- </div>-->
-   </div>
-  <br>
-  <!--<p>hello{{temp}}</p>-->
-  
-   <div class="card mt-15 bg-light" *ngIf="temp" >
-        <div class="container">
-         <div class="row pt-3"  >
-           <div class="col-md-6" *ngFor="let res of result;let i=index" [attr.data-index]="i">
-            <div class="media border p-3">
-                <img src="assets/images/img2.jpg" alt="John Doe" class="ab">
-                <div class="media-body">
-                  <h3>{{res.input.upsType}}</h3>
-                  <br>
-                  <p>
-                    
-                    Power:{{res.input.powerKVA}}<br>
-                    Voltage:{{res.input.voltageV}}<br>
-                    Redundancy Unit:{{res.input.redundancyUnit}}<br>
-                    Power Factor: {{res.input.pf}}<br>
-                    Battery Runtime:{{res.input.batteryRuntimeMin}}<br>
-                    Country:{{res.input.country}}<br>
-                    Region:{{res.input.region}}<br>
-                    <span *ngIf="res.input.externalBypass">
-                        Bypass: External<br>
-                      </span>
-                      <span *ngIf="!res.input.externalBypass">
-                          Bypass: Internal<br>
-                      </span>
-                      <br>
-                      {{i}}
-                    <button (click)="newMessage(i)" type="button" class="btn btn-default"  [routerLink]="['/searchdisplay']">
-                           <i class="fa fa-file" aria-hidden="true"></i>
-                      </button>
-                          
-                  </p>    
-                </div>
-=======
 
           <!-- <div class="form-group col-md-6">
             <label for="inputCountry">Country</label>
@@ -163,7 +125,6 @@
             <div class="form-group col-md-4">
                 <mat-label><strong>Redundancy Unit</strong></mat-label>
                 <mat-slider thumbLabel tickInterval="1" min = "0" max = "10" step = "1" value="0"></mat-slider>
->>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
             </div>
           
           <div class="form-group col-md-4">
@@ -195,7 +156,7 @@
   <div class="card">
 
 
-    <div class="card productCard" *ngFor="let ups of result">
+    <div class="card productCard" *ngFor="let ups of result;let i=index" [attr.data-index]="i">
         
 
       <div class="productImage">
@@ -241,7 +202,7 @@
             <button mat-button class="downloadBtn">Download <i class="material-icons">
                 cloud_download
                 </i></button><br>
-                <button mat-button class="viewBtn">View <i class="material-icons">
+                <button mat-button class="viewBtn" (click)="newMessage(i)" [routerLink]="['/searchdisplay']">View <i class="material-icons">
                     view_module
                     </i></button>
         </div>

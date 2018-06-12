@@ -1,27 +1,29 @@
-body, html {
-    height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-}
 
-.card
+
+table
 {
-    
-    text-align: center;
-    
+    width: 100%;
 }
-.table
+  
+  .mat-card-title
+  {
+      text-align: center;
+      margin-left: 7%;
+      //font-size: 25px;
+  }
+.mat-card-content
 {
     text-align: center;
+}
+.mat-header-cell
+{
+    text-align: center;
+    padding-left: 15px;
 }
 .footer
 {
     bottom: 0;
-<<<<<<< HEAD
    height: 25px;
-=======
-   height: 15px;
->>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
    background-color: #3dcd58;
 }
 
@@ -32,9 +34,5 @@ body, html {
 .footcl
 {
     //margin-left: 30%;
-<<<<<<< HEAD
-
-=======
->>>>>>> 2d71e0dd4f3dfbf428354c21435d8048e2db50bd
     text-align: center;
 }
