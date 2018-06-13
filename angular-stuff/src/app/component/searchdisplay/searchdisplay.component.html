@@ -1,36 +1,47 @@
-<div class="container">
-    <div class="card mt-15 bg-light">
-      <div class="card-body">
-        <h4 class="card-title">Output</h4>
-        <p class="card-text">.
-                   Power: {{res.input.powerKVA}}<br>
-                    Voltage: {{res.input.voltageV}}<br>
-                    Redundancy Unit: {{res.input.redundancyUnit}}<br>
-                    Power Factor: {{res.input.pf}}<br>
-                    Battery Runtime: {{res.input.batteryRuntimeMin}}<br>
-                    Country: {{res.input.country}}<br>
-                    Region: {{res.input.region}}<br>
-                    External Bypass: {{res.input.externalBypass}}<br><br></p>
-                    <hr>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th>Part Name</th>
-                            <th>Count</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td >XYZ djj</td>
-                            <td>2</td>
-                          </tr>
-                          <tr>
-                              <td>dfkkf</td>
-                              <td>2</td>
-                          </tr>
-                        </tbody>
+
+  <div class="container fluid">
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          <mat-card class="result">
+            <mat-card-header>
+              <mat-card-title><legend>Report</legend></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                
+                  <strong>Power:</strong> {{message.input.powerKVA}}<br>
+                  <strong>Voltage:</strong> {{message.input.voltageV}}<br>
+                  <strong>Redundancy Unit:</strong> {{message.input.redundancyUnit}}<br>
+                  <strong>Power Factor:</strong> {{message.input.pf}}<br>
+                  <strong> Runtime:</strong> {{message.input.batteryRuntimeMin}}<br>
+                  <strong>Country:</strong> {{message.input.country}}<br>
+                  <strong>Region:</strong> {{message.input.region}}<br>
+                  <strong>External Bypass:</strong> {{message.input.externalBypass}}<br><br><br>
+                  
+                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <ng-container matColumnDef="part">
+                      <th mat-header-cell *matHeaderCellDef><strong>Part Name </strong></th>
+                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+                  
+                    <ng-container matColumnDef="count">
+                      <th mat-header-cell *matHeaderCellDef><strong>Count </strong></th>
+                      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+                    </ng-container>
+                
+                    
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>
+                  
+                 <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>  --> 
+              
+          </mat-card-content>
+        </mat-card>
       </div>
+      <div class="col-md-3"></div>
     </div>
   </div>
 <div class="footer container-fluid pb-0 mb-0 px-0 mx-0 py-0 ">
