@@ -1,0 +1,397 @@
+<div class="container-fluid bg">
+
+
+  <div class="card bg-light mt-5" id="searchbox">
+    <div class="card-header title">Search Configured UPS</div>
+    <div class="card-body">
+      <form (submit)="searchUPS()">
+
+        <mat-horizontal-stepper #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form>
+              <ng-template matStepLabel>Power {{inputPower}} kVA</ng-template>
+
+
+              <mat-form-field appearance="outline">
+                <mat-label>Power</mat-label>
+                <input matInput placeholder="100" [(ngModel)]="inputPower" name="power">
+                <mat-icon matSuffix>offline_bolt</mat-icon>
+                <mat-hint>Enter in kVA</mat-hint>
+              </mat-form-field>
+
+              <div class="form-row">
+
+                    <div class="form-group col-md-4">
+                      <fieldset class="form-group">
+                        <legend>Power</legend>
+    
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputPower" name="inputPowerType">
+                          <mat-button-toggle value="480">
+                            <i class="material-icons button-icons">
+                              flash_on
+                            </i>
+                            <br>
+                            <strong>480 kVA</strong>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="40">
+                            <i class="material-icons button-icons">
+                              flash_on
+                            </i>
+                            <br>
+                            <strong>40 kVA</strong>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="100">
+                            <i class="material-icons button-icons">
+                              flash_on
+                            </i>
+                            <br>
+                            <strong>100 kVA</strong>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="200">
+                            <i class="material-icons button-icons">
+                              flash_on
+                            </i>
+                            <br>
+                            <strong>200 kVA</strong>
+                          </mat-button-toggle>
+                        </mat-button-toggle-group>
+    
+                      </fieldset>
+                    </div>
+    
+                  </div>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="secondFormGroup">
+            <form >
+              <ng-template matStepLabel>Runitme {{inputRunTime}} Mins</ng-template>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Battery Runtime</mat-label>
+                <input matInput placeholder="10" [(ngModel)]="inputRunTime" name="runtime">
+                <mat-icon matSuffix>access_time</mat-icon>
+                <mat-hint>Enter in Minutes</mat-hint>
+              </mat-form-field>
+
+              <div class="form-row">
+
+                    <div class="form-group col-md-4">
+                      <fieldset class="form-group">
+                        <legend>Power</legend>
+    
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRunTime" name="inputPowerType">
+                          <mat-button-toggle value="5">
+                            <i class="material-icons button-icons">
+                              flash_on
+                            </i>
+                            <br>
+                            <strong>5 Mins</strong>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="10">
+                            <i class="material-icons button-icons">
+                              flash_on
+                            </i>
+                            <br>
+                            <strong>10 Mins</strong>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="20">
+                            <i class="material-icons button-icons">
+                              flash_on
+                            </i>
+                            <br>
+                            <strong>20 Mins</strong>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="30">
+                            <i class="material-icons button-icons">
+                              flash_on
+                            </i>
+                            <br>
+                            <strong>30 Mins</strong>
+                          </mat-button-toggle>
+                        </mat-button-toggle-group>
+    
+                      </fieldset>
+                    </div>
+    
+                  </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="thirdFormGroup">
+            <form>
+              <ng-template matSteplabel>UPS Type {{inputUPSType}}</ng-template>
+              <div class="form-row">
+
+                <div class="form-group col-md-4">
+                  <fieldset class="form-group">
+                    <legend>UPS Type</legend>
+
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputUPSType" name="inputUPSType">
+                      <mat-button-toggle value="All">
+                        <i class="material-icons button-icons">
+                          flash_on
+                        </i>
+                        <br>
+                        <strong>All</strong>
+                      </mat-button-toggle>
+                      <mat-button-toggle value="Galaxy 7000">
+                        <i class="material-icons button-icons">
+                          flash_on
+                        </i>
+                        <br>
+                        <strong>Galaxy 7000</strong>
+                      </mat-button-toggle>
+                      <mat-button-toggle value="Galaxy 5000">
+                        <i class="material-icons button-icons">
+                          flash_on
+                        </i>
+                        <br>
+                        <strong>Galaxy 5000</strong>
+                      </mat-button-toggle>
+                      <mat-button-toggle value="Galaxy VX">
+                        <i class="material-icons button-icons">
+                          flash_on
+                        </i>
+                        <br>
+                        <strong>Galaxy VX</strong>
+                      </mat-button-toggle>
+                      <mat-button-toggle value="Galaxy VM">
+                        <i class="material-icons button-icons">
+                          flash_on
+                        </i>
+                        <br>
+                        <strong>Galaxy VM</strong>
+                      </mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                  </fieldset>
+                </div>
+
+              </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+
+
+            </form>
+          </mat-step>
+
+
+          <mat-step [stepControl]="fourthFormGroup">
+            <form>
+              <ng-template matStepLabel>Region {{inputRegion}}</ng-template>
+
+
+
+              <div class="form-row">
+
+                <div class="form-group col-md-5">
+                  <fieldset class="form-group">
+                    <legend>Region</legend>
+
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion">
+                      <mat-button-toggle value="APJ">
+                        <i class="material-icons button-icons">
+                          location_on
+                        </i>
+                        <br>
+                        <strong>APJ</strong>
+                      </mat-button-toggle>
+                      <mat-button-toggle value="NAM">
+                        <i class="material-icons button-icons">
+                          location_on
+                        </i>
+                        <br>
+                        <strong>NAM</strong>
+                      </mat-button-toggle>
+                      <mat-button-toggle value="EMEA">
+                        <i class="material-icons button-icons">
+                          location_on
+                        </i>
+                        <br>
+                        <strong>EMEA</strong>
+                      </mat-button-toggle>
+                      <mat-button-toggle value="LAM">
+                        <i class="material-icons button-icons">
+                          location_on
+                        </i>
+                        <br>
+                        <strong>LAM</strong>
+                      </mat-button-toggle>
+                      <mat-button-toggle value="GC">
+                        <i class="material-icons button-icons">
+                          location_on
+                        </i>
+                        <br>
+                        <strong>GC</strong>
+                      </mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                  </fieldset>
+                </div>
+              </div>
+
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+
+            </form>
+          </mat-step>
+
+
+          <mat-step [stepControl]="fifthFormGroup">
+            <form>
+              <ng-template matSteplabel>Fill out Advance settings</ng-template>
+              <div class="form-row">
+
+                <div class="form-group col-md-6">
+                  <mat-label for="externalBypass">External Bypass </mat-label>
+                  <mat-slide-toggle [(ngModel)]="bypassSlider" name="bypassSlider"></mat-slide-toggle>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <mat-label>Lag </mat-label>
+                  <mat-slide-toggle [(ngModel)]="powerFactorToggle" name="powerFactorToggle"></mat-slide-toggle>
+                  <mat-label>Lead</mat-label>
+                </div>
+
+
+              </div>
+              <div class="form-row">
+
+                <div class="form-group col-md-4">
+                  <mat-label>
+                    <strong>Redundancy Unit</strong>
+                  </mat-label>
+                  <mat-slider thumbLabel tickInterval="1" min="0" max="10" step="1" value="0"></mat-slider>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <mat-label>
+                    <strong>Power Factor</strong>
+                  </mat-label>
+                  <mat-slider thumbLabel tickInterval="1" min="0" max="1" step="0.1" value="0.9" name="powerFactorSlider" [(ngModel)]="powerFactorSlider"></mat-slider>
+                </div>
+
+
+              </div>
+
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+
+
+
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+        <!-- </mat-tab-group> -->
+        <div class="form-row">
+          <div class="form-group col-md-4"></div>
+          <div class="form-group col-md-4">
+            <button type="submit" class="btn btn-success buttonclass">Search</button>
+          </div>
+          <div class="form-group col-md-4"></div>
+        </div>
+        </form>
+    </div>
+  </div>
+  <!-- </div> -->
+
+     <div class="col-md-12">
+
+
+    <div class="col-md-6 col-sm-12 col-xs-12" style="float: left;" *ngFor="let ups of result">
+
+
+      <div class="productImage">
+
+      </div>
+      <div class="card-header productName">
+        {{ups.input.upsType}}
+        <br>
+        <h5 class="card-subtitle mb-2 text-muted">{{ups.input.powerKVA}} kVA</h5>
+      </div>
+      <div class="card-body productDetails">
+        <div class="detailContainer">
+          <div class="upsProp">
+
+            <mat-list>
+              <mat-list-item>
+                <strong>Voltage</strong>
+              </mat-list-item>
+              <mat-list-item>
+                <strong>Runtime</strong>
+              </mat-list-item>
+              <mat-list-item>
+                <strong>Bypass Type</strong>
+              </mat-list-item>
+              <mat-list-item>
+                <strong>Power Factor</strong>
+              </mat-list-item>
+            </mat-list>
+
+          </div>
+          <div class="upsPropValue">
+
+            <mat-list>
+              <mat-list-item>{{ups.input.voltageV}}&nbsp;
+                <i class="material-icons">
+                  offline_bolt
+                </i>
+              </mat-list-item>
+              <mat-list-item>{{ups.input.batteryRuntimeMin}} Mins &nbsp;
+                <i class="material-icons">
+                  access_time
+                </i>
+              </mat-list-item>
+              <mat-list-item>{{ups.input.externalBypass}}</mat-list-item>
+              <mat-list-item>{{ups.input.pf}}</mat-list-item>
+
+            </mat-list>
+
+          </div>
+          <mat-progress-bar mode="determinate" value="90"></mat-progress-bar>
+        </div>
+    
+
+
+        <div class="buttonContainer">
+          <button mat-button class="downloadBtn">Download
+            <i class="material-icons">
+              cloud_download
+            </i>
+          </button>
+          <br>
+          <button mat-button class="viewBtn">View
+            <i class="material-icons">
+              view_module
+            </i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div> 
+
+  </div>
+
+
+
+
+
+
+  <router-outlet></router-outlet>
+
