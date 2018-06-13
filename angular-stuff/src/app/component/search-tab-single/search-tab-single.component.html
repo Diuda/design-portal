@@ -128,7 +128,7 @@
 
           <mat-step [stepControl]="thirdFormGroup">
             <form>
-              <ng-template matSteplabel>UPS Type {{inputUPSType}}</ng-template>
+              <ng-template matStepLabel>UPS {{inputUPSType}}</ng-template>
               <div class="form-row">
 
                 <div class="form-group col-md-4">
@@ -252,7 +252,7 @@
 
           <mat-step [stepControl]="fifthFormGroup">
             <form>
-              <ng-template matSteplabel>Fill out Advance settings</ng-template>
+              <ng-template matStepLabel>Fill out Advance settings</ng-template>
               <div class="form-row">
 
                 <div class="form-group col-md-6">
@@ -271,21 +271,48 @@
               <div class="form-row">
 
                 <div class="form-group col-md-4">
-                  <mat-label>
-                    <strong>Redundancy Unit</strong>
-                  </mat-label>
-                  <mat-slider thumbLabel tickInterval="1" min="0" max="10" step="1" value="0"></mat-slider>
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRedundancyUnit" name="inputRedundancyUnit">
+                                <mat-button-toggle value="0">
+                                  <i class="material-icons button-icons">
+                                    location_on
+                                  </i>
+                                  <br>
+                                  <strong>N</strong>
+                                </mat-button-toggle>
+                                <mat-button-toggle value="N+1">
+                                  <i class="material-icons button-icons">
+                                    location_on
+                                  </i>
+                                  <br>
+                                  <strong>N + 1</strong>
+                                </mat-button-toggle>
+                                <mat-button-toggle value="2N">
+                                  <i class="material-icons button-icons">
+                                    location_on
+                                  </i>
+                                  <br>
+                                  <strong>2N</strong>
+                                </mat-button-toggle>
+                                <mat-button-toggle value="2N+1">
+                                  <i class="material-icons button-icons">
+                                    location_on
+                                  </i>
+                                  <br>
+                                  <strong>2N + 1</strong>
+                                </mat-button-toggle>
+                              </mat-button-toggle-group>
                 </div>
 
-                <div class="form-group col-md-4">
-                  <mat-label>
-                    <strong>Power Factor</strong>
-                  </mat-label>
-                  <mat-slider thumbLabel tickInterval="1" min="0" max="1" step="0.1" value="0.9" name="powerFactorSlider" [(ngModel)]="powerFactorSlider"></mat-slider>
-                </div>
+                
 
 
               </div>
+              <div class="form-group col-md-4">
+                    <mat-label>
+                      <strong>Power Factor</strong>
+                    </mat-label>
+                    <mat-slider thumbLabel tickInterval="1" min="0" max="1" step="0.1" value="0.9" name="powerFactorSlider" [(ngModel)]="powerFactorSlider"></mat-slider>
+                  </div>
 
               <div>
                 <button mat-button matStepperPrevious>Back</button>

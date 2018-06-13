@@ -34,6 +34,7 @@ export class SearchTabSingleComponent implements OnInit {
   bypassSlider: Boolean
   powerFactorSlider: String;
   powerFactorToggle: Boolean;
+  inputRedundancyUnit: String;
 
 
   constructor(
@@ -53,6 +54,15 @@ export class SearchTabSingleComponent implements OnInit {
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
+    this.fourthFormGroup = this._formBuilder.group({
+      fourthCtrl: ['', Validators.required]
+    });
+    this.fifthFormGroup = this._formBuilder.group({
+      fifthCtrl: ['', Validators.required]
     });
   }
 
@@ -89,6 +99,7 @@ export class SearchTabSingleComponent implements OnInit {
       Country: this.inputCountry,
       Bypass: this.bypassSlider,
       PowerFactor: powerFactor,
+      RUnit: this.inputRedundancyUnit
       // PowerFactorSign: this.inputPowerFactorSign,
     }
   
