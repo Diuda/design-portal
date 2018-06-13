@@ -14,6 +14,7 @@ import { FetchDataService } from './services/fetch-data.service';
 
 import { NouisliderModule } from 'ng2-nouislider';
 import { SearchdisplayComponent } from './component/searchdisplay/searchdisplay.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatAutocompleteModule,
@@ -108,7 +109,7 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatTreeModule,
   ],
-  declarations: [SearchTabSingleComponent]
+  declarations: []
 })
 export class MaterialModule {}
 
@@ -118,7 +119,8 @@ export class MaterialModule {}
     AppComponent,
     SearchComponent,
     SearchdisplayComponent,
-    TabSearchComponent
+    TabSearchComponent,
+    SearchTabSingleComponent
    ],
   imports: [
     BrowserModule,
@@ -128,7 +130,8 @@ export class MaterialModule {}
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     MaterialModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [ FetchDataService ],
   bootstrap: [AppComponent]
