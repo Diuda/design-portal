@@ -13,6 +13,7 @@ import { SearchComponent } from './component/search/search.component';
 import { FetchDataService } from './services/fetch-data.service';
 import { DisplayDataService } from './services/display-data.service';
 import { SearchdisplayComponent } from './component/searchdisplay/searchdisplay.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatAutocompleteModule,
@@ -53,6 +54,8 @@ import {
 } from '@angular/material';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { TabSearchComponent } from './component/tab-search/tab-search.component';
+import { SearchTabSingleComponent } from './component/search-tab-single/search-tab-single.component';
 
  
 
@@ -61,7 +64,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'search', component: SearchComponent },
-  { path:'searchdisplay',component:SearchdisplayComponent}
+  { path:'searchdisplay',component:SearchdisplayComponent },
+  { path: 'searchTab', component:TabSearchComponent },
+  { path: 'searchTabSingle', component:SearchTabSingleComponent}
 ]
 
 
@@ -102,7 +107,8 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-  ]
+  ],
+  declarations: []
 })
 export class MaterialModule {}
 
@@ -111,7 +117,9 @@ export class MaterialModule {}
   declarations: [
     AppComponent,
     SearchComponent,
-    SearchdisplayComponent
+    SearchdisplayComponent,
+    TabSearchComponent,
+    SearchTabSingleComponent
    ],
   imports: [
     BrowserModule,
@@ -121,7 +129,8 @@ export class MaterialModule {}
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     MaterialModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [ FetchDataService,DisplayDataService ],
   bootstrap: [AppComponent],
