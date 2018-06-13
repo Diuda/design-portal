@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FetchDataService } from '../../services/fetch-data.service';
+import {DisplayDataService} from '../../services/display-data.service';
 import { Router } from '@angular/router';
  
 @Component({
@@ -24,12 +25,15 @@ export class SearchComponent implements OnInit {
   bypassSlider: Boolean
   powerFactorSlider: String;
   powerFactorToggle: Boolean;
-
+  i:number;
 
   constructor(
     private fetchDataService: FetchDataService,
+    private displayDataService:DisplayDataService,
     private router: Router
   ) { }
+  
+ 
 
   ngOnInit() {
     this.result = null;
@@ -38,8 +42,9 @@ export class SearchComponent implements OnInit {
     this.powerFactorToggle = false;
 
   }
+  
 
-
+ 
   searchUPS() {
 
     console.log(this.inputRunTime)
@@ -91,8 +96,15 @@ export class SearchComponent implements OnInit {
       console.log("Error: "+error);
     })
    
-   
+    
   }
+  newMessage(i) {
+    //window.alert(JSON.stringify(this.result))
+    
+     //console.log(i)
+    this.displayDataService.changeMessage(this.result[i])
+  }
+ 
 }
 
 

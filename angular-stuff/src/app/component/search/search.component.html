@@ -1,3 +1,4 @@
+
 <div class="container-fluid bg">
 
   <div class="h-30">
@@ -155,7 +156,7 @@
   <div class="card">
 
 
-    <div class="card productCard row" *ngFor="let ups of result">
+    <div class="card productCard" *ngFor="let ups of result;let i=index" [attr.data-index]="i">
         
 
       <div class="productImage">
@@ -201,7 +202,7 @@
             <button mat-button class="downloadBtn">Download <i class="material-icons">
                 cloud_download
                 </i></button><br>
-                <button mat-button class="viewBtn">View <i class="material-icons">
+                <button mat-button class="viewBtn" (click)="newMessage(i)" [routerLink]="['/searchdisplay']">View <i class="material-icons">
                     view_module
                     </i></button>
         </div>
