@@ -9,7 +9,7 @@
         <mat-horizontal-stepper #stepper>
           <mat-step [stepControl]="firstFormGroup">
             <form>
-              <ng-template matStepLabel>Power {{inputPower}} kVA</ng-template>
+              <ng-template matStepLabel>Power <strong>{{inputPower}}</strong> kVA</ng-template>
 
 
               <mat-form-field appearance="outline">
@@ -69,7 +69,7 @@
 
           <mat-step [stepControl]="secondFormGroup">
             <form >
-              <ng-template matStepLabel>Runitme {{inputRunTime}} Mins</ng-template>
+              <ng-template matStepLabel>Runitme <strong>{{inputRunTime}}</strong> Mins</ng-template>
 
               <mat-form-field appearance="outline">
                 <mat-label>Battery Runtime</mat-label>
@@ -130,7 +130,7 @@
 
           <mat-step [stepControl]="thirdFormGroup">
             <form>
-              <ng-template matStepLabel>UPS {{inputUPSType}}</ng-template>
+              <ng-template matStepLabel>UPS <strong>{{inputUPSType}}</strong></ng-template>
               <div class="form-row">
 
                 <div class="form-group col-md-4">
@@ -192,7 +192,7 @@
 
           <mat-step [stepControl]="fourthFormGroup">
             <form>
-              <ng-template matStepLabel>Region {{inputRegion}}</ng-template>
+              <ng-template matStepLabel>Region <strong>{{inputRegion}}</strong></ng-template>
 
 
 
