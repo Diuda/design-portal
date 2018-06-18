@@ -1,33 +1,36 @@
-
+<nav class="navbar navbar-expand-lg navclass">
+    
+    <button mat-icon-button [routerLink]="['/searchTabSingle']">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+</nav>
+  
   <div class="container fluid">
 
     <div class="row">
       <div class="col-md-4">
-          <button mat-icon-button [routerLink]="['/searchTabSingle']">
-              <mat-icon>arrow_back</mat-icon>
-            </button>
+         
       </div>
       <div class="col-md-6">
           <mat-card class="result">
             <mat-card-header>
               <div class="card card-green">
-                <p class="headings">{{message.input.upsType}}<br>
-                  {{message.input.powerKVA}} kVA<br>
-                </p>
-                <div class="card-separator"></div>
+                <p class="title">{{message.input.upsType}}</p>
+                <p class="subtitle">{{message.input.powerKVA}} kVA</p>
+               <div class="card-separator"></div>
               </div>
             </mat-card-header>
             
             <mat-card-content>
               <p class="instruction"><strong> Components of the configuration are as follow:</strong></p>
-                  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                     <ng-container matColumnDef="name">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header ><strong>Part Name </strong></th>
+                      <th mat-header-cell *matHeaderCellDef ><strong>Part Name </strong></th>
                       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                     </ng-container>
                   
-                    <ng-container matColumnDef="count">
-                      <th mat-header-cell *matHeaderCellDef  mat-sort-header ><strong>Count </strong></th>
+                    <ng-container matColumnDef="count" class="counttable">
+                      <th mat-header-cell *matHeaderCellDef  ><strong>Count </strong></th>
                       <td mat-cell *matCellDef="let element"> {{element.count}} </td>
                     </ng-container>
                 
