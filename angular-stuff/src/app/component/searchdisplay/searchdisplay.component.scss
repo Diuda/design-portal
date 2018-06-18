@@ -70,3 +70,62 @@ table
     //margin-left: 30%;
     text-align: center;
 }
+
+
+$green: #16a085;
+
+
+.card {
+  margin-top: 45px;
+  color: #444;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: #eee;
+  text-align: center;
+  padding-top: 35px;
+  width:100%;
+  float: left;
+  padding-bottom: 0px;
+  margin-bottom: 5px;
+  :before {
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-color: #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-size: 24px;
+    font-style: normal;
+    left: 50%;
+    line-height: 60px;
+    position: absolute;
+    top: -30px;
+    width: 60px;
+  }
+  .heading {
+    margin-top:40px;
+    font-size: 60em;
+  }
+  .card-separator {
+    width: 100%;
+    margin: 10px 0 10px 0;
+  }
+  .inputpower
+  {
+      font-size: 20em;
+  }
+  
+}
+
+
+  
+.card-green {
+  border-top: 4px solid $green;
+  :before {
+    color: $green;
+    content: "\f060";
+    font-family: 'FontAwesome';
+  }
+  .card-separator {
+    border: 1px solid $green;
+  }
+}
