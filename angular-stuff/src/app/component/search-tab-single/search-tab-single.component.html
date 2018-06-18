@@ -25,7 +25,7 @@
                       <fieldset class="form-group">
                         <legend>Power</legend>
                         <div class="col-md-6 col-sm-6">
-                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputPower" name="inputPowerType">
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputPower" name="inputPowerType" (click)="stepper.next()">
                           <mat-button-toggle value="480">
                             <i class="material-icons button-icons">
                               flash_on
@@ -84,7 +84,7 @@
                       <fieldset class="form-group">
                         <legend>Power</legend>
     
-                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRunTime" name="inputPowerType">
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRunTime" name="inputPowerType" (click)="stepper.next()">
                           <mat-button-toggle value="5">
                             <i class="material-icons button-icons">
                               flash_on
@@ -137,7 +137,7 @@
                   <fieldset class="form-group">
                     <legend>UPS Type</legend>
 
-                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputUPSType" name="inputUPSType">
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputUPSType" name="inputUPSType" (click)="stepper.next()">
                       <mat-button-toggle value="All">
                         <i class="material-icons button-icons">
                           flash_on
@@ -202,7 +202,7 @@
                   <fieldset class="form-group">
                     <legend>Region</legend>
 
-                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion">
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion" (click)="stepper.next()">
                       <mat-button-toggle value="APJ">
                         <i class="material-icons button-icons">
                           location_on
