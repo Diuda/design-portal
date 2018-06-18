@@ -19,12 +19,12 @@
                 <mat-hint>Enter in kVA</mat-hint>
               </mat-form-field>
 
-              <div class="form-row">
+              <div class="row">
 
-                    <div class="form-group col-md-4">
+                    <div class="col col-md-6 col-sm-6">
                       <fieldset class="form-group">
                         <legend>Power</legend>
-    
+                        <div class="col-md-6 col-sm-6">
                         <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputPower" name="inputPowerType">
                           <mat-button-toggle value="480">
                             <i class="material-icons button-icons">
@@ -55,13 +55,14 @@
                             <strong>200 kVA</strong>
                           </mat-button-toggle>
                         </mat-button-toggle-group>
+                        </div>
     
                       </fieldset>
                     </div>
     
                   </div>
               <div>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button class="navBtn" matStepperNext>Next</button>
               </div>
             </form>
           </mat-step>
@@ -119,8 +120,9 @@
     
                   </div>
               <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                
+                <button mat-button class="navBtn" matStepperNext>Next</button>
+                <button mat-button class="navBtn" matStepperPrevious>Back</button>
               </div>
 
             </form>
@@ -178,8 +180,9 @@
 
               </div>
               <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                
+                <button mat-button class="navBtn" matStepperNext>Next</button>
+                <button mat-button class="navBtn" matStepperPrevious>Back</button>
               </div>
 
 
@@ -242,8 +245,9 @@
               </div>
 
               <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                
+                <button mat-button class="navBtn" matStepperNext>Next</button>
+                <button mat-button class="navBtn" matStepperPrevious>Back</button>
               </div>
 
             </form>
@@ -252,7 +256,7 @@
 
           <mat-step [stepControl]="fifthFormGroup">
             <form>
-              <ng-template matStepLabel>Fill out Advance settings</ng-template>
+              <ng-template matStepLabel>Advance settings</ng-template>
               <div class="form-row">
 
                 <div class="form-group col-md-6">
@@ -260,42 +264,39 @@
                   <mat-slide-toggle [(ngModel)]="bypassSlider" name="bypassSlider"></mat-slide-toggle>
                 </div>
 
-                <div class="form-group col-md-6">
-                  <mat-label>Lag </mat-label>
-                  <mat-slide-toggle [(ngModel)]="powerFactorToggle" name="powerFactorToggle"></mat-slide-toggle>
-                  <mat-label>Lead</mat-label>
-                </div>
+                
 
 
               </div>
               <div class="form-row">
 
                 <div class="form-group col-md-4">
+                  <mat-label><strong>Redundancy Unit</strong></mat-label>
                         <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRedundancyUnit" name="inputRedundancyUnit">
                                 <mat-button-toggle value="0">
                                   <i class="material-icons button-icons">
-                                    location_on
+                                    control_point_duplicate
                                   </i>
                                   <br>
                                   <strong>N</strong>
                                 </mat-button-toggle>
                                 <mat-button-toggle value="N+1">
                                   <i class="material-icons button-icons">
-                                    location_on
+                                    control_point_duplicate
                                   </i>
                                   <br>
                                   <strong>N + 1</strong>
                                 </mat-button-toggle>
                                 <mat-button-toggle value="2N">
                                   <i class="material-icons button-icons">
-                                    location_on
+                                    control_point_duplicate
                                   </i>
                                   <br>
                                   <strong>2N</strong>
                                 </mat-button-toggle>
                                 <mat-button-toggle value="2N+1">
                                   <i class="material-icons button-icons">
-                                    location_on
+                                      control_point_duplicate
                                   </i>
                                   <br>
                                   <strong>2N + 1</strong>
@@ -307,6 +308,13 @@
 
 
               </div>
+
+              <div class="form-group col-md-6">
+                  <mat-label>Lag </mat-label>
+                  <mat-slide-toggle [(ngModel)]="powerFactorToggle" name="powerFactorToggle"></mat-slide-toggle>
+                  <mat-label>Lead</mat-label>
+                </div>
+                
               <div class="form-group col-md-4">
                     <mat-label>
                       <strong>Power Factor</strong>
@@ -315,8 +323,9 @@
                   </div>
 
               <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
+                
+                <button mat-button class="navBtn" (click)="stepper.reset()">Reset</button>
+                <button mat-button class="navBtn" matStepperPrevious>Back</button>
               </div>
 
 
