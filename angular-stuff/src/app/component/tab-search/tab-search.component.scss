@@ -1,6 +1,6 @@
-mat-button-toggle{
-    padding: 1em;
-    text-align: center;
+.mat-button-toggle{
+    // text-align: center;
+    padding: 1px !important;
 
 }
 
@@ -28,12 +28,16 @@ mat-form-field{
 
 
 .button-icons{
-    font-size: 4em;
+    font-size: 1px;
     color:#313338;
     text-align: center;
 
 }
 
+
+.navBtnCont{
+    margin: 5px;
+}
 
 .card{
     padding: 2em;
