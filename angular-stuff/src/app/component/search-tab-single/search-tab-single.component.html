@@ -25,7 +25,7 @@
                       <fieldset class="form-group">
                         <legend>Power</legend>
                         <div class="col-md-6 col-sm-6">
-                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputPower" name="inputPowerType">
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputPower" name="inputPowerType" (click)="stepper.next()">
                           <mat-button-toggle value="480">
                             <i class="material-icons button-icons">
                               flash_on
@@ -84,7 +84,7 @@
                       <fieldset class="form-group">
                         <legend>Power</legend>
     
-                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRunTime" name="inputPowerType">
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRunTime" name="inputPowerType" (click)="stepper.next()">
                           <mat-button-toggle value="5">
                             <i class="material-icons button-icons">
                               flash_on
@@ -137,7 +137,7 @@
                   <fieldset class="form-group">
                     <legend>UPS Type</legend>
 
-                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputUPSType" name="inputUPSType">
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputUPSType" name="inputUPSType" (click)="stepper.next()">
                       <mat-button-toggle value="All">
                         <i class="material-icons button-icons">
                           flash_on
@@ -202,7 +202,7 @@
                   <fieldset class="form-group">
                     <legend>Region</legend>
 
-                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion">
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion" (click)="stepper.next()">
                       <mat-button-toggle value="APJ">
                         <i class="material-icons button-icons">
                           location_on
@@ -260,7 +260,7 @@
               <div class="form-row">
 
                 <div class="form-group col-md-6">
-                  <mat-label for="externalBypass">External Bypass </mat-label>
+                  <mat-label for="externalBypass"><strong>External Bypass </strong></mat-label>
                   <mat-slide-toggle [(ngModel)]="bypassSlider" name="bypassSlider"></mat-slide-toggle>
                 </div>
 
@@ -349,7 +349,7 @@
      <div class="col-md-12">
 
 
-    <div class="col-md-6 col-sm-12 col-xs-12" style="float: left;" *ngFor="let ups of result;let i=index" [attr.data-index]="i">
+    <div class="col-md-6 col-sm-12 col-xs-12 productCard" style="float: left;" *ngFor="let ups of result;let i=index" [attr.data-index]="i">
 
 
       <div class="productImage">
@@ -366,10 +366,16 @@
 
             <mat-list>
               <mat-list-item>
-                <strong>Voltage</strong>
+                <strong>Voltage</strong>&nbsp;
+                <i class="material-icons">
+                    offline_bolt
+                  </i>
               </mat-list-item>
               <mat-list-item>
-                <strong>Runtime</strong>
+                <strong>Runtime</strong>&nbsp;
+                <i class="material-icons">
+                    access_time
+                  </i>
               </mat-list-item>
               <mat-list-item>
                 <strong>Bypass Type</strong>
@@ -383,15 +389,11 @@
           <div class="upsPropValue">
 
             <mat-list>
-              <mat-list-item>{{ups.input.voltageV}}&nbsp;
-                <i class="material-icons">
-                  offline_bolt
-                </i>
+              <mat-list-item>{{ups.input.voltageV}}
+                
               </mat-list-item>
-              <mat-list-item>{{ups.input.batteryRuntimeMin}} Mins &nbsp;
-                <i class="material-icons">
-                  access_time
-                </i>
+              <mat-list-item>{{ups.input.batteryRuntimeMin}} Mins
+                
               </mat-list-item>
               <mat-list-item>{{ups.input.externalBypass}}</mat-list-item>
               <mat-list-item>{{ups.input.pf}}</mat-list-item>

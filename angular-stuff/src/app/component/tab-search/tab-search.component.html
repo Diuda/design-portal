@@ -152,65 +152,84 @@
   
   
   
-    <div class="card">
-  
-  
-      <div class="card productCard row" *ngFor="let ups of result;let i=index" [attr.data-index]="i">
-          
-  
-        <div class="productImage">
-  
-        </div>
+    <div class="col-md-12">
+
+
+        <div class="col-md-6 col-sm-12 col-xs-12 productCard" style="float: left;" *ngFor="let ups of result;let i=index" [attr.data-index]="i">
+    
+    
+          <div class="productImage">
+    
+          </div>
           <div class="card-header productName">
-            {{ups.input.upsType}}<br>
+            {{ups.input.upsType}}
+            <br>
             <h5 class="card-subtitle mb-2 text-muted">{{ups.input.powerKVA}} kVA</h5>
           </div>
-        <div class="card-body productDetails">
-          <div class="detailContainer">
-            <div class="upsProp">
-  
+          <div class="card-body productDetails">
+            <div class="detailContainer">
+              <div class="upsProp">
+    
                 <mat-list>
-                    <mat-list-item> <strong>Voltage</strong></mat-list-item>
-                    <mat-list-item> <strong>Runtime</strong> </mat-list-item>
-                    <mat-list-item> <strong>Bypass Type</strong> </mat-list-item>
-                    <mat-list-item> <strong>Power Factor</strong> </mat-list-item>
-                   </mat-list>
-  
-            </div>
-            <div class="upsPropValue">
-  
-                <mat-list>
-                    <mat-list-item>{{ups.input.voltageV}}&nbsp;<i class="material-icons">
+                  <mat-list-item>
+                    <strong>Voltage</strong>&nbsp;
+                    <i class="material-icons">
                         offline_bolt
-                        </i></mat-list-item>
-                    <mat-list-item>{{ups.input.batteryRuntimeMin}} Mins &nbsp;<i class="material-icons">
+                      </i>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <strong>Runtime</strong>&nbsp;
+                    <i class="material-icons">
                         access_time
-                        </i></mat-list-item>
-                    <mat-list-item>{{ups.input.externalBypass}}</mat-list-item>
-                    <mat-list-item>{{ups.input.pf}}</mat-list-item>
+                      </i>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <strong>Bypass Type</strong>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <strong>Power Factor</strong>
+                  </mat-list-item>
+                </mat-list>
+    
+              </div>
+              <div class="upsPropValue">
+    
+                <mat-list>
+                  <mat-list-item>{{ups.input.voltageV}}
                     
-                   </mat-list>
-  
+                  </mat-list-item>
+                  <mat-list-item>{{ups.input.batteryRuntimeMin}} Mins
+                    
+                  </mat-list-item>
+                  <mat-list-item>{{ups.input.externalBypass}}</mat-list-item>
+                  <mat-list-item>{{ups.input.pf}}</mat-list-item>
+    
+                </mat-list>
+    
+              </div>
+              <mat-progress-bar mode="determinate" value="90"></mat-progress-bar>
             </div>
-            <mat-progress-bar mode="determinate" value="90"></mat-progress-bar>
-          </div> 
-  
-          
-  
-          <div class="buttonContainer">
-              <button mat-button class="downloadBtn">Download <i class="material-icons">
+        
+    
+    
+            <div class="buttonContainer">
+              <button mat-button class="downloadBtn">Download
+                <i class="material-icons">
                   cloud_download
-                  </i></button><br>
-                  <button mat-button class="viewBtn" (click)="newMessage(i)" [routerLink]="['/searchdisplay']">View <i class="material-icons">
-                      view_module
-                      </i></button>
+                </i>
+              </button>
+              <br>
+              <button mat-button class="viewBtn" (click)="newMessage(i)" [routerLink]="['/searchdisplay']" >View
+                <i class="material-icons">
+                  view_module
+                </i>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-  
-    </div>
-  
-  
+    
+      </div> 
+    
   
   
     </div>
