@@ -41,33 +41,34 @@ mat-form-field{
 
 .productCard{
     
-    position: relative;
-    border-radius: 10%;
-    width: 70%;
-    padding: 0em;
-    margin-top: 3em;
-    left: 15%;
+    // border: 2px solid black;
+
+
+}
+
+.mat-list-item{
+    height: 40px !important;
 }
 
 .productName{
     text-align: right;
-    padding-right: 4em;
-    padding-top: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
     line-height: 2em;
-    font-size: 2.5em;
+    font-size: 1.6em;
     background-color: #00C853;
     color: white;
-    border-top-left-radius: 6%;
-    border-top-right-radius: 6%;
+    // border-top-left-radius: 6%;
+    // border-top-right-radius: 6%;
 }
 
 
 .productImage{
     position: absolute;
-    height: 185px;
-    width: 138px;
+    height: 160px;
+    width: 115px;
     background-color: black;
-    top: 5em;
+    top: 2em;
     left: 3em;
 }
 
@@ -101,7 +102,7 @@ mat-form-field{
 .buttonContainer{
     position: relative;
     left: 1em;
-    top: -4em;
+    top: -3em;
 
 }
 
