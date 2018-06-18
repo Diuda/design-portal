@@ -20,6 +20,8 @@ mat-form-field{
 
 
 
+
+
 .mat-slider-track-fill {
     background-color: #30cc52;
 }
@@ -121,6 +123,18 @@ button:hover{
     background-color: #BDBDBD
 }
 
+
+
 .mat-tab-body-content{
     overflow: hidden;
+}
+
+
+.navBtn{
+    float: right;
+}
+
+.mat-step-header .mat-step-icon-not-touched {
+    background-color: white !important;
+    color: #fff;
 }
