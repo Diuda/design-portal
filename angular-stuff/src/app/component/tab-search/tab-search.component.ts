@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FetchDataService } from '../../services/fetch-data.service';
 import { Router } from '@angular/router';
-
+import {DisplayDataService} from '../../services/display-data.service';
 @Component({
   selector: 'app-tab-search',
   templateUrl: './tab-search.component.html',
@@ -28,6 +28,7 @@ export class TabSearchComponent implements OnInit {
 
   constructor(
     private fetchDataService: FetchDataService,
+    private displayDataService:DisplayDataService,
     private router: Router
   ) { }
 
@@ -92,6 +93,12 @@ searchUPS() {
   })
  
  
+}
+newMessage(i) {
+  //window.alert(JSON.stringify(this.result))
+  
+   //console.log(i)
+  this.displayDataService.changeMessage(this.result[i])
 }
 }
 
