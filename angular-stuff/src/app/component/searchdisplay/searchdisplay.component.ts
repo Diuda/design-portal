@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 
 import { FetchDataService } from '../../services/fetch-data.service';
 import { DisplayDataService } from '../../services/display-data.service';
 import { Router } from '@angular/router';
 import { getHostElement } from '@angular/core/src/render3';
 import {MatCardModule} from '@angular/material/card';
+import {MatPaginator, MatTableDataSource,MatSort} from '@angular/material';
 //import { SearchComponent } from '../search/search.component';
 @Component({
   selector: 'app-searchdisplay',
@@ -14,19 +15,24 @@ import {MatCardModule} from '@angular/material/card';
 export class SearchdisplayComponent implements OnInit {
   message:object;
   result:string;
-  displayedColumns = ['part', 'count'];
-  dataSource = [];
+  displayedColumns = ['name', 'count'];
+  compparts = [];
+  dataSource: MatTableDataSource<PeriodicElement>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private displayDataService:DisplayDataService) { }
   
 
   ngOnInit() {
     
+    
     this.displayDataService.currentMessage.subscribe(message => this.message = message)
-    //console.log("result is "+this.message)
-    // this.result=JSON.stringify(this.message)
-    // var temp = JSON.parse(this.message);
-    // console.log(this.message['output'])
-    this.dataSource =this.message['output'].parts;
+     console.log(this.message['output'])
+    this.compparts =this.message['output'].parts;
+    this.dataSource = new MatTableDataSource<PeriodicElement>(this.compparts);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   
 
@@ -34,7 +40,7 @@ export class SearchdisplayComponent implements OnInit {
 }
 
 export interface PeriodicElement {
-  part: string;
+  name: string;
   count: number;
   
 }
