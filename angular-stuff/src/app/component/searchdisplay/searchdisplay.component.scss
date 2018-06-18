@@ -1,24 +1,57 @@
-
-
+.container
+{
+    margin:0px;
+    padding:0px;
+}
+.result
+{
+    border-radius: 5%;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.mat-icon-button
+{
+    padding-top: 5px;
+    padding-left: 10px;
+    height:65px;
+    width:40px;
+}
 table
 {
     width: 100%;
 }
   
-  .mat-card-title
-  {
-      text-align: center;
-      margin-left: 70%;
-      //font-size: 25px;
+.example-header-image {
+    background-color: black;
+    height: 120px;
+    width:100px;
+    background-size: cover;
   }
-.mat-card-content
-{
-    text-align: center;
-}
 .mat-header-cell
 {
-    text-align: center;
-    padding-left: 15px;
+    font-size: 20px;
+}
+.mat-card-title
+{
+    margin-top: 5%;
+    margin-left:64%;
+}
+.mat-card-header
+{
+  padding-bottom: 8px;
+}
+.mat-card-subtitle
+{
+    margin-left:70%;
+    margin-top:4px;
+}
+.mat-cell{
+    padding-left:5%;
+}
+.instr
+{
+    padding-left: 5%;
+    padding-top:5px;
 }
 .footer
 {
