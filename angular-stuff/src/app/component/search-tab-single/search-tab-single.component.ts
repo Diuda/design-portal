@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from '../../services/fetch-data.service';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
+import {DisplayDataService} from '../../services/display-data.service';
 
 @Component({
   selector: 'app-search-tab-single',
@@ -39,6 +39,7 @@ export class SearchTabSingleComponent implements OnInit {
 
   constructor(
     private fetchDataService: FetchDataService,
+    private displayDataService:DisplayDataService,
     private router: Router,
     private _formBuilder: FormBuilder
   ) { }
@@ -122,6 +123,12 @@ export class SearchTabSingleComponent implements OnInit {
     })
    
    
+  }
+  newMessage(i) {
+    //window.alert(JSON.stringify(this.result))
+    
+     //console.log(i)
+    this.displayDataService.changeMessage(this.result[i])
   }
   }
 
