@@ -11,10 +11,9 @@
 
 
             <mat-form-field appearance="outline">
-              <mat-label>Power</mat-label>
+              <mat-label>Power (kVA)</mat-label>
               <input matInput placeholder="100" [(ngModel)]="inputPower" name="power">
               <mat-icon matSuffix>offline_bolt</mat-icon>
-              <mat-hint>Enter in kVA</mat-hint>
             </mat-form-field>
 
             <div class="row">
@@ -79,10 +78,9 @@
               <strong>{{inputRunTime}}</strong> Mins</ng-template>
 
             <mat-form-field appearance="outline">
-              <mat-label>Battery Runtime</mat-label>
+              <mat-label>Battery Runtime (Mins)</mat-label>
               <input matInput placeholder="10" [(ngModel)]="inputRunTime" name="runtime">
               <mat-icon matSuffix>access_time</mat-icon>
-              <mat-hint>Enter in Minutes</mat-hint>
             </mat-form-field>
 
             <div class="row">
@@ -149,6 +147,12 @@
             <ng-template matStepLabel>UPS
               <strong>{{inputUPSType}}</strong>
             </ng-template>
+
+            <mat-form-field appearance="outline">
+              <mat-label>UPS</mat-label>
+              <input matInput placeholder="10" [(ngModel)]="inputUPSType" name="inputUPSType">
+              <mat-icon matSuffix>flash_on</mat-icon>
+            </mat-form-field>
             <div class="row">
 
               <div class="col col-md-6">
