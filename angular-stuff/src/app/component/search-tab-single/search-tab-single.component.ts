@@ -71,9 +71,12 @@ export class SearchTabSingleComponent implements OnInit {
 
     console.log(this.inputRunTime)
     console.log(this.inputPower)
-    var result;
-    var powerFactor;
-    var upsType;
+    let result;
+    let powerFactor;
+    let upsType;
+    let power;
+    let runtime;
+    let region;
   
   
     if(this.powerFactorToggle == false){
@@ -86,6 +89,13 @@ export class SearchTabSingleComponent implements OnInit {
 
     if(this.inputUPSType=='All'){
       upsType = undefined;
+    }
+    else{
+      upsType = this.inputUPSType;
+    }
+
+    if(this.inputPower == 0){
+      power = undefined;
     }
   
   
