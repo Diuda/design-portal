@@ -5,7 +5,7 @@ import { DisplayDataService } from '../../services/display-data.service';
 import { Router } from '@angular/router';
 import { getHostElement } from '@angular/core/src/render3';
 import {MatCardModule} from '@angular/material/card';
-import {MatPaginator, MatTableDataSource,MatSort} from '@angular/material';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 //import { SearchComponent } from '../search/search.component';
 @Component({
   selector: 'app-searchdisplay',
@@ -19,7 +19,7 @@ export class SearchdisplayComponent implements OnInit {
   compparts = [];
   dataSource: MatTableDataSource<PeriodicElement>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  
 
   constructor(private displayDataService:DisplayDataService) { }
   
@@ -32,7 +32,7 @@ export class SearchdisplayComponent implements OnInit {
     this.compparts =this.message['output'].parts;
     this.dataSource = new MatTableDataSource<PeriodicElement>(this.compparts);
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
   }
   
 

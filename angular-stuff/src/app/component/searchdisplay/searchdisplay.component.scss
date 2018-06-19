@@ -1,56 +1,67 @@
+.navtoggle
+{
+    color:white;
+    font-family: "OpenSans";
+    font-size: 18px;
+}
+.navclass
+{
+    background-color: #3dcd58;
+    border-color: #e7e7e7;
+    box-shadow: 0 0 7px rgba(0,0,0,0.1);
+    color:white;
+}
 .container
 {
     margin:0px;
     padding:0px;
+}
+.counttable
+{
+   margin-left:10px;
+}
+th.mat-header-cell:last-child
+{
+    padding-right: 0px;
 }
 .result
 {
     border-radius: 5%;
     margin-top:10px;
     margin-bottom: 10px;
+    background: #f5f5f5;
 }
 .mat-icon-button
 {
-    padding-top: 5px;
+    
     padding-left: 10px;
-    height:65px;
-    width:40px;
+   // height:65px;
+   // width:40px;
+    font-size: 50px;
 }
 table
 {
     width: 100%;
 }
   
-.example-header-image {
-    background-color: black;
-    height: 120px;
-    width:100px;
-    background-size: cover;
-  }
 .mat-header-cell
 {
     font-size: 20px;
+    color:black;
+
 }
 .mat-card-title
 {
     margin-top: 5%;
     margin-left:64%;
 }
-.mat-card-header
-{
-  padding-bottom: 8px;
-}
-.mat-card-subtitle
-{
-    margin-left:70%;
-    margin-top:4px;
-}
+
 .mat-cell{
     padding-left:5%;
 }
 .instruction
 {
-    padding-left: 5%;
+    //padding-left: 5%;
     padding-top:5px;
     text-align: center;
 }
@@ -76,38 +87,47 @@ $green: #16a085;
 
 
 .card {
-  margin-top: 45px;
-  color: #444;
+  margin-top: 20px;
+  color:black;
   border: 1px solid #999;
   border-radius: 4px;
-  background: #eee;
+  background:white;
   text-align: center;
-  padding-top: 35px;
+  padding-top: 10px;
   width:100%;
   float: left;
   padding-bottom: 0px;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   :before {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     background-color: #eee;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
-    font-size: 24px;
-    font-style: normal;
+    //font-size: 24px;
     left: 50%;
-    line-height: 60px;
+    line-height: 40px;
     position: absolute;
     top: -30px;
     width: 60px;
   }
-  .heading {
-    margin-top:40px;
-    font-size: 60em;
+  .title {
+    margin-top:10px;
+    font-size: 1.5em;
+    margin-bottom: 0px;
+  }
+  .subtitle
+  {
+      margin-top:0px;
+      font-size:0.8em;
+      margin-bottom:0px;
+      margin-left:19%;
+      color:black;
   }
   .card-separator {
     width: 100%;
-    margin: 10px 0 10px 0;
+    margin-top:2px;
+    margin-bottom:2px;
   }
   .inputpower
   {
@@ -116,13 +136,16 @@ $green: #16a085;
   
 }
 
-
+.upstype
+{
+   font-size:30em;
+}
   
 .card-green {
   border-top: 4px solid $green;
   :before {
     color: $green;
-    content: "\f060";
+    content: "\f0e7";
     font-family: 'FontAwesome';
   }
   .card-separator {
