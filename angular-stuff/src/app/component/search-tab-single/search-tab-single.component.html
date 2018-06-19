@@ -5,16 +5,13 @@
   
 <div class="container-fluid bg">
 
-
-  <div class="card bg-light mt-5" id="searchbox">
-    <div class="card-header title">Search Configured UPS</div>
     <div class="card-body">
       <form (submit)="searchUPS()">
 
         <mat-horizontal-stepper #stepper>
           <mat-step [stepControl]="firstFormGroup">
             <form>
-              <ng-template matStepLabel>Power {{inputPower}} kVA</ng-template>
+              <ng-template matStepLabel>Power <strong>{{inputPower}}</strong> kVA</ng-template>
 
 
               <mat-form-field appearance="outline">
@@ -64,17 +61,18 @@
     
                       </fieldset>
                     </div>
+                    <div class="col col-md-6 navBtnCont">
+                        <button mat-button class="navBtn" matStepperNext>Next</button>
+                      </div>
     
                   </div>
-              <div>
-                <button mat-button class="navBtn" matStepperNext>Next</button>
-              </div>
+              
             </form>
           </mat-step>
 
           <mat-step [stepControl]="secondFormGroup">
             <form >
-              <ng-template matStepLabel>Runitme {{inputRunTime}} Mins</ng-template>
+              <ng-template matStepLabel>Runitme <strong>{{inputRunTime}}</strong> Mins</ng-template>
 
               <mat-form-field appearance="outline">
                 <mat-label>Battery Runtime</mat-label>
@@ -89,31 +87,31 @@
                       <fieldset class="form-group">
                         <legend>Power</legend>
     
-                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRunTime" name="inputPowerType" (click)="stepper.next()">
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRunTime" name="inputRunTime" (click)="stepper.next()">
                           <mat-button-toggle value="5">
                             <i class="material-icons button-icons">
-                              flash_on
+                              access_time
                             </i>
                             <br>
                             <strong>5 Mins</strong>
                           </mat-button-toggle>
                           <mat-button-toggle value="10">
                             <i class="material-icons button-icons">
-                              flash_on
+                              access_time
                             </i>
                             <br>
                             <strong>10 Mins</strong>
                           </mat-button-toggle>
                           <mat-button-toggle value="20">
                             <i class="material-icons button-icons">
-                              flash_on
+                              access_time
                             </i>
                             <br>
                             <strong>20 Mins</strong>
                           </mat-button-toggle>
                           <mat-button-toggle value="30">
                             <i class="material-icons button-icons">
-                              flash_on
+                              access_time
                             </i>
                             <br>
                             <strong>30 Mins</strong>
@@ -122,20 +120,22 @@
     
                       </fieldset>
                     </div>
+
+                    <div class="col col-md-6 navBtnCont">
+                
+                        <button mat-button class="navBtn" matStepperNext>Next</button>
+                        <button mat-button class="navBtn" matStepperPrevious>Back</button>
+                      </div>
     
                   </div>
-              <div>
-                
-                <button mat-button class="navBtn" matStepperNext>Next</button>
-                <button mat-button class="navBtn" matStepperPrevious>Back</button>
-              </div>
+              
 
             </form>
           </mat-step>
 
           <mat-step [stepControl]="thirdFormGroup">
             <form>
-              <ng-template matStepLabel>UPS {{inputUPSType}}</ng-template>
+              <ng-template matStepLabel>UPS <strong>{{inputUPSType}}</strong></ng-template>
               <div class="form-row">
 
                 <div class="form-group col-md-4">
@@ -183,12 +183,13 @@
                   </fieldset>
                 </div>
 
-              </div>
-              <div>
+                <div class="col col-md-6 navBtnCont">
                 
-                <button mat-button class="navBtn" matStepperNext>Next</button>
-                <button mat-button class="navBtn" matStepperPrevious>Back</button>
+                    <button mat-button class="navBtn" matStepperNext>Next</button>
+                    <button mat-button class="navBtn" matStepperPrevious>Back</button>
+                  </div>
               </div>
+              
 
 
             </form>
@@ -197,7 +198,7 @@
 
           <mat-step [stepControl]="fourthFormGroup">
             <form>
-              <ng-template matStepLabel>Region {{inputRegion}}</ng-template>
+              <ng-template matStepLabel>Region <strong>{{inputRegion}}</strong></ng-template>
 
 
 
@@ -247,13 +248,14 @@
 
                   </fieldset>
                 </div>
+                <div class="col col-md-6 navBtnCont">
+                
+                    <button mat-button class="navBtn" matStepperNext>Next</button>
+                    <button mat-button class="navBtn" matStepperPrevious>Back</button>
+                  </div>
               </div>
 
-              <div>
-                
-                <button mat-button class="navBtn" matStepperNext>Next</button>
-                <button mat-button class="navBtn" matStepperPrevious>Back</button>
-              </div>
+              
 
             </form>
           </mat-step>
@@ -339,16 +341,14 @@
           </mat-step>
         </mat-horizontal-stepper>
         <!-- </mat-tab-group> -->
-        <div class="form-row">
-          <div class="form-group col-md-4"></div>
-          <div class="form-group col-md-4">
-            <button type="submit" class="btn btn-success buttonclass">Search</button>
-          </div>
-          <div class="form-group col-md-4"></div>
+        <div class="row searchBtnCont">
+         
+            <button type="submit" class="btn btn-success searchBtn">Search</button>
+          
         </div>
         </form>
     </div>
-  </div>
+  <!-- </div> -->
   <!-- </div> -->
 
      <div class="col-md-12">
