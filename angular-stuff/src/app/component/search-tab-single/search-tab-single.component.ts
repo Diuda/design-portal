@@ -94,19 +94,36 @@ export class SearchTabSingleComponent implements OnInit {
       upsType = this.inputUPSType;
     }
 
-    if(this.inputPower == 0){
+    if(this.inputPower.toString() == 'All'){
       power = undefined;
+    }
+    else{
+      power = this.inputPower;
+    }
+
+    if(this.inputRunTime.toString() == 'All'){
+      runtime = undefined;
+    }
+    else{
+      runtime = this.inputRunTime;
+    }
+
+    if(this.inputRegion == 'All'){
+      region = undefined;
+    }
+    else{
+      region = this.inputRegion;
     }
   
   
   
     //TODO
-    //removed redundancy unit
+    //Power factor sign
     const UPSparams = {
-      power: this.inputPower,
-      runtime: this.inputRunTime,
+      power: power,
+      runtime: runtime,
       UPSType: upsType,
-      Region: this.inputRegion,
+      Region: region,
       Country: this.inputCountry,
       Bypass: this.bypassSlider,
       PowerFactor: powerFactor,
