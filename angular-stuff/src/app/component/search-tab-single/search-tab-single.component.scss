@@ -1,11 +1,16 @@
 
+.navtoggle
+{
+   color:white;
+    font-family: "OpenSans";
+    font-size: 18px;
+}
 .navclass
 {
     background-color: #3dcd58;
     border-color: #e7e7e7;
     box-shadow: 0 0 7px rgba(0,0,0,0.1);
     color:white;
-    margin-top:0px;
 }
 
 mat-button-toggle{
@@ -19,6 +24,7 @@ mat-button-toggle{
     -webkit-box-shadow: 0 10px 6px -6px #777;
        -moz-box-shadow: 0 10px 6px -6px #777;
             box-shadow: 0 10px 6px -6px #777;
+    margin-bottom: 1em;
 
 }
 
@@ -67,21 +73,30 @@ mat-form-field{
 
 .card{
     padding: 2em;
+   
 }
 
 .productDetails{
     padding: 0%;
+    border-bottom-left-radius: 5%;
+     border-bottom-right-radius: 5%;
 }
+
 
 .productCard{
     
-    margin-top: 1.5em;
-
-
+    margin-top: 2em;
+    margin-bottom:1em;
+    width:48%;
+    margin-right:3em;
+    margin-left:3em;
+   border-radius: 5% !important;
+   //box-shadow:5px 10px #616266;
 }
 
 .mat-list-item{
     height: 40px !important;
+    padding-left: 1px;
 }
 
 .productName{
@@ -92,8 +107,8 @@ mat-form-field{
     font-size: 1.6em;
     background-color: #00C853;
     color: white;
-    // border-top-left-radius: 6%;
-    // border-top-right-radius: 6%;
+     border-top-left-radius: 5%;
+     border-top-right-radius: 5%;
 }
 
 
