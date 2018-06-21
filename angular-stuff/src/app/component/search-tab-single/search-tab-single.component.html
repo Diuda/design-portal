@@ -1,3 +1,8 @@
+<nav class="navbar navbar-expand-lg navclass">
+  <a class="navbar-brand anav" href="#"><img src="../assets/images/logo.png"></a>
+  <h4 class="apname mt-2 ml-5">UPS Facet Mining </h4>
+</nav>  
+  
   <div class="container-fluid bg">
 
   <div class="card-body">
@@ -11,10 +16,9 @@
 
 
             <mat-form-field appearance="outline">
-              <mat-label>Power</mat-label>
+              <mat-label>Power (kVA)</mat-label>
               <input matInput placeholder="100" [(ngModel)]="inputPower" name="power">
               <mat-icon matSuffix>offline_bolt</mat-icon>
-              <mat-hint>Enter in kVA</mat-hint>
             </mat-form-field>
 
             <div class="row">
@@ -79,10 +83,9 @@
               <strong>{{inputRunTime}}</strong> Mins</ng-template>
 
             <mat-form-field appearance="outline">
-              <mat-label>Battery Runtime</mat-label>
+              <mat-label>Battery Runtime (Mins)</mat-label>
               <input matInput placeholder="10" [(ngModel)]="inputRunTime" name="runtime">
               <mat-icon matSuffix>access_time</mat-icon>
-              <mat-hint>Enter in Minutes</mat-hint>
             </mat-form-field>
 
             <div class="row">
@@ -149,6 +152,12 @@
             <ng-template matStepLabel>UPS
               <strong>{{inputUPSType}}</strong>
             </ng-template>
+
+            <mat-form-field appearance="outline">
+              <mat-label>UPS</mat-label>
+              <input matInput placeholder="10" [(ngModel)]="inputUPSType" name="inputUPSType">
+              <mat-icon matSuffix>flash_on</mat-icon>
+            </mat-form-field>
             <div class="row">
 
               <div class="col col-md-6">
@@ -210,10 +219,21 @@
 
 
         <mat-step [stepControl]="fourthFormGroup">
-          <form>
+          <form [formGroup]="fourthFormGroup">
             <ng-template matStepLabel>Region
               <strong>{{inputRegion}}</strong>
             </ng-template>
+
+            <mat-form-field>
+              <input type="text" matInput placeholder="Countries" [formControl]="myControl" required [matAutocomplete]="country"/>
+                <mat-autocomplete #country="matAutocomplete">
+                  <!-- <mat-optgroup *ngFor="let group of filteredOptions | async" [label]="group.letter"> -->
+                    <mat-option *ngFor="let name of filteredOptions | async" [value]="name">
+                      {{ name }}
+                    </mat-option>
+                <!-- </mat-optgroup> -->
+              </mat-autocomplete>
+            </mat-form-field> 
 
 
 
@@ -223,7 +243,7 @@
                 <fieldset class="form-group">
                   <legend>Region</legend>
 
-                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion" (click)="stepper.next()">
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion" (click)="stepper.next()" [ngModelOptions]="{standalone: true}">
                     <mat-button-toggle value="All">
                       <i class="material-icons button-icons">
                         location_on
