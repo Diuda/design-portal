@@ -35,9 +35,9 @@ export class SearchTabSingleComponent implements OnInit {
   myControl: FormControl = new FormControl();
 
   options = [
-    'One',
-    'Two',
-    'Three'
+    'Australia',
+    'India',
+    'New Zealand'
   ];
 
   filteredOptions: Observable<string[]>;
