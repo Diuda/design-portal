@@ -20,8 +20,9 @@
                <div class="card-separator"></div>
               </div>
             </mat-card-header>
-            
+            <!-- {{exist}} -->
             <mat-card-content>
+              <div *ngIf="exist; else caption" >
               <p class="instruction"><strong> Components of the configuration are as follow:</strong></p>
                   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                     <ng-container matColumnDef="name">
@@ -40,12 +41,17 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>
                   
-                 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-              
+                 <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+               </div>
+                <ng-template #caption>
+                    <br>
+                    <p class="instruction"><strong> The configuration has no Components.</strong></p>
+                </ng-template>
           </mat-card-content>
+         
           <div class="card-separator"></div>
         </mat-card>
-      </div>
+      
       <div class="col-md-2"></div>
     </div>
   </div>
