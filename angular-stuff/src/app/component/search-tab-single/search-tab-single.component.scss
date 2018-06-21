@@ -1,11 +1,16 @@
 
+.navtoggle
+{
+   color:white;
+    font-family: "OpenSans";
+    font-size: 18px;
+}
 .navclass
 {
     background-color: #3dcd58;
     border-color: #e7e7e7;
     box-shadow: 0 0 7px rgba(0,0,0,0.1);
     color:white;
-    margin-top:0px;
 }
 
 mat-button-toggle{
