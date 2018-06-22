@@ -1,14 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 
-import { FetchDataService } from '../../services/fetch-data.service';
-import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
-import {DisplayDataService} from '../../services/display-data.service';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import {
+  FetchDataService
+} from '../../services/fetch-data.service';
+import {
+  Router
+} from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from '@angular/forms';
+import {
+  DisplayDataService
+} from '../../services/display-data.service';
+import {
+  Observable
+} from 'rxjs';
+import {
+  startWith,
+  map
+} from 'rxjs/operators';
 
-export interface CountryGroup{
+export interface CountryGroup {
   letter: string;
   country: string[];
 }
@@ -17,7 +36,7 @@ export interface CountryGroup{
   selector: 'app-search-tab-single',
   templateUrl: './search-tab-single.component.html',
   styleUrls: ['./search-tab-single.component.scss']
-  
+
 })
 
 
@@ -40,8 +59,8 @@ export class SearchTabSingleComponent implements OnInit {
     'New Zealand'
   ];
 
-  filteredOptions: Observable<string[]>;
-  
+  filteredOptions: Observable < string[] > ;
+
 
 
   inputPower: Number;
@@ -50,9 +69,12 @@ export class SearchTabSingleComponent implements OnInit {
   inputRegion: String;
   inputCountry: String;
   result: Object;
-  powerFactorProperty = [
-    { value: 'Lag' },
-    { value: 'Lead' }
+  powerFactorProperty = [{
+      value: 'Lag'
+    },
+    {
+      value: 'Lead'
+    }
   ];
   bypassSlider: Boolean
   powerFactorSlider: String;
@@ -61,34 +83,34 @@ export class SearchTabSingleComponent implements OnInit {
 
 
   countryGroups: CountryGroup[] = [{
-    letter: 'A',
-    country: ['Australia', 'Argentina']
-  },
-  // {
-  //   letter: 'N',
-  //   country: [{name: 'New Zealand', value: 'NZ'}]
-  // },
-  // {
-  //   letter: 'S',
-  //   country: [{name: 'South Africa', value: 'SA'}]
-  // },
-  // {
-  //   letter: 'U',
-  //   country: [{name: 'USA', value: 'US'}]
-  // }
-]
+      letter: 'A',
+      country: ['Australia', 'Argentina']
+    },
+    // {
+    //   letter: 'N',
+    //   country: [{name: 'New Zealand', value: 'NZ'}]
+    // },
+    // {
+    //   letter: 'S',
+    //   country: [{name: 'South Africa', value: 'SA'}]
+    // },
+    // {
+    //   letter: 'U',
+    //   country: [{name: 'USA', value: 'US'}]
+    // }
+  ]
 
-countryGroupOptions: Observable<CountryGroup[]>;
+  countryGroupOptions: Observable < CountryGroup[] > ;
 
 
   constructor(
     private fetchDataService: FetchDataService,
-    private displayDataService:DisplayDataService,
+    private displayDataService: DisplayDataService,
     private router: Router,
     private _formBuilder: FormBuilder
-  ) { }
+  ) {}
 
-  ngOnInit( ) {
+  ngOnInit() {
 
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -96,9 +118,9 @@ countryGroupOptions: Observable<CountryGroup[]>;
         map(val => this.filter(val))
       );
 
-      
 
-    this.countryGroupOptions = this.fourthFormGroup.get('countryGroup')!.valueChanges
+
+    this.countryGroupOptions = this.fourthFormGroup.get('countryGroup') !.valueChanges
       .pipe(
         startWith(''),
         map(val => this.filterGroup(val))
@@ -124,7 +146,7 @@ countryGroupOptions: Observable<CountryGroup[]>;
     //   fourthCtrl: ['', Validators.required]
     // });
 
-  
+
 
     this.fifthFormGroup = this._formBuilder.group({
       fifthCtrl: ['', Validators.required]
@@ -143,16 +165,19 @@ countryGroupOptions: Observable<CountryGroup[]>;
 
 
   filterGroup(val: string): CountryGroup[] {
-    if(val) {
+    if (val) {
       return this.countryGroups
-      .map(group => ({letter: group.letter, country: this._filter(group.country, val)}))
-      .filter(group => group.country.length>0);
+        .map(group => ({
+          letter: group.letter,
+          country: this._filter(group.country, val)
+        }))
+        .filter(group => group.country.length > 0);
     }
 
     return this.countryGroups;
   }
 
-  private _filter(cont: string[], val: string){
+  private _filter(cont: string[], val: string) {
     const filterValue = val.toLowerCase();
     return cont.filter(item => item.toLowerCase().startsWith(filterValue));
   }
@@ -165,7 +190,7 @@ countryGroupOptions: Observable<CountryGroup[]>;
 
 
 
-  
+
   searchUPS() {
 
     console.log(this.inputRunTime)
@@ -176,86 +201,81 @@ countryGroupOptions: Observable<CountryGroup[]>;
     let power;
     let runtime;
     let region;
-  
-  
-    if(this.powerFactorToggle == false){
-      powerFactor = "Lag "+this.powerFactorSlider;
-    }
-  
-    else{
-      powerFactor = "Lead "+this.powerFactorSlider;
+
+
+    if (this.powerFactorToggle == false) {
+      powerFactor = "Lag " + this.powerFactorSlider;
+    } else {
+      powerFactor = "Lead " + this.powerFactorSlider;
     }
 
-    if(this.inputUPSType=='All'){
+    if (this.inputUPSType == 'All') {
       upsType = undefined;
-    }
-    else{
+    } else {
       upsType = this.inputUPSType;
     }
 
-    if(this.inputPower.toString() == 'All'){
-      power = undefined;
+    if (this.inputPower != undefined) {
+      if (this.inputPower.toString() == 'All') {
+        power = undefined;
+      } else {
+        power = this.inputPower;
+      }
     }
-    else{
-      power = this.inputPower;
-    }
-
-    if(this.inputRunTime.toString() == 'All'){
+    if (this.inputRunTime != undefined) {
+    if (this.inputRunTime.toString() == 'All') {
       runtime = undefined;
-    }
-    else{
+    } else {
       runtime = this.inputRunTime;
     }
+  }
 
-    if(this.inputRegion == 'All'){
-      region = undefined;
-    }
-    else{
-      region = this.inputRegion;
-    }
-  
-  
-  
-    //TODO
-    //Power factor sign
-    const UPSparams = {
-      power: power,
-      runtime: runtime,
-      UPSType: upsType,
-      Region: region,
-      Country: this.inputCountry,
-      Bypass: this.bypassSlider,
-      PowerFactor: powerFactor,
-      RUnit: this.inputRedundancyUnit
-      // PowerFactorSign: this.inputPowerFactorSign,
-    }
-  
-  
-  
-    console.log(UPSparams)
-  
-  
-  
-  
-    this.fetchDataService.getUPS(UPSparams).subscribe((data)=>{
-  
+  if (this.inputRegion == 'All') {
+    region = undefined;
+  } else {
+    region = this.inputRegion;
+  }
+
+
+
+  //TODO
+  //Power factor sign
+  const UPSparams = {
+    power: power,
+    runtime: runtime,
+    UPSType: upsType,
+    Region: region,
+    Country: this.inputCountry,
+    Bypass: this.bypassSlider,
+    PowerFactor: powerFactor,
+    RUnit: this.inputRedundancyUnit
+    // PowerFactorSign: this.inputPowerFactorSign,
+  }
+
+
+
+  console.log(UPSparams)
+
+
+
+
+  this.fetchDataService.getUPS(UPSparams).subscribe((data) => {
+
       //TODO
-     this.result=data;
-     console.log(data)
-     
-    },   
-    (error)=>{
-      console.log("Error: "+error);
+      this.result = data;
+      console.log(data)
+
+    },
+    (error) => {
+      console.log("Error: " + error);
     })
-   
-   
-  }
-  newMessage(i) {
-    //window.alert(JSON.stringify(this.result))
-    
-     //console.log(i)
-    this.displayDataService.changeMessage(this.result[i])
-  }
-  }
 
 
+}
+newMessage(i) {
+  //window.alert(JSON.stringify(this.result))
+
+  //console.log(i)
+  this.displayDataService.changeMessage(this.result[i])
+}
+}
