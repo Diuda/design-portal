@@ -56,7 +56,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TabSearchComponent } from './component/tab-search/tab-search.component';
 import { SearchTabSingleComponent } from './component/search-tab-single/search-tab-single.component';
-
+import {Ng2Webstorage} from 'ngx-webstorage';
  
 
 
@@ -130,7 +130,8 @@ export class MaterialModule {}
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2Webstorage
   ],
   providers: [ FetchDataService,DisplayDataService ],
   bootstrap: [AppComponent],
