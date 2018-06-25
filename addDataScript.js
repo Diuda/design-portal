@@ -12,13 +12,13 @@ exports.addDataToMongo = async () => {
 
     console.log("hello")
     csv()
-    .fromFile("test3.csv")
+    .fromFile("./data/test3.csv")
     .then(async (jsonObj)=>{
         console.log(jsonObj.length)
         var temp1 = jsonObj[0].RzId
         var tCountry = jsonObj[0].CtryId
         var tRegion = jsonObj[0].RgDesc
-        for(i=0; i<6000;i++){
+        for(i=0; i<60000;i++){
 
             if(temp1 == jsonObj[i].RzId){
                 if(jsonObj[i].EvId == 22){
@@ -99,10 +99,10 @@ exports.addDataToMongo = async () => {
 exports.addComponent = async () => {
 
     csv()
-    .fromFile('test4.csv')
+    .fromFile('./data/test4.csv')
     .then((jsonObj) => {
         console.log("File read")
-        for(i=0; i<72608; i++){
+        for(i=150000; i<200000; i++){
 
             var parts = {"name": jsonObj[i].CmpPartNum, "count": parseInt(jsonObj[i].RcQuantity)}
             

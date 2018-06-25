@@ -30,6 +30,6 @@ var upsSchema = new Schema({
 
 })
 
-const ups = mongoose.model('ups', upsSchema)
+const ups = mongoose.model('upsmain', upsSchema)
 
 module.exports = ups;
