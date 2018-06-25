@@ -1,10 +1,11 @@
-
 <nav class="navbar navbar-expand-lg navclass">
-  <a class="navbar-brand anav" href="#"><img src="../assets/images/logo.png"></a>
+  <a class="navbar-brand anav" href="#">
+    <img src="../assets/images/logo2.png">
+  </a>
   <h4 class="apname mt-2 ml-5">UPS Facet Mining </h4>
-</nav>  
-  
-  <div class="container-fluid bg">
+</nav>
+
+<div class="container-fluid bg">
 
 
   <div class="card-body">
@@ -71,9 +72,11 @@
                 </fieldset>
               </div>
               <div class="col col-md-6 navBtnCont">
-                <button mat-button class="navBtn" matStepperNext><i class="material-icons">
-                  navigate_next
-                  </i></button>
+                <button mat-button class="navBtn" matStepperNext>
+                  <i class="material-icons">
+                    navigate_next
+                  </i>
+                </button>
               </div>
 
             </div>
@@ -141,12 +144,16 @@
 
               <div class="col col-md-6 navBtnCont">
 
-                <button mat-button class="navBtn" matStepperNext><i class="material-icons">
+                <button mat-button class="navBtn" matStepperNext>
+                  <i class="material-icons">
                     navigate_next
-                    </i></button>
-                <button mat-button class="navBtn" matStepperPrevious><i class="material-icons">
+                  </i>
+                </button>
+                <button mat-button class="navBtn" matStepperPrevious>
+                  <i class="material-icons">
                     navigate_before
-                    </i></button>
+                  </i>
+                </button>
               </div>
 
             </div>
@@ -215,12 +222,16 @@
 
               <div class="col col-md-6 navBtnCont">
 
-                <button mat-button class="navBtn" matStepperNext><i class="material-icons">
-                  navigate_next
-                  </i></button>
-                <button mat-button class="navBtn" matStepperPrevious><i class="material-icons">
-                  navigate_before
-                  </i></button>
+                <button mat-button class="navBtn" matStepperNext>
+                  <i class="material-icons">
+                    navigate_next
+                  </i>
+                </button>
+                <button mat-button class="navBtn" matStepperPrevious>
+                  <i class="material-icons">
+                    navigate_before
+                  </i>
+                </button>
               </div>
             </div>
 
@@ -231,26 +242,27 @@
 
 
         <mat-step [stepControl]="fourthFormGroup">
-          <form >
-              <mat-form-field appearance="outline">
-                  <mat-label>Region</mat-label>
-                  <input matInput placeholder="10" [(ngModel)]="inputRegion" name="inputRegion">
-                  <mat-icon matSuffix>location_on</mat-icon>
-              </mat-form-field>
+          <form>
+            <mat-form-field appearance="outline">
+              <mat-label>Region</mat-label>
+              <input matInput placeholder="10" [(ngModel)]="inputRegion" name="inputRegion">
+              <mat-icon matSuffix>location_on</mat-icon>
+            </mat-form-field>
             <ng-template matStepLabel>Region
               <strong>{{inputRegion}}</strong>
             </ng-template>
 
-            
 
 
-           <div class="row">
+
+            <div class="row">
 
               <div class="col col-md-6">
                 <fieldset class="form-group">
                   <legend>Region</legend>
 
-                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion" (click)="stepper.next()" [ngModelOptions]="{standalone: true}">
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRegion" name="inputRegion" (click)="stepper.next()"
+                    [ngModelOptions]="{standalone: true}">
                     <mat-button-toggle value="All">
                       <i class="material-icons button-icons">
                         location_on
@@ -299,12 +311,16 @@
               </div>
               <div class="col col-md-6 navBtnCont">
 
-                <button mat-button class="navBtn" matStepperNext><i class="material-icons">
-                  navigate_next
-                  </i></button>
-                <button mat-button class="navBtn" matStepperPrevious><i class="material-icons">
-                  navigate_before
-                  </i></button>
+                <button mat-button class="navBtn" matStepperNext>
+                  <i class="material-icons">
+                    navigate_next
+                  </i>
+                </button>
+                <button mat-button class="navBtn" matStepperPrevious>
+                  <i class="material-icons">
+                    navigate_before
+                  </i>
+                </button>
               </div>
             </div>
 
@@ -363,13 +379,13 @@
                 </mat-button-toggle-group>
               </div>
 
-              
+
 
 
 
             </div>
             <div class="row">
-            <div class="form-group col-md-4">
+              <div class="form-group col-md-4">
                 <mat-label for="externalBypass">
                   <strong>External Bypass </strong>
                 </mat-label>
@@ -394,9 +410,11 @@
               <div class="col col-md-6">
 
                 <button mat-button class="navBtn" (click)="stepper.reset();">Reset</button>
-                <button mat-button class="navBtn" matStepperPrevious><i class="material-icons">
-                  navigate_before
-                  </i></button>
+                <button mat-button class="navBtn" matStepperPrevious>
+                  <i class="material-icons">
+                    navigate_before
+                  </i>
+                </button>
               </div>
 
             </div>
@@ -410,7 +428,7 @@
       <div class="row searchBtnCont">
 
         <button type="submit" class="btn btn-success searchBtn" (click)="setSessionStorage()">Search</button>
-        
+
       </div>
     </form>
   </div>
@@ -419,7 +437,7 @@
 
   <div class="col-md-12">
 
-    
+
     <div class="col-md-5 col-sm-12 col-xs-12 productCard" style="float: left;" *ngFor="let ups of result;let i=index" [attr.data-index]="i">
 
 
@@ -493,7 +511,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 
 </div>

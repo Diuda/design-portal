@@ -109,7 +109,7 @@ export class SearchTabSingleComponent implements OnInit {
     private displayDataService: DisplayDataService,
     private router: Router,
     private _formBuilder: FormBuilder,
-    private sessionSt:SessionStorageService
+    private sessionSt: SessionStorageService
   ) {}
 
   ngOnInit() {
@@ -134,15 +134,15 @@ export class SearchTabSingleComponent implements OnInit {
     this.bypassSlider = true;
     this.powerFactorSlider = "0.9"
     this.powerFactorToggle = false;
-    this.inputPower=this.sessionSt.retrieve('power')==null?undefined:this.sessionSt.retrieve('power');
-    this.inputRunTime=this.sessionSt.retrieve('runtime')==null?undefined:this.sessionSt.retrieve('runtime');
-    this.inputUPSType=this.sessionSt.retrieve('upstype')==null?undefined:this.sessionSt.retrieve('upstype');
-    this.inputRegion=this.sessionSt.retrieve('region')==null?undefined:this.sessionSt.retrieve('region');
-    this.powerFactorSlider=this.sessionSt.retrieve('powerfactor')==null?"0.9":this.sessionSt.retrieve('powerfactor');
-    this.inputRedundancyUnit=this.sessionSt.retrieve('redunit')==null?undefined:this.sessionSt.retrieve('redunit');
+    this.inputPower = this.sessionSt.retrieve('power') == null ? undefined : this.sessionSt.retrieve('power');
+    this.inputRunTime = this.sessionSt.retrieve('runtime') == null ? undefined : this.sessionSt.retrieve('runtime');
+    this.inputUPSType = this.sessionSt.retrieve('upstype') == null ? undefined : this.sessionSt.retrieve('upstype');
+    this.inputRegion = this.sessionSt.retrieve('region') == null ? undefined : this.sessionSt.retrieve('region');
+    this.powerFactorSlider = this.sessionSt.retrieve('powerfactor') == null ? "0.9" : this.sessionSt.retrieve('powerfactor');
+    this.inputRedundancyUnit = this.sessionSt.retrieve('redunit') == null ? undefined : this.sessionSt.retrieve('redunit');
     //this.inputRedundancyUnit=this.sessionSt.retrieve('redunit');
-    this.result=this.sessionSt.retrieve('results')==null?undefined:this.sessionSt.retrieve('results');
-    
+    this.result = this.sessionSt.retrieve('results') == null ? undefined : this.sessionSt.retrieve('results');
+
     //this.inputRegion=this.sessionSt.retrieve('region');
     //console.log("output"+this.sessionSt.retrieve('region'));
     this.firstFormGroup = this._formBuilder.group({
@@ -194,18 +194,18 @@ export class SearchTabSingleComponent implements OnInit {
   //   return cont.filter(item => item.toLowerCase().startsWith(filterValue));
   // }
 
-  setSessionStorage(){
-    this.sessionSt.store('power',this.inputPower);
-    this.sessionSt.store('runtime',this.inputRunTime);
-    this.sessionSt.store('powerfactor',this.powerFactorSlider);
-    this.sessionSt.store('redunit',this.inputRedundancyUnit);
-    this.sessionSt.store('region',this.inputRegion);
-    this.sessionSt.store('upstype',this.inputUPSType);
-   
-  }
-  
+  setSessionStorage() {
+    this.sessionSt.store('power', this.inputPower);
+    this.sessionSt.store('runtime', this.inputRunTime);
+    this.sessionSt.store('powerfactor', this.powerFactorSlider);
+    this.sessionSt.store('redunit', this.inputRedundancyUnit);
+    this.sessionSt.store('region', this.inputRegion);
+    this.sessionSt.store('upstype', this.inputUPSType);
 
-  
+  }
+
+
+
 
 
 
@@ -244,59 +244,59 @@ export class SearchTabSingleComponent implements OnInit {
       }
     }
     if (this.inputRunTime != undefined) {
-    if (this.inputRunTime.toString() == 'All') {
-      runtime = undefined;
-    } else {
-      runtime = this.inputRunTime;
+      if (this.inputRunTime.toString() == 'All') {
+        runtime = undefined;
+      } else {
+        runtime = this.inputRunTime;
+      }
     }
+
+    if (this.inputRegion == 'All') {
+      region = undefined;
+    } else {
+      region = this.inputRegion;
+    }
+
+
+
+    //TODO
+    //Power factor sign
+    const UPSparams = {
+      power: power,
+      runtime: runtime,
+      UPSType: upsType,
+      Region: region,
+      Country: this.inputCountry,
+      Bypass: this.bypassSlider,
+      PowerFactor: powerFactor,
+      RUnit: this.inputRedundancyUnit
+      // PowerFactorSign: this.inputPowerFactorSign,
+    }
+
+
+
+    console.log(UPSparams)
+
+
+
+
+    this.fetchDataService.getUPS(UPSparams).subscribe((data) => {
+
+        //TODO
+        this.result = data;
+        console.log(data)
+        this.sessionSt.store('results', this.result);
+      },
+      (error) => {
+        console.log("Error: " + error);
+      })
+
+
   }
+  newMessage(i) {
+    //window.alert(JSON.stringify(this.result))
 
-  if (this.inputRegion == 'All') {
-    region = undefined;
-  } else {
-    region = this.inputRegion;
+    //console.log(i)
+    this.displayDataService.changeMessage(this.result[i])
   }
-
-
-
-  //TODO
-  //Power factor sign
-  const UPSparams = {
-    power: power,
-    runtime: runtime,
-    UPSType: upsType,
-    Region: region,
-    Country: this.inputCountry,
-    Bypass: this.bypassSlider,
-    PowerFactor: powerFactor,
-    RUnit: this.inputRedundancyUnit
-    // PowerFactorSign: this.inputPowerFactorSign,
-  }
-
-
-
-  console.log(UPSparams)
-
-
-
-
-  this.fetchDataService.getUPS(UPSparams).subscribe((data) => {
-
-      //TODO
-      this.result = data;
-      console.log(data)
-      this.sessionSt.store('results',this.result);
-    },
-    (error) => {
-      console.log("Error: " + error);
-    })
-
-
-}
-newMessage(i) {
-  //window.alert(JSON.stringify(this.result))
-
-  //console.log(i)
-  this.displayDataService.changeMessage(this.result[i])
-}
 }
