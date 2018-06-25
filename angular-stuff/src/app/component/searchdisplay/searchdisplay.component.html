@@ -1,64 +1,72 @@
 <nav class="navbar navbar-expand-lg navclass">
-    
-    <button mat-icon-button [routerLink]="['/searchTabSingle']">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-</nav>
-  
-  <div class="container fluid">
 
-    <div class="row">
-      <div class="col-md-4">
-         
-      </div>
-      <div class="col-md-6">
-          <mat-card class="result">
-            <mat-card-header>
-              <div class="card card-green">
-                <p class="title">{{message.input.upsType}}</p>
-                <p class="subtitle">{{message.input.powerKVA}} kVA</p>
-               <div class="card-separator"></div>
-              </div>
-            </mat-card-header>
-            <!-- {{exist}} -->
-            <mat-card-content>
-              <div *ngIf="exist; else caption" >
-              <p class="instruction"><strong> Components of the configuration are as follow:</strong></p>
-                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                    <ng-container matColumnDef="name">
-                      <th mat-header-cell *matHeaderCellDef ><strong>Part Name </strong></th>
-                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                    </ng-container>
-                  
-                    <ng-container matColumnDef="count" class="counttable">
-                      <th mat-header-cell *matHeaderCellDef  ><strong>Count </strong></th>
-                      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
-                    </ng-container>
-                
-                    
-                  
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  </table>
-                  
-                 <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
-               </div>
-                <ng-template #caption>
-                    <br>
-                    <p class="instruction"><strong> The configuration has no Components.</strong></p>
-                </ng-template>
-          </mat-card-content>
-         
-          <div class="card-separator"></div>
-        </mat-card>
-      
+  <button mat-icon-button [routerLink]="['/searchTabSingle']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</nav>
+
+<div class="container fluid">
+
+  <div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-6">
+      <mat-card class="result">
+        <mat-card-header>
+          <div class="card card-green">
+            <p class="title">{{message.input.upsType}}</p>
+            <p class="subtitle">{{message.input.powerKVA}} kVA</p>
+            <div class="card-separator"></div>
+          </div>
+        </mat-card-header>
+        <!-- {{exist}} -->
+        <mat-card-content>
+          <div *ngIf="exist; else caption">
+            <p class="instruction">
+              <strong> Components of the configuration are as follow:</strong>
+            </p>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>
+                  <strong>Part Name </strong>
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="count" class="counttable">
+                <th mat-header-cell *matHeaderCellDef>
+                  <strong>Count </strong>
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+              </ng-container>
+
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+          <ng-template #caption>
+            <br>
+            <p class="instruction">
+              <strong> The configuration has no Components.</strong>
+            </p>
+          </ng-template>
+        </mat-card-content>
+
+        <div class="card-separator"></div>
+      </mat-card>
+
       <div class="col-md-2"></div>
     </div>
   </div>
-<div class="footer container-fluid pb-0 mb-0 px-0 mx-0 py-0 ">
+  <div class="footer container-fluid pb-0 mb-0 px-0 mx-0 py-0 ">
     <div class="container-fluid lb px-0 mx-0 my-0 py-0 pr-0 mr-0">
-            
-            <p class="footcl">Copyright © SE IT Corporation. All right reserved.</p>
-            
+
+      <p class="footcl">Copyright © SE IT Corporation. All right reserved.</p>
+
     </div>
-</div>
+  </div>
