@@ -52,7 +52,8 @@ export class SearchdisplayComponent implements OnInit {
   ngOnInit() {
 
 
-    this.displayDataService.currentMessage.subscribe(message => this.message = message)
+    this.displayDataService.currentMessage.subscribe(message => this.message = message )
+    window.scrollTo(0,0);
     // console.log(this.message['output'])
     this.compparts = this.message['output'].parts;
     console.log(this.compparts.length)

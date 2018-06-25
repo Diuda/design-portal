@@ -26,6 +26,9 @@ import {
   startWith,
   map
 } from 'rxjs/operators';
+import {
+  SessionStorageService
+} from 'ngx-webstorage';
 
 export interface CountryGroup {
   letter: string;
@@ -105,7 +108,8 @@ export class SearchTabSingleComponent implements OnInit {
     private fetchDataService: FetchDataService,
     private displayDataService: DisplayDataService,
     private router: Router,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private sessionSt:SessionStorageService
   ) {}
 
   ngOnInit() {
@@ -130,7 +134,16 @@ export class SearchTabSingleComponent implements OnInit {
     this.bypassSlider = true;
     this.powerFactorSlider = "0.9"
     this.powerFactorToggle = false;
-
+    this.inputPower=this.sessionSt.retrieve('power')==null?undefined:this.sessionSt.retrieve('power');
+    this.inputRunTime=this.sessionSt.retrieve('runtime')==null?undefined:this.sessionSt.retrieve('runtime');
+    this.inputUPSType=this.sessionSt.retrieve('upstype')==null?undefined:this.sessionSt.retrieve('upstype');
+    this.inputRegion=this.sessionSt.retrieve('region')==null?undefined:this.sessionSt.retrieve('region');
+    this.powerFactorSlider=this.sessionSt.retrieve('powerfactor')==null?"0.9":this.sessionSt.retrieve('powerfactor');
+    this.inputRedundancyUnit=this.sessionSt.retrieve('redunit')==null?undefined:this.sessionSt.retrieve('redunit');
+    //this.inputRedundancyUnit=this.sessionSt.retrieve('redunit');
+    
+    //this.inputRegion=this.sessionSt.retrieve('region');
+    //console.log("output"+this.sessionSt.retrieve('region'));
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -180,7 +193,15 @@ export class SearchTabSingleComponent implements OnInit {
   //   return cont.filter(item => item.toLowerCase().startsWith(filterValue));
   // }
 
-
+  setSessionStorage(){
+    this.sessionSt.store('power',this.inputPower);
+    this.sessionSt.store('runtime',this.inputRunTime);
+    this.sessionSt.store('powerfactor',this.powerFactorSlider);
+    this.sessionSt.store('redunit',this.inputRedundancyUnit);
+    this.sessionSt.store('region',this.inputRegion);
+    this.sessionSt.store('upstype',this.inputUPSType);
+  }
+  
 
 
 
