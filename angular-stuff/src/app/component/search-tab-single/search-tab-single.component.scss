@@ -121,6 +121,10 @@ mat-form-field{
     left: 3em;
 }
 
+:host(.mat-accent .mat-slider-thumb, .mat-accent .mat-slider-thumb-label, .mat-accent .mat-slider-track-fill){
+    background-color: green !important;
+}
+
 
 
 .detailContainer{
@@ -187,4 +191,9 @@ button:hover{
 .mat-step-header .mat-step-icon-not-touched {
     background-color: white !important;
     color: #fff;
+}
+
+
+.mat-step-header .mat-step-icon{
+    background-color: #00C853 !important;
 }

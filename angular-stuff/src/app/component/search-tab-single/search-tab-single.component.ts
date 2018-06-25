@@ -49,20 +49,18 @@ export class SearchTabSingleComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
-  fourthFormGroup: FormGroup = this._formBuilder.group({
-    countryGroup: ''
-  });
+  fourthFormGroup: FormGroup;
   fifthFormGroup: FormGroup;
 
-  myControl: FormControl = new FormControl();
+  // myControl: FormControl = new FormControl();
 
-  options = [
-    'Australia',
-    'India',
-    'New Zealand'
-  ];
+  // options = [
+  //   'Australia',
+  //   'India',
+  //   'New Zealand'
+  // ];
 
-  filteredOptions: Observable < string[] > ;
+  // filteredOptions: Observable < string[] > ;
 
 
 
@@ -85,25 +83,25 @@ export class SearchTabSingleComponent implements OnInit {
   inputRedundancyUnit: String;
 
 
-  countryGroups: CountryGroup[] = [{
-      letter: 'A',
-      country: ['Australia', 'Argentina']
-    },
-    // {
-    //   letter: 'N',
-    //   country: [{name: 'New Zealand', value: 'NZ'}]
-    // },
-    // {
-    //   letter: 'S',
-    //   country: [{name: 'South Africa', value: 'SA'}]
-    // },
-    // {
-    //   letter: 'U',
-    //   country: [{name: 'USA', value: 'US'}]
-    // }
-  ]
+  // countryGroups: CountryGroup[] = [{
+  //     letter: 'A',
+  //     country: ['Australia', 'Argentina']
+  //   },
+  //   // {
+  //   //   letter: 'N',
+  //   //   country: [{name: 'New Zealand', value: 'NZ'}]
+  //   // },
+  //   // {
+  //   //   letter: 'S',
+  //   //   country: [{name: 'South Africa', value: 'SA'}]
+  //   // },
+  //   // {
+  //   //   letter: 'U',
+  //   //   country: [{name: 'USA', value: 'US'}]
+  //   // }
+  // ]
 
-  countryGroupOptions: Observable < CountryGroup[] > ;
+  // countryGroupOptions: Observable < CountryGroup[] > ;
 
 
   constructor(
@@ -116,19 +114,19 @@ export class SearchTabSingleComponent implements OnInit {
 
   ngOnInit() {
 
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(val => this.filter(val))
-      );
+    // this.filteredOptions = this.myControl.valueChanges
+    //   .pipe(
+    //     startWith(''),
+    //     map(val => this.filter(val))
+    //   );
 
 
 
-    this.countryGroupOptions = this.fourthFormGroup.get('countryGroup') !.valueChanges
-      .pipe(
-        startWith(''),
-        map(val => this.filterGroup(val))
-      );
+    // this.countryGroupOptions = this.fourthFormGroup.get('countryGroup') !.valueChanges
+    //   .pipe(
+    //     startWith(''),
+    //     map(val => this.filterGroup(val))
+    //   );
 
 
 
@@ -156,9 +154,9 @@ export class SearchTabSingleComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
-    // this.fourthFormGroup = this._formBuilder.group({
-    //   fourthCtrl: ['', Validators.required]
-    // });
+    this.fourthFormGroup = this._formBuilder.group({
+      fourthCtrl: ['', Validators.required]
+    });
 
 
 
@@ -168,33 +166,33 @@ export class SearchTabSingleComponent implements OnInit {
   }
 
 
-  filter(val: string): string[] {
-    return this.options.filter(option =>
-      option.toLowerCase().includes(val.toLowerCase()));
-  }
+  // filter(val: string): string[] {
+  //   return this.options.filter(option =>
+  //     option.toLowerCase().includes(val.toLowerCase()));
+  // }
 
 
 
 
 
 
-  filterGroup(val: string): CountryGroup[] {
-    if (val) {
-      return this.countryGroups
-        .map(group => ({
-          letter: group.letter,
-          country: this._filter(group.country, val)
-        }))
-        .filter(group => group.country.length > 0);
-    }
+  // filterGroup(val: string): CountryGroup[] {
+  //   if (val) {
+  //     return this.countryGroups
+  //       .map(group => ({
+  //         letter: group.letter,
+  //         country: this._filter(group.country, val)
+  //       }))
+  //       .filter(group => group.country.length > 0);
+  //   }
 
-    return this.countryGroups;
-  }
+  //   return this.countryGroups;
+  // }
 
-  private _filter(cont: string[], val: string) {
-    const filterValue = val.toLowerCase();
-    return cont.filter(item => item.toLowerCase().startsWith(filterValue));
-  }
+  // private _filter(cont: string[], val: string) {
+  //   const filterValue = val.toLowerCase();
+  //   return cont.filter(item => item.toLowerCase().startsWith(filterValue));
+  // }
 
   setSessionStorage(){
     this.sessionSt.store('power',this.inputPower);

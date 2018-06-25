@@ -10,7 +10,7 @@
   <div class="card-body">
     <form (submit)="searchUPS()">
 
-      <mat-horizontal-stepper #stepper>
+      <mat-horizontal-stepper [linear]="false" #stepper>
         <mat-step [stepControl]="firstFormGroup">
           <form>
             <ng-template matStepLabel>Power
@@ -71,7 +71,9 @@
                 </fieldset>
               </div>
               <div class="col col-md-6 navBtnCont">
-                <button mat-button class="navBtn" matStepperNext>Next</button>
+                <button mat-button class="navBtn" matStepperNext><i class="material-icons">
+                  navigate_next
+                  </i></button>
               </div>
 
             </div>
@@ -94,7 +96,7 @@
 
               <div class="col col-md-6">
                 <fieldset class="form-group">
-                  <legend>Power</legend>
+                  <legend>Runtime</legend>
 
                   <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputRunTime" name="inputRunTime" (click)="stepper.next()">
                     <mat-button-toggle value="All">
@@ -139,8 +141,12 @@
 
               <div class="col col-md-6 navBtnCont">
 
-                <button mat-button class="navBtn" matStepperNext>Next</button>
-                <button mat-button class="navBtn" matStepperPrevious>Back</button>
+                <button mat-button class="navBtn" matStepperNext><i class="material-icons">
+                    navigate_next
+                    </i></button>
+                <button mat-button class="navBtn" matStepperPrevious><i class="material-icons">
+                    navigate_before
+                    </i></button>
               </div>
 
             </div>
@@ -209,8 +215,12 @@
 
               <div class="col col-md-6 navBtnCont">
 
-                <button mat-button class="navBtn" matStepperNext>Next</button>
-                <button mat-button class="navBtn" matStepperPrevious>Back</button>
+                <button mat-button class="navBtn" matStepperNext><i class="material-icons">
+                  navigate_next
+                  </i></button>
+                <button mat-button class="navBtn" matStepperPrevious><i class="material-icons">
+                  navigate_before
+                  </i></button>
               </div>
             </div>
 
@@ -226,16 +236,7 @@
               <strong>{{inputRegion}}</strong>
             </ng-template>
 
-            <mat-form-field>
-              <input type="text" matInput placeholder="Countries" [formControl]="myControl" required [matAutocomplete]="country"/>
-                <mat-autocomplete #country="matAutocomplete">
-                  <!-- <mat-optgroup *ngFor="let group of filteredOptions | async" [label]="group.letter"> -->
-                    <mat-option *ngFor="let name of filteredOptions | async" [value]="name">
-                      {{ name }}
-                    </mat-option>
-                <!-- </mat-optgroup> -->
-              </mat-autocomplete>
-            </mat-form-field> 
+            
 
 
 
@@ -294,8 +295,12 @@
               </div>
               <div class="col col-md-6 navBtnCont">
 
-                <button mat-button class="navBtn" matStepperNext>Next</button>
-                <button mat-button class="navBtn" matStepperPrevious>Back</button>
+                <button mat-button class="navBtn" matStepperNext><i class="material-icons">
+                  navigate_next
+                  </i></button>
+                <button mat-button class="navBtn" matStepperPrevious><i class="material-icons">
+                  navigate_before
+                  </i></button>
               </div>
             </div>
 
@@ -383,8 +388,10 @@
 
               <div class="col col-md-6">
 
-                <button mat-button class="navBtn" (click)="stepper.reset()">Reset</button>
-                <button mat-button class="navBtn" matStepperPrevious>Back</button>
+                <button mat-button class="navBtn" (click)="stepper.reset();">Reset</button>
+                <button mat-button class="navBtn" matStepperPrevious><i class="material-icons">
+                  navigate_before
+                  </i></button>
               </div>
 
             </div>
