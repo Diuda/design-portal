@@ -35,7 +35,7 @@ export class SearchdisplayComponent implements OnInit {
   displayedColumns = ['name', 'count'];
   compparts = [];
   dataSource: MatTableDataSource < PeriodicElement > ;
-  exist=true;
+  exist = true;
   compnumber: number;
   private paginator: MatPaginator;
   @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
@@ -46,23 +46,23 @@ export class SearchdisplayComponent implements OnInit {
   constructor(private displayDataService: DisplayDataService) {}
   setDataSourceAttributes() {
     this.dataSource.paginator = this.paginator;
-    
+
   }
 
   ngOnInit() {
 
 
-    this.displayDataService.currentMessage.subscribe(message => this.message = message )
-    window.scrollTo(0,0);
+    this.displayDataService.currentMessage.subscribe(message => this.message = message)
+    window.scrollTo(0, 0);
     // console.log(this.message['output'])
     this.compparts = this.message['output'].parts;
     console.log(this.compparts.length)
-    this.dataSource = new MatTableDataSource<PeriodicElement>(this.compparts);
+    this.dataSource = new MatTableDataSource < PeriodicElement > (this.compparts);
     // this.exist=true;
     this.compnumber = this.compparts.length;
     if (this.compnumber)
       this.exist = true;
-     else
+    else
       this.exist = false;
 
   }
