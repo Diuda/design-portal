@@ -143,6 +143,7 @@ export class SearchTabSingleComponent implements OnInit {
     this.powerFactorSlider=this.sessionSt.retrieve('powerfactor')==null?"0.9":this.sessionSt.retrieve('powerfactor');
     this.inputRedundancyUnit=this.sessionSt.retrieve('redunit')==null?undefined:this.sessionSt.retrieve('redunit');
     //this.inputRedundancyUnit=this.sessionSt.retrieve('redunit');
+    this.result=this.sessionSt.retrieve('results')==null?undefined:this.sessionSt.retrieve('results');
     
     //this.inputRegion=this.sessionSt.retrieve('region');
     //console.log("output"+this.sessionSt.retrieve('region'));
@@ -202,10 +203,11 @@ export class SearchTabSingleComponent implements OnInit {
     this.sessionSt.store('redunit',this.inputRedundancyUnit);
     this.sessionSt.store('region',this.inputRegion);
     this.sessionSt.store('upstype',this.inputUPSType);
+   
   }
   
 
-
+  
 
 
 
@@ -285,7 +287,7 @@ export class SearchTabSingleComponent implements OnInit {
       //TODO
       this.result = data;
       console.log(data)
-
+      this.sessionSt.store('results',this.result);
     },
     (error) => {
       console.log("Error: " + error);
