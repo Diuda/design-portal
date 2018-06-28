@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-
-
+import {StoreModule} from '@ngrx/store';
 import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -57,7 +56,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TabSearchComponent } from './component/tab-search/tab-search.component';
 import { SearchTabSingleComponent } from './component/search-tab-single/search-tab-single.component';
 import {Ng2Webstorage} from 'ngx-webstorage';
- 
+import {reducer} from './component/reducers/attributes.reducer';
 
 
 
@@ -131,7 +130,9 @@ export class MaterialModule {}
     MaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    Ng2Webstorage
+    Ng2Webstorage,
+    StoreModule.forRoot({attributes:reducer})
+
   ],
   providers: [ FetchDataService,DisplayDataService ],
   bootstrap: [AppComponent],

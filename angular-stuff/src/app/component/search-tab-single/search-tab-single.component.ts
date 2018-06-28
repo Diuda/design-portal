@@ -29,6 +29,11 @@ import {
 import {
   SessionStorageService
 } from 'ngx-webstorage';
+import {Store} from '@ngrx/store';
+import {SearchState} from './../search.state';
+import {Attributes} from './../models/attributes.model';
+import * as AttrActions from './../actions/attributes.action';
+
 
 export interface CountryGroup {
   letter: string;
@@ -81,8 +86,8 @@ export class SearchTabSingleComponent implements OnInit {
   powerFactorSlider: String;
   powerFactorToggle: Boolean;
   inputRedundancyUnit: String;
-
-
+  display:Observable<Attributes[]>
+  text:any;
   // countryGroups: CountryGroup[] = [{
   //     letter: 'A',
   //     country: ['Australia', 'Argentina']
@@ -109,8 +114,25 @@ export class SearchTabSingleComponent implements OnInit {
     private displayDataService: DisplayDataService,
     private router: Router,
     private _formBuilder: FormBuilder,
-    private sessionSt: SessionStorageService
-  ) {}
+    private sessionSt: SessionStorageService,
+    private store:Store<SearchState>
+    
+  ) {
+    this.display=store.select('attributes');
+    this.display.subscribe((data)=>{this.inputPower=+(data[1].power),
+      this.inputRunTime=+(data[1].runtime),
+      this.inputRegion=(data[1].region),
+      this.inputUPSType=(data[1].upstype),
+      this.inputRedundancyUnit=(data[1].runit)
+      
+
+    })
+    //console.log(typeof(this.text))
+   // this.inputPower=this.text;
+   console.log(typeof(this.result))
+  }
+
+   
 
   ngOnInit() {
 
@@ -134,6 +156,7 @@ export class SearchTabSingleComponent implements OnInit {
     this.bypassSlider = true;
     this.powerFactorSlider = "0.9"
     this.powerFactorToggle = false;
+    /*session storage
     this.inputPower = this.sessionSt.retrieve('power') == null ? undefined : this.sessionSt.retrieve('power');
     this.inputRunTime = this.sessionSt.retrieve('runtime') == null ? undefined : this.sessionSt.retrieve('runtime');
     this.inputUPSType = this.sessionSt.retrieve('upstype') == null ? undefined : this.sessionSt.retrieve('upstype');
@@ -142,9 +165,11 @@ export class SearchTabSingleComponent implements OnInit {
     this.inputRedundancyUnit = this.sessionSt.retrieve('redunit') == null ? undefined : this.sessionSt.retrieve('redunit');
     //this.inputRedundancyUnit=this.sessionSt.retrieve('redunit');
     this.result = this.sessionSt.retrieve('results') == null ? undefined : this.sessionSt.retrieve('results');
+    
+    this.inputRegion=this.sessionSt.retrieve('region');*/
 
-    //this.inputRegion=this.sessionSt.retrieve('region');
-    //console.log("output"+this.sessionSt.retrieve('region'));
+    
+
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -193,7 +218,7 @@ export class SearchTabSingleComponent implements OnInit {
   //   const filterValue = val.toLowerCase();
   //   return cont.filter(item => item.toLowerCase().startsWith(filterValue));
   // }
-
+/*session storage method
   setSessionStorage() {
     this.sessionSt.store('power', this.inputPower);
     this.sessionSt.store('runtime', this.inputRunTime);
@@ -204,8 +229,8 @@ export class SearchTabSingleComponent implements OnInit {
 
   }
 
-
-
+*/
+  
 
 
 
@@ -298,5 +323,15 @@ export class SearchTabSingleComponent implements OnInit {
 
     //console.log(i)
     this.displayDataService.changeMessage(this.result[i])
+  }
+  storeattr(){
+    //console.log("i am here")
+    this.store.dispatch(new AttrActions.retain({
+      power:this.inputPower,
+      runtime:this.inputRunTime,
+      upstype:this.inputUPSType,
+      region:this.inputRegion,
+      runit:this.inputRedundancyUnit
+    }))
   }
 }
