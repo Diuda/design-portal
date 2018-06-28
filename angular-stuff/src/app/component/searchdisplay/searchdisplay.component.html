@@ -22,13 +22,6 @@
         </mat-card-header>
         <!-- {{exist}} -->
         <mat-card-content>
-          <div *ngIf="display">hello
-            <ul>
-              <li *ngFor="let t of display|async">
-                {{t.power}} {{t.runtime}} {{t.region}} {{t.upstype}}
-              </li>
-            </ul>
-          </div>
           <div *ngIf="exist; else caption">
             <p class="instruction">
               <strong> Components of the configuration are as follow:

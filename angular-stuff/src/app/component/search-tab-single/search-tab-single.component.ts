@@ -29,9 +29,15 @@ import {
 import {
   SessionStorageService
 } from 'ngx-webstorage';
-import {Store} from '@ngrx/store';
-import {SearchState} from './../search.state';
-import {Attributes} from './../models/attributes.model';
+import {
+  Store
+} from '@ngrx/store';
+import {
+  SearchState
+} from './../search.state';
+import {
+  Attributes
+} from './../models/attributes.model';
 import * as AttrActions from './../actions/attributes.action';
 
 
@@ -86,8 +92,8 @@ export class SearchTabSingleComponent implements OnInit {
   powerFactorSlider: String;
   powerFactorToggle: Boolean;
   inputRedundancyUnit: String;
-  display:Observable<Attributes[]>
-  text:any;
+  display: Observable < Attributes[] >
+    text: any;
   // countryGroups: CountryGroup[] = [{
   //     letter: 'A',
   //     country: ['Australia', 'Argentina']
@@ -115,22 +121,23 @@ export class SearchTabSingleComponent implements OnInit {
     private router: Router,
     private _formBuilder: FormBuilder,
     private sessionSt: SessionStorageService,
-    public store:Store<SearchState>
-    
+    public store: Store < SearchState >
+
   ) {
-    this.display=store.select('attributes');
-    this.display.subscribe((data)=>{this.inputPower=+(data[1].power),
-      this.inputRunTime=+(data[1].runtime),
-      this.inputRegion=(data[1].region),
-      this.inputUPSType=(data[1].upstype),
-        this.inputRedundancyUnit=(data[1].runit)
+    this.display = store.select('attributes');
+    this.display.subscribe((data) => {
+      this.inputPower = +(data[1].power),
+        this.inputRunTime = +(data[1].runtime),
+        this.inputRegion = (data[1].region),
+        this.inputUPSType = (data[1].upstype),
+        this.inputRedundancyUnit = (data[1].runit)
     });
     //console.log(typeof(this.text))
-   // this.inputPower=this.text;
-   console.log(typeof(this.result))
+    // this.inputPower=this.text;
+    console.log(typeof (this.result))
   }
 
-   
+
 
   ngOnInit() {
 
@@ -166,7 +173,7 @@ export class SearchTabSingleComponent implements OnInit {
     
     this.inputRegion=this.sessionSt.retrieve('region');*/
 
-    
+
 
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -216,19 +223,19 @@ export class SearchTabSingleComponent implements OnInit {
   //   const filterValue = val.toLowerCase();
   //   return cont.filter(item => item.toLowerCase().startsWith(filterValue));
   // }
-/*session storage method
-  setSessionStorage() {
-    this.sessionSt.store('power', this.inputPower);
-    this.sessionSt.store('runtime', this.inputRunTime);
-    this.sessionSt.store('powerfactor', this.powerFactorSlider);
-    this.sessionSt.store('redunit', this.inputRedundancyUnit);
-    this.sessionSt.store('region', this.inputRegion);
-    this.sessionSt.store('upstype', this.inputUPSType);
+  /*session storage method
+    setSessionStorage() {
+      this.sessionSt.store('power', this.inputPower);
+      this.sessionSt.store('runtime', this.inputRunTime);
+      this.sessionSt.store('powerfactor', this.powerFactorSlider);
+      this.sessionSt.store('redunit', this.inputRedundancyUnit);
+      this.sessionSt.store('region', this.inputRegion);
+      this.sessionSt.store('upstype', this.inputUPSType);
 
-  }
+    }
 
-*/
-  
+  */
+
 
 
 
@@ -322,26 +329,25 @@ export class SearchTabSingleComponent implements OnInit {
     //console.log(i)
     this.displayDataService.changeMessage(this.result[i])
   }
-  storeattr(){
+  storeattr() {
     //console.log("i am here")
     this.store.dispatch(new AttrActions.retain({
-      power:this.inputPower,
-      runtime:this.inputRunTime,
-      upstype:this.inputUPSType,
-      region:this.inputRegion,
-      runit:this.inputRedundancyUnit
-      })
-  )
+      power: this.inputPower,
+      runtime: this.inputRunTime,
+      upstype: this.inputUPSType,
+      region: this.inputRegion,
+      runit: this.inputRedundancyUnit
+    }))
   }
-  resetbutton(){
-    this.display=this.store.select('attributes');
-    
-    this.display.subscribe((data)=>{
-      this.inputRegion=(data[0].region),
-      this.inputUPSType=(data[0].upstype),
-        this.inputRedundancyUnit=(data[0].runit)
+  resetbutton() {
+    this.display = this.store.select('attributes');
+
+    this.display.subscribe((data) => {
+      this.inputRegion = (data[0].region),
+        this.inputUPSType = (data[0].upstype),
+        this.inputRedundancyUnit = (data[0].runit)
     });
-    this.inputPower=null;
-    this.inputRunTime=null;
+    this.inputPower = null;
+    this.inputRunTime = null;
   }
 }
