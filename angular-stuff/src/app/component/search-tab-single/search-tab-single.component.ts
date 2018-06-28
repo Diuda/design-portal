@@ -115,7 +115,7 @@ export class SearchTabSingleComponent implements OnInit {
     private router: Router,
     private _formBuilder: FormBuilder,
     private sessionSt: SessionStorageService,
-    private store:Store<SearchState>
+    public store:Store<SearchState>
     
   ) {
     this.display=store.select('attributes');
@@ -123,10 +123,8 @@ export class SearchTabSingleComponent implements OnInit {
       this.inputRunTime=+(data[1].runtime),
       this.inputRegion=(data[1].region),
       this.inputUPSType=(data[1].upstype),
-      this.inputRedundancyUnit=(data[1].runit)
-      
-
-    })
+        this.inputRedundancyUnit=(data[1].runit)
+    });
     //console.log(typeof(this.text))
    // this.inputPower=this.text;
    console.log(typeof(this.result))
@@ -332,6 +330,18 @@ export class SearchTabSingleComponent implements OnInit {
       upstype:this.inputUPSType,
       region:this.inputRegion,
       runit:this.inputRedundancyUnit
-    }))
+      })
+  )
+  }
+  resetbutton(){
+    this.display=this.store.select('attributes');
+    
+    this.display.subscribe((data)=>{
+      this.inputRegion=(data[0].region),
+      this.inputUPSType=(data[0].upstype),
+        this.inputRedundancyUnit=(data[0].runit)
+    });
+    this.inputPower=null;
+    this.inputRunTime=null;
   }
 }

@@ -4,6 +4,5 @@ export interface Attributes
     runtime:Number;
     upstype:String;
     region:String;
-    powerfactor:String;
-    //result:Object;
+    runit:String;
 }
