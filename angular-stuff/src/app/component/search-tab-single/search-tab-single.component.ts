@@ -130,11 +130,12 @@ export class SearchTabSingleComponent implements OnInit {
         this.inputRunTime = +(data[1].runtime),
         this.inputRegion = (data[1].region),
         this.inputUPSType = (data[1].upstype),
-        this.inputRedundancyUnit = (data[1].runit)
+        this.inputRedundancyUnit = (data[1].runit),
+        this.result=(data[1].result)
     });
     //console.log(typeof(this.text))
     // this.inputPower=this.text;
-    console.log(typeof (this.result))
+    console.log( this.result)
   }
 
 
@@ -157,7 +158,7 @@ export class SearchTabSingleComponent implements OnInit {
 
 
 
-    this.result = null;
+    //this.result = null;
     this.bypassSlider = true;
     this.powerFactorSlider = "0.9"
     this.powerFactorToggle = false;
@@ -328,17 +329,22 @@ export class SearchTabSingleComponent implements OnInit {
 
     //console.log(i)
     this.displayDataService.changeMessage(this.result[i])
-  }
-  storeattr() {
-    //console.log("i am here")
     this.store.dispatch(new AttrActions.retain({
       power: this.inputPower,
       runtime: this.inputRunTime,
       upstype: this.inputUPSType,
       region: this.inputRegion,
-      runit: this.inputRedundancyUnit
+      runit: this.inputRedundancyUnit,
+      result:this.result
+
     }))
+    //console.log(this.result)
   }
+  /*storeattr() {
+    //console.log("i am here")
+    
+    console.log(this.result)
+  }*/
   resetbutton() {
     this.display = this.store.select('attributes');
 
@@ -349,5 +355,6 @@ export class SearchTabSingleComponent implements OnInit {
     });
     this.inputPower = null;
     this.inputRunTime = null;
+    this.result=null;
   }
 }
