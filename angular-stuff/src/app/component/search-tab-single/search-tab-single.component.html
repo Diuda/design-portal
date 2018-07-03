@@ -17,7 +17,7 @@
             <ng-template matStepLabel>Power
               <strong>{{inputPower}}</strong> kVA</ng-template>
 
-
+           
             <mat-form-field appearance="outline">
               <mat-label>Power (kVA)</mat-label>
               <input matInput placeholder="100" [(ngModel)]="inputPower" name="power">
@@ -31,6 +31,7 @@
                   <legend>Power</legend>
                   <div class="col-md-6 col-sm-6">
                     <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="inputPower" name="inputPowerType" (click)="stepper.next()">
+                      
                       <mat-button-toggle value="All">
                         <i class="material-icons button-icons">
                           flash_on

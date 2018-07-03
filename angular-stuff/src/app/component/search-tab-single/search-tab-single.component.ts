@@ -75,12 +75,12 @@ export class SearchTabSingleComponent implements OnInit {
 
 
 
-  inputPower: Number;
-  inputRunTime: Number;
-  inputUPSType: String;
-  inputRegion: String;
-  inputCountry: String;
-  result: Object;
+  inputPower: string;
+  inputRunTime: string;
+  inputUPSType: string;
+  inputRegion: string;
+  inputCountry: string;
+  result: any;
   powerFactorProperty = [{
       value: 'Lag'
     },
@@ -89,9 +89,9 @@ export class SearchTabSingleComponent implements OnInit {
     }
   ];
   bypassSlider: Boolean
-  powerFactorSlider: String;
+  powerFactorSlider: string;
   powerFactorToggle: Boolean;
-  inputRedundancyUnit: String;
+  inputRedundancyUnit: string;
   display: Observable < Attributes[] >
     text: any;
   // countryGroups: CountryGroup[] = [{
@@ -120,28 +120,23 @@ export class SearchTabSingleComponent implements OnInit {
     private displayDataService: DisplayDataService,
     private router: Router,
     private _formBuilder: FormBuilder,
-    private sessionSt: SessionStorageService,
+    //private sessionSt: SessionStorageService,
     public store: Store < SearchState >
 
-  ) {
-    this.display = store.select('attributes');
-    this.display.subscribe((data) => {
-      this.inputPower = +(data[1].power),
-        this.inputRunTime = +(data[1].runtime),
-        this.inputRegion = (data[1].region),
-        this.inputUPSType = (data[1].upstype),
-        this.inputRedundancyUnit = (data[1].runit),
-        this.result=(data[1].result)
-    });
-    //console.log(typeof(this.text))
-    // this.inputPower=this.text;
-    console.log( this.result)
+  ) {  
+    //console.log( this.result)
+    this.powerFactorSlider = "0.9"
+    this.bypassSlider = true;
+    // this.powerFactorSlider = "0.9";
+    this.powerFactorToggle = false;
   }
 
 
 
   ngOnInit() {
 
+
+    //this.inputPower = "40";
     // this.filteredOptions = this.myControl.valueChanges
     //   .pipe(
     //     startWith(''),
@@ -159,9 +154,39 @@ export class SearchTabSingleComponent implements OnInit {
 
 
     //this.result = null;
+
+    this.display = this.store.select('attributes');
+    this.display.subscribe((data) => {
+      this.powerFactorSlider = "0.9"
     this.bypassSlider = true;
-    this.powerFactorSlider = "0.9"
+    // this.powerFactorSlider = "0.9";
     this.powerFactorToggle = false;
+        if(data[1]==undefined)
+        {
+          //console.log(typeof(data[0].power))
+          this.inputPower = data[0].power
+          console.log(typeof(this.inputPower))
+          this.inputRunTime =data[0].runtime
+        this.inputRegion = data[0].region
+        this.inputUPSType = data[0].upstype
+        this.inputRedundancyUnit = data[0].runit
+        // this.result=data[0].result
+
+        }
+        else{
+          
+      this.inputPower = data[1].power
+      console.log(typeof(this.inputPower))
+        this.inputRunTime = data[1].runtime
+        this.inputRegion = data[1].region
+        this.inputUPSType = data[1].upstype
+        this.inputRedundancyUnit = data[1].runit
+        this.result=data[1].result
+        }
+    });
+  
+    
+    console.log(this.result)
     /*session storage
     this.inputPower = this.sessionSt.retrieve('power') == null ? undefined : this.sessionSt.retrieve('power');
     this.inputRunTime = this.sessionSt.retrieve('runtime') == null ? undefined : this.sessionSt.retrieve('runtime');
@@ -247,6 +272,7 @@ export class SearchTabSingleComponent implements OnInit {
 
     console.log(this.inputRunTime)
     console.log(this.inputPower)
+    console.log(typeof(this.inputPower))
     let result;
     let powerFactor;
     let upsType;
@@ -272,6 +298,7 @@ export class SearchTabSingleComponent implements OnInit {
         power = undefined;
       } else {
         power = this.inputPower;
+        console.log(typeof(power))
       }
     }
     if (this.inputRunTime != undefined) {
@@ -316,7 +343,7 @@ export class SearchTabSingleComponent implements OnInit {
         //TODO
         this.result = data;
         console.log(data)
-        this.sessionSt.store('results', this.result);
+        //this.sessionSt.store('results', this.result);
       },
       (error) => {
         console.log("Error: " + error);
@@ -324,11 +351,15 @@ export class SearchTabSingleComponent implements OnInit {
 
 
   }
+
   newMessage(i) {
     //window.alert(JSON.stringify(this.result))
 
     //console.log(i)
     this.displayDataService.changeMessage(this.result[i])
+    
+    console.log(typeof(this.inputPower))
+   
     this.store.dispatch(new AttrActions.retain({
       power: this.inputPower,
       runtime: this.inputRunTime,
@@ -337,7 +368,8 @@ export class SearchTabSingleComponent implements OnInit {
       runit: this.inputRedundancyUnit,
       result:this.result
 
-    }))
+}))
+     
     //console.log(this.result)
   }
   /*storeattr() {

@@ -9,11 +9,11 @@ import * as AttrActions from './../actions/attributes.action'
 // Section 1
 
 const initialState: Attributes = {
-  power: 40,
-  runtime: 10,
-  upstype: ' ',
-  region: ' ',
-  runit: ' ',
+  power: "40",
+  runtime: "10",
+  upstype: undefined,
+  region: undefined,
+  runit: undefined,
   result:{}
 
 }
