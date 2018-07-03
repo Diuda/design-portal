@@ -23,6 +23,13 @@ import {
   MatPaginator,
   MatTableDataSource
 } from '@angular/material';
+
+//import {Store} from '@ngrx/store';
+//import {SearchState} from './../search.state';
+//import {Attributes} from './../models/attributes.model';
+import {
+  Observable
+} from 'rxjs';
 //import { SearchComponent } from '../search/search.component';
 @Component({
   selector: 'app-searchdisplay',
@@ -38,16 +45,26 @@ export class SearchdisplayComponent implements OnInit {
   exist = true;
   compnumber: number;
   private paginator: MatPaginator;
+  //display:Observable<Attributes[]>
+  text: any;
+
   @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
     this.paginator = mp;
     this.setDataSourceAttributes();
   }
 
-  constructor(private displayDataService: DisplayDataService) {}
+  constructor(private displayDataService: DisplayDataService) {
+    /*this.display=store.select('attributes');
+    //console.log("display is"this.display)
+    this.display.subscribe((data)=>{this.text=(data[1].runtime)})
+   */
+
+  }
   setDataSourceAttributes() {
     this.dataSource.paginator = this.paginator;
 
   }
+
 
   ngOnInit() {
 

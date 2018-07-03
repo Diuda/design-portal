@@ -409,7 +409,7 @@
 
               <div class="col col-md-6">
 
-                <button mat-button class="navBtn" (click)="stepper.reset();">Reset</button>
+                <button mat-button class="navBtn" (click)="resetbutton()">Reset</button>
                 <button mat-button class="navBtn" matStepperPrevious>
                   <i class="material-icons">
                     navigate_before
@@ -427,7 +427,7 @@
       <!-- </mat-tab-group> -->
       <div class="row searchBtnCont">
 
-        <button type="submit" class="btn btn-success searchBtn" (click)="setSessionStorage()">Search</button>
+        <button type="submit" class="btn btn-success searchBtn" >Search</button>
 
       </div>
     </form>
@@ -437,7 +437,7 @@
 
   <div class="col-md-12">
 
-
+    
     <div class="col-md-5 col-sm-12 col-xs-12 productCard" style="float: left;" *ngFor="let ups of result;let i=index" [attr.data-index]="i">
 
 
