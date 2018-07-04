@@ -1,8 +1,8 @@
 export interface Attributes {
-  power: Number;
-  runtime: Number;
-  upstype: String;
-  region: String;
-  runit: String;
-  result:Object;
+  power: string;
+  runtime: string;
+  upstype: string;
+  region: string;
+  runit: string;
+  result:any;
 }

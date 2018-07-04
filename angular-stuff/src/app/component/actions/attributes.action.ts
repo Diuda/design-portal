@@ -6,7 +6,7 @@ import {
 } from '@ngrx/store'
 import {
   Attributes
-} from './../models/attributes.model'
+} from '../models/attributes.model'
 
 export const attributesback = 'attr'
 export const reset = 'resetbutton'
